@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > CP Install
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Install
 # Container Platform(CP) - install
 
 ## 단독형 배포   
@@ -45,4 +45,4 @@
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > CP Install
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Install

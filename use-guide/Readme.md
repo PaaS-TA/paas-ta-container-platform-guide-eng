@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > CP Use
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Use
 # Container Platform(CP) - 이용 가이드
 
 ## 포털 이용 가이드
@@ -13,4 +13,4 @@
 - Source Control 서비스
   + [Source Control 서비스 사용 가이드](source-control/paas-ta-container-platform-source-control-use-guide.md)
 
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > CP Use
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Use

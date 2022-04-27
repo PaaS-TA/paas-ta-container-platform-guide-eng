@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
 
 <br>
 
@@ -515,7 +515,7 @@
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
 
 ----
 
