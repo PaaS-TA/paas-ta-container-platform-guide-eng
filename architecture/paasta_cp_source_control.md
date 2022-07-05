@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Architecture](../README.md) > SourceControl
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Architecture](./README.md) > SourceControl
 
 ## Purpose
 This document provides an architecture of PaaS-TA Container Platform SourceControl.

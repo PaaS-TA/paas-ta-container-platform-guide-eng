@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Architecture](../README.md) > Pipeline
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Architecture](./README.md) > Pipeline
 
 ## Purpose
 This document provides an architecture of PaaS-TA Container Platform Pipeline.

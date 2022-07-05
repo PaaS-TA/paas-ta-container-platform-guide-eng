@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Architecture](../README.md) > Portal
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Architecture](./README.md) > Portal
 
 ## Purpose
 This document provides an architecture for portal services on the PaaS-TA Container Platform (CP)..

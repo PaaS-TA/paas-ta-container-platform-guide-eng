@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Architecture](../README.md) > PaaS-TA CP
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Architecture](./README.md) > PaaS-TA CP
 
 ## Purpose
 This document provides an architecture of the PaaS-TA Container Platform (CP).
