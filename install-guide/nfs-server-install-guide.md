@@ -1,90 +1,90 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide) > NFS Server 설치
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide) > NFS Server Installation
 
 
-# NFS 서버 설치
+# NFS Server Installation
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)  
 
-2. [NFS Server 설치](#2)  
+2. [NFS Server Installation](#2)  
   2.1. [Prerequisite](#2.1)  
-  2.2. [설치](#2.2)  
-  2.3. [동작확인](#2.3)
+  2.2. [Installation](#2.2)  
+  2.3. [Operation Check](#2.3)
 
 <br>
 
-## <div id='1'> 1. 문서 개요
+## <div id='1'> 1. Document Outline
 
-### <div id='1.1'> 1.1. 목적
-본 문서 (Kubespray 설치 가이드) 는 개방형 PaaS 플랫폼 고도화 및 개발자 지원 환경 기반의 Open PaaS에 배포되는 컨테이터 플랫폼을 위한 제반환경을 위한 NFS Storage Server를 설치하는 방법을 기술하였다.
+### <div id='1.1'> 1.1. Purpose
+This document (Kubespray Installation Guide) describes how to upgrade the open PaaS platform and install NFS Storage Server for all environments for the container platform deployed in Open PaaS based on developer-enabled environments.
 
-PaaS-TA 6.0 버전부터는 Kuberspray에서 배포되는 기본클러스터에 컨테이너플랫폼용 서비스를 설치하고자 할 경우에는 Persistence Volume으로 사용할 스토리지가 필수다.
-
-<br>
-
-### <div id='1.2'> 1.2. 범위
-설치 범위는 Kubernetes Native를 검증하기 위한 Kubespray 기본 설치를 기준으로 작성하였다.
+Starting with PaaS-TA 6.0, storage to be used as a Persistence Volume is necessary if you want to install services for container platforms in a basic cluster deployed by Kuberpray.
 
 <br>
 
-## <div id='2'> 2. NFS Server 설치
+### <div id='1.2'> 1.2. Range
+The installation range was prepared based on the basic installation of Kubespray to verify Kubernetes Native.
+
+<br>
+
+## <div id='2'> 2. NFS Server Installation
 
 <br>
 
 ### <div id='2.1'> 2.1. Prerequisite
-본 설치 가이드는 **Ubuntu 18.04** 환경에서 설치하는 것을 기준으로 하였다. Kubespray로 배포된 Cluster에서 사용할 Storage용이기에 Storage용 별도 VM에 설치한다.
+This installation guide is based on installation in **Ubuntu 18.04** environment. Install it on a separate VM for Storage because it is for Storage to be used by clusters deployed in Kubespray.
 
 
-### <div id='2.2'> 2.2. 설치
-- 패키지 업데이트
+### <div id='2.2'> 2.2. Installation
+- Package Update
 ```
 $ sudo apt-get update
 ```
 
-- NFS 서버를 위한 패키지를 설치
+- Install package for NFS Server
 
 ```
 $ sudo apt-get install nfs-common nfs-kernel-server portmap
 ```
 
-- NFS에서 사용될 디렉토리 생성 및 권한 부여
+- Create the directory to be used at NFS and give authority
 ```
 $ sudo mkdir -p /home/share/nfs
 $ sudo chmod 777 /home/share/nfs
 ```
 
-- 공유 디렉토리 설정
+- Share dirctory settings
 ```
 $ sudo vi /etc/exports
-## 형식 : [/공유디렉토리] [접근IP] [옵션]
+## Type : [/share directory] [Access IP] [Option]
 /home/share/nfs *(rw,no_root_squash,async)
 ```
->`rw - 읽기쓰기` <br>
->       `no_root_squash - 클라이언트가 root 권한 획득 가능, 파일생성 시 클라이언트 권한으로 생성됨.`<br>
+>`rw - readwrite` <br>
+>       `no_root_squash - Client can acquire root privileges, created with client privileges when creating files.`<br>
 >       `async - 요청에 의해 변경되기 전에 요청에 응답, 성능 향상용`
 
 
-- nfs 서버 재시작
+- nfs Server Restart
 ```
 $ sudo /etc/init.d/nfs-kernel-server restart
 $ sudo systemctl restart portmap
 ```
 
 
-### <div id='2.2'> 2.2. 동작 확인
+### <div id='2.2'> 2.2. Operation Check
 
-- 설정 확인
+- Check settings
 ```
 $ sudo exportfs -v
 ```
 
-- 정상 결과
+- a normal result
 ```
 /home/share/nfs
                 <world>(rw,async,wdelay,no_root_squash,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)
 ```
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide) > > NFS Server 설치
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide) > > NFS Server Installation
