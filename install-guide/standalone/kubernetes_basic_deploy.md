@@ -1,38 +1,38 @@
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
   1.2. [Prerequisite](#1.2)
-2. [Kubernetes resource 배포](#2)  
-  2.1. [container 배포를 위한 YAML 스크립트 파일](#2.1)  
-  2.2. [배포](#2.2)  
-3. [Kubernetes Ingress 설정](#3)  
-  3.1. [Kubespray Ingress Controller 배포 확인](#3.1)  
-  3.2. [Ingress 배포 예시](#3.2)  
+2. [Kubernetes Resource Deployment](#2)  
+  2.1. [YAML Script File for Container Deployment](#2.1)  
+  2.2. [Deployment](#2.2)  
+3. [Kubernetes Ingress Setting](#3)  
+  3.1. [Kubespray Ingress Controller Deployment Check](#3.1)  
+  3.2. [Ingress Deployment Example](#3.2)  
 
 
 <br>
 
-## <div id='1'> 1. 문서 개요
+## <div id='1'> 1. Document Outline
 
-### <div id='1.1'> 1.1. 목적
-본 문서는 Kubernetes의 기본적인 배포 및 사용을 위한 간단한 예제 사용해 보고 학습할 수 있도록 한다. 
+### <div id='1.1'> 1.1. Purpose
+This document allows you to try and learn from simple examples for basic deployment and use of Kubernetes. 
 
 <br>
 
 ### <div id='1.2'> 1.2. Prerequisite
-본 이용 가이드는 Ubuntu 18.04 환경에서 kubespray를 통해 kubernetes cluster가 생성된 상태를 기준으로 작성하였다. 
+This usage guide was prepared based on the state in which the kubernetes cluster was created through kubespray in the Ubuntu 18.04 environment.
 
-Master서버에 접속하여 kubernetes CLI를 통해 진행 한다.
+Access to the Master Server and perform through kubernetes CLI.
 
 
 <br>
 
-## <div id='2'> 2. Kubernetes resource 배포
+## <div id='2'> 2. Kubernetes resource Deployment
 
-### <div id='2.1'> 2.1 container 배포를 위한 YAML 스크립트 파일
-샘플로 nginx를 Kubernetes에 배포할 수 있는 yaml을 준비한다. 
+### <div id='2.1'> 2.1 YAML Script File for Container Deployment
+Prepare a nginx as sample in the form of yaml which can be deployed to the Kubernetes. 
  
 - Deployment Example Yaml
 
@@ -76,9 +76,9 @@ spec:
       targetPort: 80
 ```
 
-### <div id='2.2'> 2.2 배포
+### <div id='2.2'> 2.2 Deployment
 
->준비한 yaml을 배포한다.
+>Deploy the prepared yaml.
 ```
 ubuntu@ip-10-0-0-163:~$ vi deployment.yaml
 ubuntu@ip-10-0-0-163:~$ kubectl apply -f deployment.yaml
@@ -86,7 +86,7 @@ deployment.apps/your-nginx-deployment created
 service/your-nginx-svc created
 ```
 
-> 배포된 deployment와 pod, service를 확인한다. 
+> Check the deployed deployment, pod, and service. 
 ```
 ubuntu@ip-10-0-0-121:~$ kubectl get deploy,pod,svc -o wide 
 NAME                               READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS   IMAGES   SELECTOR
@@ -100,22 +100,22 @@ service/kubernetes      ClusterIP   10.233.0.1     <none>        443/TCP   143m 
 service/nginx-service   ClusterIP   10.233.3.131   <none>        80/TCP    13m    app=nginx
 ```
 
-nginx서버가 pod로 배포되며, 서비스로 노출된 nginx-service가 확인된다.
+The nginx server is deployed as pod, and the nginx-service exposed as a service is identified..
 
 
 
 <br>
 
 
-## <div id='3'> 3. Kubernetes Ingress 설정
+## <div id='3'> 3. Kubernetes Ingress Setting
 
 <br>
 
-### <div id='3.1'> 3.1. Kubespray Ingress Controller 배포 확인
+### <div id='3.1'> 3.1. Kubespray Ingress Controller Deployment Check
 
 
-- Kubernetes Cluster의 각 Node에 Daemonset으로 Ingress Controller 배포 확인
-kuberspray로 배포된 Cluster에는 Ingress가 기본 배포되어 있다.
+- Verify Ingress Controller deployment as Daemonset on each node in the Kubernetes cluster
+Ingress is the default deployment for clusters deployed as kuberpray.
 
 ```
 $ kubectl get daemonset -n ingress-nginx
@@ -131,9 +131,9 @@ ingress-nginx-controller-7dwv6   1/1     Running   0          28m
 
 <br>
 
-### <div id='3.2'> 3.2. Ingress 배포 예시
+### <div id='3.2'> 3.2. Ingress Deployment Example
 
-- 기본적인 앱 및 서비스 배포 후 Ingress Rule 설정이 필요
+- Ingress Rule setting is required after basic app and service deployment
 
 - Ingress Example Yaml
 
@@ -146,7 +146,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "suslmk01.shop"                     ## 외부에서 접근할 domain
+  - host: "suslmk01.shop"                     ## domain to be accessed externally
     http:
       paths:
         - pathType: Prefix
@@ -156,9 +156,9 @@ spec:
             servicePort: 80
 ```
 
-브라우저로 suslmk01.shop/로 접속 시 미리 Service로 선언된 nginx-service의 80포트로 전달
+When accessing suslmk01.shop/ with a browser, pass it to 80 ports of nginx-service, which is declared as a service
 
-- Ingress 배포 확인
+- Ingress Deployment Check
 
 ```
 $ kubectl get ingress
@@ -169,6 +169,6 @@ nginx-ingress   <none>   suslmk01.shop   10.10.1.13,10.10.1.15,10.10.1.19   80  
 
 <br>
 
-- 브라우드저에서 확인
+- Check from browser
 
 ![image](https://user-images.githubusercontent.com/67575226/111438131-3ebe0380-8747-11eb-8c88-560258df9214.png)
