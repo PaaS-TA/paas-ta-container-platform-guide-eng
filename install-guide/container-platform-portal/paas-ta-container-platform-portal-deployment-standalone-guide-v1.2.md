@@ -22,13 +22,13 @@
     3.2.3. [Execute Container Platform Portal Deployment Script](#3.2.3)  
     3.2.4. [(Refer) Delete Container Platform Portal Resource](#3.2.4)
 
-4. [Container Platform Admin/ User Portal Access](#4)      
-    4.1. [Container Platform Admin Portal Login](#4.1)      
+4. [Container Platform Operator/ User Portal Access](#4)      
+    4.1. [Container Platform Operator Portal Login](#4.1)      
     4.2. [Container Platform User Portal Sign in/Login](#4.2)      
-    4.3. [Container Platform User/Admin Portal Use Guide](#4.3)          
+    4.3. [Container Platform User/Operator Portal Use Guide](#4.3)          
 
 5. [Refer Container Platform Portal](#5)       
-    5.1. [Create Admin Cluster Role Token](#5.1)  
+    5.1. [Create Operator Cluster Role Token](#5.1)  
     5.2. [Cautions when creating Kubernetes Resource](#5.2)    
 
 
@@ -57,7 +57,7 @@ System configuration consists of **Kubernetes Cluster(Master, Worker)** environm
 <br>
 
 ## <div id='2'>2. Prerequisite
-This installation guide is prepared based on installation in **Ubuntu 18.04** environment.
+This installation guide is prepared based on installation in the **Ubuntu 18.04** environment.
 
 ### <div id='2.1'>2.1. Firewall Information
 Set the port that should be opened for the IaaS Security Group.
@@ -377,8 +377,8 @@ replicaset.apps/container-platform-webuser-deployment-d4755ccf7       1         
 <br>
 
 #### <div id='3.2.4'>3.2.4. (Refer) Delete Container Platform Portal Resource
-배포된 컨테이너 플랫폼 포털 리소스의 삭제를 원하는 경우 아래 스크립트를 실행한다.<br>
-:loudspeaker: (주의) 컨테이너 플랫폼 포털이 운영되는 상태에서 해당 스크립트 실행 시, **운영에 필요한 리소스가 모두 삭제**되므로 주의가 필요하다.<br>
+To delete the deployed container platform portal resource, perform the scrip below.<br>
+:loudspeaker: (Caution) Be aware that the  **whole resource necessary for the operation gets deleted** if the script is performed while the container platform portal is being operated.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-portal-deployment/script
@@ -409,73 +409,73 @@ Uninstalled plugin: cm-push
 <br>    
 
 
-## <div id='4'>4. 컨테이너 플랫폼 운영자/사용자 포털 접속  
-컨테이너 플랫폼 운영자/사용자 포털은 아래 주소로 접속 가능하다.<br>
-{K8S_MASTER_NODE_IP} 값은 **Kubernetes Master Node Public IP** 값을 입력한다.
+## <div id='4'>4. Container Platform Operator/ User Portal Access
+The container platform operator/ user portal can be accessed with the link below.<br>
+For {K8S_MASTER_NODE_IP} value, enter **Kubernetes Master Node Public IP** value.
 
-- 컨테이너 플랫폼 운영자포털 접속 URI : **http://{K8S_MASTER_NODE_IP}:32703** <br>
-- 컨테이너 플랫폼 사용자포털 접속 URI : **http://{K8S_MASTER_NODE_IP}:32702** <br>
+- Container Platform Operator's Portal Access URI : **http://{K8S_MASTER_NODE_IP}:32703** <br>
+- Container Platform User's Portal Access URI : **http://{K8S_MASTER_NODE_IP}:32702** <br>
 
 <br>
 
-### <div id='4.1'/>4.1. 컨테이너 플랫폼 운영자 포털 로그인
-컨테이너 플랫폼 운영자 포털 접속 초기 정보는 아래와 같다.
-- http://{K8S_MASTER_NODE_IP}:32703에 접속한다.   
-- username : **admin** / password : **admin** 계정으로 컨테이너 플랫폼 운영자 포털에 로그인한다.
+### <div id='4.1'/>4.1. Container Platform Operator Portal Login
+The initial information on accessing the container platform operator portal is as follows.
+- Access to http://{K8S_MASTER_NODE_IP}:32703.   
+- With username : **admin** / password : **admin** account, log in to the container platform's operators portal.
 ![image 002]
 
 <br>    
 
 
-### <div id='4.2'/>4.2. 컨테이너 플랫폼 사용자 포털 회원가입/로그인
-#### 사용자 회원가입    
-- http://{K8S_MASTER_NODE_IP}:32702에 접속한다.
-- 하단의 'Register' 버튼을 클릭한다.
+### <div id='4.2'/>4.2. Container Platform User Portal Sign-in/log in
+#### User Sign in     
+- Access to http://{K8S_MASTER_NODE_IP}:32702.
+- Click the 'Register' button below.
 ![image 003]
 
-- 등록할 사용자 계정정보를 입력 후 'Register' 버튼을 클릭하여 컨테이너 플랫폼 사용자 포털에 회원가입한다.
+- Input the user account information to register and click the 'Register' button to sign in to the container platform user portal.
 ![image 004]  
 
-- 컨테이너 플랫폼 사용자 포털은 회원가입 후 바로 이용이 불가하며 Cluster 관리자 혹은 Namespace 관리자로부터 해당 사용자가 이용할 Namespace와 Role을 할당 받은 후 포털 이용이 가능하다.
-Namespace와 Role 할당은 [[4.3. 컨테이너 플랫폼 사용자/운영자 포털 사용 가이드]](#4.3) 를 참고한다.    
+- The Container Platform User's Portal cannot be used until the Cluster Admin or Namespace Admin will give the registered user a Namespace and Role to use.
+Refer to [[4.3. Container Platform Operator/ User Portal Use Guide]](#4.3) for Namespace and Role Assigning.    
 ![image 005]    
 
-#### 사용자 로그인   
-- http://{K8S_MASTER_NODE_IP}:32702에 접속한다.
-- 회원가입을 통해 등록된 계정으로 컨테이너 플랫폼 사용자 포털에 로그인한다.
+#### User Log in   
+- Access to http://{K8S_MASTER_NODE_IP}:32702.
+- Log in to the Container Platform User's Portal with the registered account.
 ![image 006]
 
 <br>    
 
-### <div id='4.3'/>4.3. 컨테이너 플랫폼 사용자/운영자 포털 사용 가이드
-- 컨테이너 플랫폼 포털 사용방법은 아래 사용가이드를 참고한다.  
-  + [컨테이너 플랫폼 운영자 포털 사용 가이드](../../use-guide/portal/container-platform-admin-portal-guide.md)    
-  + [컨테이너 플랫폼 사용자 포털 사용 가이드](../../use-guide/portal/container-platform-user-portal-guide.md)
+### <div id='4.3'/>4.3. Container Platform User/ Operator Portal Use Guide
+- Refer to the use guide below for Container Platform Portal usage.  
+  + [Container Platform Operator's Portal Use Guide](../../use-guide/portal/container-platform-admin-portal-guide.md)    
+  + [Container Platform User's Portal Use Guide](../../use-guide/portal/container-platform-user-portal-guide.md)
 
 
 <br>
 
-## <div id='5'>5. 컨네이너 플랫폼 포털 참고
+## <div id='5'>5. Refer Container Platform Portal
 
-### <div id='5.1'>5.1. 운영자 Cluster Role Token 생성
-Cluster Role을 가진 운영자의 Service Account를 생성하고 해당 Service Account의 Token 값을 획득한다.<br>
-획득한 Token 값은 컨테이너 플랫폼 포털 배포 시 사용된다.
+### <div id='5.1'>5.1. Create Operator Cluster Role Token
+Create a service account of an operator with a cluster role and obtain the token value of the service account.<br>
+The acquired Token value is used when deploying the container platform portal.
 
-- Service Account를 생성한다.
+- Create Service Account.
 ```
-## {SERVICE_ACCOUNT} : 생성할 Service Account 명
+## {SERVICE_ACCOUNT} : Service Account Name to create
 
 $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl create serviceaccount k8sadmin -n kube-system)
 ```
 
-- 생성한 Service Account와 kubernetes에서 제공하는 ClusterRole 'cluster-admin'을 바인딩한다.
+- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by kubernetes.
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 (ex. kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8sadmin)
 ```
 
-- Service Account의 Mountable secrets 값을 확인한다.
+- Check the value of Mountable secrets in the Service Account.
 ```
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl describe serviceaccount k8sadmin -n kube-system)
@@ -485,23 +485,23 @@ $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 Mountable secrets:   k8sadmin-token-xxxx
 ```
 
-- Service Account의 Token을 획득한다.
+- Obtain the Token of Service Account.
 
 ```
-## {SECRET_NAME} : Mountable secrets 값 입력
+## {SECRET_NAME} : Enter Mountable secrets value
 
 $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
 ```
 
 <br>
 
-### <div id='5.2'>5.2. Kubernetes 리소스 생성 시 주의사항
+### <div id='5.2'>5.2. Cautions when creating Kubernetes Resource
 
-컨테이너 플랫폼 이용 중 리소스 생성 시 다음과 같은 prefix를 사용하지 않도록 주의한다.
+Be careful not to use the following prefixes when creating resources while using the container platform.
 
-|Resource 명|생성 시 제외해야 할 prefix|
+|Resource Name|prefix to exclude when creating|
 |---|---|
-|전체 Resource|kube*|
+|All Resource|kube*|
 |Namespace|all|
 ||kubernetes-dashboard|
 ||paas-ta-container-platform-temp-namespace|
@@ -518,7 +518,7 @@ $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut 
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > 단독형 배포 포털 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > Stand-Alone Deployment Portal Installation Guide
 
 [image 001]:images-v1.2/cp-001.png
 [image 002]:images-v1.2/cp-002.png
