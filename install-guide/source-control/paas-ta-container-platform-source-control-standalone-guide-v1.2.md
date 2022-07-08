@@ -1,98 +1,98 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl Installation Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [시스템 구성도](#1.3)  
-    1.4. [참고 자료](#1.4)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [System Configuration Diagram](#1.3)  
+    1.4. [References](#1.4)  
 
 2. [Prerequisite](#2)  
-    2.1. [NFS 서버 설치](#2.1)  
-    2.2. [컨테이너 플랫폼 포탈 설치](#2.2)  
+    2.1. [NFS Server Installation](#2.1)  
+    2.2. [Container Platform Portal Installation](#2.2)  
         
-3. [컨테이너 플랫폼 소스 컨트롤 배포](#3)  
-    3.1. [CRI-O insecure-registry 설정](#3.1)  
-    3.2. [컨테이너 플랫폼 소스 컨트롤 배포](#3.2)  
-    3.2.1. [컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드](#3.2.1)  
-    3.2.2. [컨테이너 플랫폼 소스 컨트롤 변수 정의](#3.2.2)    
-    3.2.3. [컨테이너 플랫폼 소스 컨트롤 배포 스크립트 실행](#3.2.3)    
-    3.2.4. [(참조) 컨테이너 플랫폼 소스 컨트롤 리소스 삭제](#3.2.4)    
+3. [Container Platform SourceControl Deployment](#3)  
+    3.1. [CRI-O insecure-registry Setting](#3.1)  
+    3.2. [Container Platform SourceControl Deployment](#3.2)  
+    3.2.1. [Container Platform SourceControl Deployment File Download](#3.2.1)  
+    3.2.2. [Define Container Platform SourceControl Variable](#3.2.2)    
+    3.2.3. [Execute Container Platform SourceControl Deployment Script](#3.2.3)    
+    3.2.4. [(Refer) Delete Container Platform SourceControl Resource](#3.2.4)    
 
-4. [컨테이너 플랫폼 소스 컨트롤 접속](#4)      
-    4.1. [컨테이너 플랫폼 소스 컨트롤 관리자 로그인](#4.1)      
-    4.2. [컨테이너 플랫폼 소스 컨트롤 사용자 회원가입/로그인](#4.2)  
-    4.3. [컨테이너 플랫폼 소스 컨트롤 사용 가이드](#4.3)           
+4. [Container Platform SourceControl Access](#4)      
+    4.1. [Container Platform SourceControl Operator Log in](#4.1)      
+    4.2. [Container Platform SourceControl User Sign in/ Log in](#4.2)  
+    4.3. [Container Platform SourceControl Use Guide](#4.3)           
 
 
 
-## <div id='1'>1. 문서 개요
-### <div id='1.1'>1.1. 목적
-본 문서(컨테이너 플랫폼 소스 컨트롤 단독 배포 설치 가이드)는 단독배포된 Kubernetes Cluster 환경에서 컨테이너 플랫폼 포탈이 배포된 환경에서 소스 컨트롤 단독 배포 방법을 기술하였다.<br>
-
-<br>
-
-### <div id='1.2'>1.2. 범위
-설치 범위는 Kubernetes 단독 배포를 기준으로 작성하였다.
+## <div id='1'>1. Document Outline
+### <div id='1.1'>1.1. Purpose
+This document (Container Platform Source Control Stand-Alone Deployment Installation Guide) describes how sourcecontrols are deployed in a stand-alone deployment Kubernetes Cluster environment where container platform portals are deployed.<br>
 
 <br>
 
-### <div id='1.3'>1.3. 시스템 구성도
-시스템 구성은 Kubernetes Cluster(Master, Worker)와 Cluster 내부(DBMS, HAProxy, Private Repository, Keycloak)환경으로 구성되어 있다. <br>
-Kubespray를 통해 Kubernetes Cluster를 설치하고 컨테이너 플랫폼 포탈 로 Database, Private Repository 등 미들웨어 환경을 제공하여 Docker Image로 Kubernetes Cluster에 컨테이너 플랫폼 포탈 환경을 배포한다. <br>
-총 필요한 VM 환경으로는 **Master Node VM**: 1개, Worker Node VM: 1개 이상 필요하고 본 문서는 Kubernetes Cluster에 컨테이너 플랫폼 소스 컨트롤을 배포하는 내용이다.
+### <div id='1.2'>1.2. Range
+The installation range was prepared based on Kubernetes' stand-alone deployment.
+
+<br>
+
+### <div id='1.3'>1.3. System Configuration Diagram
+The system configuration consists of Kubernetes Cluster (Master, Worker) and Cluster Internal (DBMS, HAProxy, Private Repository, Keycloak) environments. <br>
+Kubernetes Cluster is installed through Kubespray and middleware environments such as Database and Private Repository are provided as container platform portals to deploy container platform portal environments to Kubernetes Cluster with Docker Image. <br>
+The total required VM environment is **Master Node VM**: 1 and Worker Node VM: 1 or more, and this document is about deploying container platform source controls in a Kubernetes cluster.
 
 ![image](https://user-images.githubusercontent.com/80228983/146350860-3722c081-7338-438d-b7ec-1fdac09160c4.png)
 
     
 <br>    
 
-### <div id='1.4'>1.4. 참고 자료
+### <div id='1.4'>1.4. References
 > https://kubernetes.io/ko/docs  
 
 <br>
 
 ## <div id='2'>2. Prerequisite
     
-### <div id='2.1'>2.1. NFS 서버 설치
-컨테이너 플랫폼 소스 컨트롤에서 사용할 스토리지 **NFS Storage Server** 설치가 사전에 진행되어야 한다.<br>
-NFS Storage Server 설치는 아래 가이드를 참조한다.  
-> [NFS 서버 설치](../nfs-server-install-guide.md)      
+### <div id='2.1'>2.1. NFS Server Installation
+Installation of storage **NFS Storage Server** to be used by the container platform source control must be performed ahead.<br>
+Refer to the guide below for NFS Storage Server installation.  
+> [NFS Server Installation](../nfs-server-install-guide.md)      
     
-### <div id='2.2'>2.2. 컨테이너 플랫폼 포탈 설치
-컨테이너 플랫폼 소스 컨트롤에서 사용할 인프라로 인증서버 **KeyCloak Server**, 데이터베이스 **Maria DB**, 레포지토리 서버 **Harbor** 설치가 사전에 진행되어야 한다.
-파스타 컨테이너 플랫폼 포탈 배포 시 해당 인프라를 모두 설치한다.
-컨테이너 플랫폼 인프라 설치는 아래 가이드를 참조한다.
-> [파스타 컨테이너 플랫폼 포탈 배포](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md)     
+### <div id='2.2'>2.2. Container Platform Portal Installation
+Installation of the certificate server **KeyCloak Server**, database **Maria DB**, and repository server **Harbor** must be performed in advance as the infrastructure to be used by the container platform source control.
+When deploying the pasta container platform portal, all of the infrastructures will be installed.
+For installation of Container Platform Infrastructure, refer to the guide below.
+> [{PaaS-TA Container Platform Portal Deployment](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md)     
 
 
-## <div id='3'>3. 컨테이너 플랫폼 소스 컨트롤 배포
+## <div id='3'>3. Container Platform Source Control Deployment
 
-### <div id='3.1'>3.1. CRI-O insecure-registry 설정
-컨테이너 플랫폼 소스 컨트롤 배포 시 이미지 및 패키지 파일 업로드는 클러스터에 설치된 Private Repository에 한다.
-컨테이너 플랫폼 포탈을 배포된 Private Repository(Harbor)에 컨테이너 플랫폼 소스 컨트롤 관련 이미지 및 패키지 파일 업로드한다. 
+### <div id='3.1'>3.1. CRI-O insecure-registry Setting
+When deploying the container platform source control, upload images and package files to the private repository installed in the cluster.
+Upload the container platform portal to the deployed Private Repository (Harbor) with images and package files related to the container platform source control. 
 
-Private Repository 배포에 필요한 CRI-O insecure-registry 설정은 아래 가이드를 참조한다.
-> [CRI-O insecure-registry 설정](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md#3.1)      
+Refer to the guide below for the CRI-O insecure-registry settings required for a Private Repository deployment.
+> [CRI-O insecure-registry Setting](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md#3.1)      
 
-### <div id='3.2'>3.2. 컨테이너 플랫폼 소스 컨트롤 배포
+### <div id='3.2'>3.2. Container Platform Source Control Deployment 
     
-#### <div id='3.2.1'>3.2.1. 컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드
+#### <div id='3.2.1'>3.2.1. Container Platform Source Control Deployment File Download
 컨테이너 플랫폼 소스 컨트롤 배포를 위해 컨테이너 플랫폼 소스 컨트롤 Deployment 파일을 다운로드 받아 아래 경로로 위치시킨다.<br>
 :bulb: 해당 내용은 Kubernetes **Master Node**에서 진행한다.
 
-+ 컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드 :  
++ Container Platform Source Control Deployment File Download :  
    [paas-ta-container-platform-source-control-deployment.tar.gz](https://nextcloud.paas-ta.org/index.php/s/6WG9C29tjQGY8We)  
 
 ```
-# Deployment 파일 다운로드 경로 생성
+# Create Deployment File Download Path
 $ mkdir -p ~/workspace/container-platform
 $ cd ~/workspace/container-platform
 
-# Deployment 파일 다운로드 및 파일 경로 확인
+# Deployment File Download and Check File Path
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/6WG9C29tjQGY8We/download
 
 $ ls ~/workspace/container-platform
