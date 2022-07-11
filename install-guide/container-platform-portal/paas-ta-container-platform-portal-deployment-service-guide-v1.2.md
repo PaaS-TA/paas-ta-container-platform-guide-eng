@@ -1,61 +1,61 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > 서비스형 배포 포털 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > Service Deployment Portal Installation Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [시스템 구성도](#1.3)  
-    1.4. [참고 자료](#1.4)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [System Configuration Diagram](#1.3)  
+    1.4. [References](#1.4)  
 
 2. [Prerequisite](#2)  
-    2.1. [방화벽 정보](#2.1)  
-    2.2. [NFS Server 설치](#2.2)    
+    2.1. [Firewall Information](#2.1)  
+    2.2. [NFS Server Installation](#2.2)    
 
-3. [컨테이너 플랫폼 포털 배포](#3)  
-    3.1. [CRI-O insecure-registry 설정](#3.1)  
-    3.2. [컨테이너 플랫폼 포털 배포](#3.2)  
-    3.2.1. [컨테이너 플랫폼 포털 Deployment 파일 다운로드](#3.2.1)  
-    3.2.2. [컨테이너 플랫폼 포털 변수 정의](#3.2.2)    
-    3.2.3. [컨테이너 플랫폼 포털 배포 스크립트 실행](#3.2.3)    
-    3.2.4. [(참조) 컨테이너 플랫폼 포털 리소스 삭제](#3.2.4)
+3. [Container Platform Portal Deployment](#3)  
+    3.1. [CRI-O insecure-registry Setting](#3.1)  
+    3.2. [Container Platform Portal Deployment](#3.2)  
+    3.2.1. [Container Platform Portal Deployment File Download](#3.2.1)  
+    3.2.2. [Define Container Platform Portal Variable](#3.2.2)    
+    3.2.3. [Execute Container Platform Portal Deployment Script](#3.2.3)    
+    3.2.4. [(Refer)Delete Container Platform Portal Resource](#3.2.4)
 
-4. [컨테이너 플랫폼 포털 사용자 인증 서비스 구성](#4)      
-    4.1. [컨테이너 플랫폼 포털 사용자 인증 구성 Deployment 다운로드](#4.1)      
-    4.2. [컨테이너 플랫폼 포털 사용자 인증 구성 변수 정의](#4.2)      
-    4.3. [컨테이너 플랫폼 포털 사용자 인증 구성 스크립트 실행](#4.3)          
-    4.4. [(참조) 컨테이너 플랫폼 포털 사용자 인증 구성 해제](#4.4)    
+4. [Configuring Container Platform Portal User Authentication Service](#4)      
+    4.1. [Download Container Platform Portal User Authentication Configuration Deployment](#4.1)      
+    4.2. [Defining Container Platform Portal User Authentication Configurations](#4.2)      
+    4.3. [Execute Container Platform Portal User Authentication Configuration Script](#4.3)          
+    4.4. [(Refer) Unconfiguring Container Platform Portal User Authentication](#4.4)    
 
-5. [컨테이너 플랫폼 포털 서비스 브로커](#5)       
-    5.1. [컨테이너 플랫폼 포털 서비스 브로커 등록](#5.1)  
-    5.2. [컨테이너 플랫폼 포털 서비스 조회 설정](#5.2)    
-    5.3. [컨테이너 플랫폼 사용자/운영자 포털 사용 가이드](#5.3)
+5. [Container Platform Portal Service Broker](#5)       
+    5.1. [Container Platform Portal Service Broker Registration](#5.1)  
+    5.2. [Container Platform Portal Service Lookup Settings](#5.2)    
+    5.3. [Container Platform User/ Operator Portal Use Guide](#5.3)
 
-6. [컨네이너 플랫폼 포털 참고](#6)  
-    6.1. [운영자 Cluster Role Token 생성](#6.1)    
-    6.2. [Kubernetes 리소스 생성 시 주의사항](#6.2)      
+6. [Container Platform Portal Reference](#6)  
+    6.1. [Create Operator Cluster Role Token](#6.1)    
+    6.2. [Precautions for Creating Kubernetes Resources](#6.2)      
 
 
-## <div id='1'>1. 문서 개요
-### <div id='1.1'>1.1. 목적
-본 문서(컨테이너 플랫폼 PaaS-TA 서비스 배포 형 포털 설치 가이드)는 Kubernetes Cluster를 설치하고 컨테이너 플랫폼 PaaS-TA 서비스 배포 형 포털 배포 방법을 기술하였다.<br>
+## <div id='1'>1. Document Outline
+### <div id='1.1'>1.1. Purpose
+This document (Container Platform PaaS-TA Service Deployment Portal Installation Guide) describes how to install the Kubernetes Cluster and deploy the Container Platform PaaS-TA Service Deployment Portal.<br>
 <br>
 
-### <div id='1.2'>1.2. 범위
-설치 범위는 Kubernetes Cluster 배포를 기준으로 작성하였다.
+### <div id='1.2'>1.2. Range
+The installation range was prepared based on the Kubernetes Cluster deployment..
 
 <br>
 
-### <div id='1.3'>1.3. 시스템 구성도
+### <div id='1.3'>1.3. System Configuration Diagram
 <p align="center"><img src="images-v1.2/cp-001.png"></p>    
 
-시스템 구성은 **Kubernetes Cluster(Master, Worker)** 환경과 데이터 관리를 위한 **네트워크 파일 시스템(NFS)** 스토리지 서버로 구성되어 있다. Kubespray를 통해 설치된 Kubernetes Cluster 환경에 컨테이너 플랫폼 포털 이미지 및 Helm Chart를 관리하는 **Harbor**, 컨테이너 플랫폼 포털 사용자 인증을 관리하는 **Keycloak**, 컨테이너 플랫폼 포털 메타 데이터를 관리하는 **MariaDB(RDBMS)** 등 미들웨어 환경을 컨테이너로 제공한다. 총 필요한 VM 환경으로는 **Master Node VM: 1개, Worker Node VM: 1개 이상, NFS Server : 1개**가 필요하고 본 문서는 Kubernetes Cluster에 컨테이너 플랫폼 포털 환경을 배포하는 내용이다. **네트워크 파일 시스템(NFS)** 은 컨테이너플랫폼에서 기본으로 제공하는 스토리지로 사용자 환경에 따라 다양한 종류의 스토리지를 사용할 수 있다.  
+System configuration consists of **Kubernetes Cluster(Master, Worker)** environment and **Network File System(NFS)** ) storage server for data management. It provides containerized middleware environments such as **Harbor** managing container platform portal images and HelmCharts, **Keycloak** managing container platform portal user authentication, and **MariaDB (RDBMS)** managing container platform portal metadata. The total required VM environment is **Master Node VM: 1, Worker Node VM: 1 or more, NFS Server: 1**, and this document is about deploying a container platform portal environment in a Kubernetes cluster. **Network File System (NFS)** is the built-in storage provided by the container platform, and various types of storage can be used depending on the user environment.  
 
 <br>    
 
-### <div id='1.4'>1.4. 참고 자료
+### <div id='1.4'>1.4. References
 > https://kubernetes.io/ko/docs<br>
 > https://goharbor.io/docs<br>
 > https://www.keycloak.org/documentation
@@ -63,14 +63,14 @@
 <br>
 
 ## <div id='2'>2. Prerequisite
-본 설치 가이드는 **Ubuntu 18.04** 환경에서 설치하는 것을 기준으로 작성하였다.
+This installation guide is prepared based on installation in **Ubuntu 18.04** environment.
 
-### <div id='2.1'>2.1. 방화벽 정보
-IaaS Security Group의 열어줘야할 Port를 설정한다.
+### <div id='2.1'>2.1. Firewall Information
+Set the port that should be opened for the IaaS security group.
 
 - Master Node
 
-| <center>프로토콜</center> | <center>포트</center> | <center>비고</center> |  
+| <center>Protocol</center> | <center>Port</center> | <center>Note</center> |  
 | :---: | :---: | :--- |  
 | TCP | 111 | NFS PortMapper |  
 | TCP | 179 | Calio BGP Network |  
@@ -85,7 +85,7 @@ IaaS Security Group의 열어줘야할 Port를 설정한다.
 
 - Worker Node
 
-| <center>프로토콜</center> | <center>포트</center> | <center>비고</center> |  
+| <center>Protocol</center> | <center>Port</center> | <center>Note</center> |  
 | :---: | :---: | :--- |  
 | TCP | 111 | NFS PortMapper |  
 | TCP | 179 | Calio BGP network |  
@@ -97,35 +97,35 @@ IaaS Security Group의 열어줘야할 Port를 설정한다.
 
 <br>
 
-### <div id='2.2'>2.2. NFS Server 설치
-컨테이너 플랫폼 포털 서비스에서 사용할 스토리지 **NFS Storage Server** 설치가 사전에 진행되어야 한다.<br>
-NFS Storage Server 설치는 아래 가이드를 참조한다.  
-> [NFS Server 설치](../nfs-server-install-guide.md)      
+### <div id='2.2'>2.2. NFS Server Installation
+**NFS Storage Server** installation to be used by container platform portal service must be installed ahead of time.<br>
+For NFS Storage Server installation, refer to the guide below.  
+> [NFS Server Installation](../nfs-server-install-guide.md)      
 
 <br>
 
-## <div id='3'>3. 컨테이너 플랫폼 포털 배포
+## <div id='3'>3. Container Platform Portal Deployment
 
-### <div id='3.1'>3.1. CRI-O insecure-registry 설정
-컨테이너 플랫폼 포털 배포는 Private Repository(Harbor) 배포를 포함하고 있다. Private Repository에 컨테이너 플랫폼 포털 관련 이미지 및 패키지 파일 업로드 그리고 http 접속 설정을 위해 배포 전 Kubernetes **Master Node, Worker Node** 내 podman 설치 및 config 파일에 'insecure-registries' 설정을 진행한다.
+### <div id='3.1'>3.1. CRI-O insecure-registry Setting
+The container platform portal deployment includes a private repository (Harbor) deployment. To upload images and package files related to the container platform portal to the Private Repository and to set up HTTP connections, install podman in Kubernetes **Master Node, Worker Node**, and set 'insure-registries' in the config file before deployment.
 
-- **:bulb: Master Node, Worker Node에 모두 설정 추가 필요**
-- **{K8S_MASTER_NODE_IP} 값은 Kubernetes Master Node Public IP 입력**
+- **:bulb:Master Node, Worker Node needs to set add all**
+- **For {K8S_MASTER_NODE_IP} value, enter Kubernetes Master Node Public IP**
 
-#### 1. podman 설치
+#### 1. podman Installation
 
 ```
 $ sudo apt-get update
 $ sudo apt-get install -y podman
 ```
 
-#### 2. crio.conf 내 'insecure-registries' 설정
+#### 2. Set'insecure-registries' inside crio.conf  
 ```
 $ sudo vi /etc/crio/crio.conf
 ```
 
 ```
-# 'insecure_registries' 항목에 "{K8S_MASTER_NODE_IP}:30002" 추가
+# Add "{K8S_MASTER_NODE_IP}:30002" to the 'insecure_registries' category
 ...    
 insecure_registries = [
  "xx.xxx.xxx.xx:30002"
@@ -134,18 +134,18 @@ insecure_registries = [
 ```
 
 ```
-# crio 재시작
+# restart crio
 $ sudo systemctl restart crio
 ```
 
-#### 3. registries.conf 내 'registry' 항목 insecure 설정
+#### 3. Set insecure in 'registry' category inside registries.conf
 ```
 $ sudo vi /etc/containers/registries.conf
 ```
 
 ```
-# registries.conf 파일 내 '[[registry]]'가 주석 처리 되어있으므로 주석 해제 필요     
-# 아래 항목을 추가, location 값은 "{K8S_MASTER_NODE_IP}:30002" 설정
+# Within the registries.conf file, '[[registry]]' needs to be uncommented because it is annotated     
+# Add the content below , Set location value as "{K8S_MASTER_NODE_IP}:30002"
 ...    
 [[registry]]
 insecure = true
@@ -154,52 +154,52 @@ location = "xx.xxx.xxx.xx:30002"
 ```
 
 ```
-# podman 재시작
+# Restart podman
 $ sudo systemctl restart podman
 ```
 
 <br>
 
-### <div id='3.2'>3.2. 컨테이너 플랫폼 포털 배포
+### <div id='3.2'>3.2. Container Platform Portal Deployment
 
-#### <div id='3.2.1'>3.2.1. 컨테이너 플랫폼 포털 Deployment 파일 다운로드
-컨테이너 플랫폼 포털 배포를 위해 컨테이너 플랫폼 포털 Deployment 파일을 다운로드 받아 아래 경로로 위치시킨다.<br>
-:bulb: 해당 내용은 Kubernetes **Master Node**에서 진행한다.
+#### <div id='3.2.1'>3.2.1. Container Platform Portal Deployment File Download
+Download the container platform portal Deployment file and locate it in the path below for container platform portal deployment.<br>
+:bulb: Process the content at Kubernetes **Master Node**.
 
-+ 컨테이너 플랫폼 포털 Deployment 파일 다운로드 :
++ Container Platform Portal Deployment File Download :
    [paas-ta-container-platform-portal-deployment.tar.gz](https://nextcloud.paas-ta.org/index.php/s/wYJ3wim3WCxG7Ed/download)
 
 ```
-# Deployment 파일 다운로드 경로 생성
+# Create Deployment File Download Path
 $ mkdir -p ~/workspace/container-platform
 $ cd ~/workspace/container-platform
 
-# Deployment 파일 다운로드 및 파일 경로 확인
+# Deployment File Download and Check File Path
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/wYJ3wim3WCxG7Ed/download
 
 $ ls ~/workspace/container-platform
   paas-ta-container-platform-portal-deployment.tar.gz
 
-# Deployment 파일 압축 해제
+#  Unzip Deployment File
 $ tar -xvf paas-ta-container-platform-portal-deployment.tar.gz
 ```
 
-- Deployment 파일 디렉토리 구성
+- Configure Deployment File Directory
 ```
-├── script          # 컨테이너 플랫폼 포털 배포 관련 변수 및 스크립트 파일 위치
-├── images          # 컨테이너 플랫폼 포털 이미지 파일 위치
-├── charts          # 컨테이너 플랫폼 포털 Helm Charts 파일 위치
-├── values_orig     # 컨테이너 플랫폼 포털 Helm Charts values.yaml 파일 위치
-└── keycloak_orig   # 컨테이너 플랫폼 포털 사용자 인증 관리를 위한 Keycloak 배포 관련 파일 위치
+├── script          # Container Platform Portal Deployment Related Variable and Script File Location
+├── images          # Container Platform Portal Image File Location
+├── charts          # Container Platform Portal Helm Charts File Location
+├── values_orig     # Container Platform Portal Helm Charts values.yaml File Location
+└── keycloak_orig   # Location of files related to Keycloak deployment for container platform portal user authentication management
 ```
 
 <br>
 
-#### <div id='3.2.2'>3.2.2. 컨테이너 플랫폼 포털 변수 정의
-컨테이너 플랫폼 포털을 배포하기 전 변수 값 정의가 필요하다. 배포에 필요한 정보를 확인하여 변수를 설정한다.
+#### <div id='3.2.2'>3.2.2. Define Container Platform Portal Variable
+Defining variable values is necessary before deploying the container platform portal. Set the variable by checking the information required for deployment.
 
-:bulb: Keycloak 기본 배포 방식은 **HTTP**이며 인증서를 통한 **HTTPS**를 설정하고자 하는 경우 아래 가이드를 참조하여 선처리한다.
-> [Keycloak TLS 설정](paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md#2-keycloak-tls-설정)       
+:bulb: Keycloak's default deployment method is **HTTP**. If you want to set **HTPS** through a certificate, refer to the guide below for pre-processing.
+> [Keycloak TLS Setting](paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md#2-keycloak-tls-설정)       
 
 <br>
 
@@ -224,13 +224,13 @@ NFS_SERVER_IP="xx.xxx.xxx.xx"
 PROVIDER_TYPE="service"           
 ```
 
-- **K8S_MASTER_NODE_IP** <br>Kubernetes Master Node Public IP 입력<br><br>
-- **K8S_AUTH_BEARER_TOKEN** <br>Kubernetes Bearer Token 입력<br>
-   + [[6.1. 운영자 Cluster Role Token 생성]](#6.1) 참고하여 Token 값 생성 후 입력<br><br>
-- **NFS_SERVER_IP** <br>NFS Server Private IP 입력<br>
-   + 가이드 [[NFS Server 설치](../nfs-server-install-guide.md)]를 통해 설치된 NFS Server Private IP 입력<br><br>
-- **PROVIDER_TYPE** <br>컨테이너 플랫폼 포털 제공 타입 입력 <br>
-   + 본 가이드는 포털 PaaS-TA 서비스 형 배포 설치 가이드로 **'service'** 값 입력 필요
+- **K8S_MASTER_NODE_IP** <br>Enter `Kubernetes Master Node Public IP<br><br>
+- **K8S_AUTH_BEARER_TOKEN** <br>Enter Kubernetes Bearer Token<br>
+   + Refer to [[6.1. Create Operator Cluster Role Token]](#6.1) to create and enter Token value<br><br>
+- **NFS_SERVER_IP** <br>Enter NFS Server Private IP<br>
+   + Enter the NFS Server Private IP installed through [[NFS Server Installation](../nfs-server-install-guide.md)] guide<br><br>
+- **PROVIDER_TYPE** <br>Enter Container Platform Portal Providing Type <br>
+   + This guide is a portal PaaS-TA service deployment installation guide that requires **'service'** value
 
 <br>    
 
