@@ -150,7 +150,7 @@ $ vi container-platform-pipeline-vars.sh
 # COMMON VARIABLE
 K8S_MASTER_NODE_IP="{k8s master node public ip}"                 # Kubernetes master node public ip
 PROVIDER_TYPE="{container platform pipeline provider type}"        # Container platform pipeline provider type (Please enter 'standalone' or 'service')
-CF_API_URL="https:\/\/{paas-ta-api-domain}"                      # e.g) https:\/\/api.10.0.0.120.nip.io, PaaS-TA API Domain, in case of PROVIDER_TYPE=service
+CF_API_URL="https:\/\/{paas-ta-api-domain}"                      # e.g) In case of https:\/\/api.10.0.0.120.nip.io, PaaS-TA API Domain, PROVIDER_TYPE=service
 ....    
 ```
 ```    
@@ -272,7 +272,7 @@ statefulset.apps/paas-ta-container-platform-postgresql-postgresql   1/1     1h
 ```    
 
 #### <div id='3.2.4'>3.2.4. (Refer) Delete Container Platform Pipeline Resource
-To delete the deployed container platform pipeline resources, run the script below..<br>
+To delete the deployed container platform pipeline resources, run the script below.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-pipeline-deployment/script
