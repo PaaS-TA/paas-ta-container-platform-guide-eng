@@ -81,8 +81,8 @@ Refer to the guide below for the CRI-O insecure-registry settings required for a
 ### <div id='3.2'>3.2. Container Platform Source Control Deployment 
     
 #### <div id='3.2.1'>3.2.1. Container Platform Source Control Deployment File Download
-컨테이너 플랫폼 소스 컨트롤 배포를 위해 컨테이너 플랫폼 소스 컨트롤 Deployment 파일을 다운로드 받아 아래 경로로 위치시킨다.<br>
-:bulb: 해당 내용은 Kubernetes **Master Node**에서 진행한다.
+Download the container platform source control Deployment file and locate it in the path below for container platform source control deployment.<br>
+:bulb: Process this content at the **Master Node** of Kubernetes. 
 
 + Container Platform Source Control Deployment File Download :  
    [paas-ta-container-platform-source-control-deployment.tar.gz](https://nextcloud.paas-ta.org/index.php/s/6WG9C29tjQGY8We)  
@@ -100,22 +100,22 @@ $ ls ~/workspace/container-platform
   paas-ta-container-platform-source-control-deployment.tar.gz
   ...
 
-# Deployment 파일 압축 해제
+# Unzip Deployment file
 $ tar xvfz paas-ta-container-platform-source-control-deployment.tar.gz
 ```
 
-- Deployment 파일 디렉토리 구성
+- Configure Deployment File Directory
 ```
-├── script          # 컨테이너 플랫폼 소스 컨트롤 배포 관련 변수 및 스크립트 파일 위치
-├── images          # 컨테이너 플랫폼 소스 컨트롤 이미지 파일 위치
-├── charts          # 컨테이너 플랫폼 소스 컨트롤 Helm Charts 파일 위치
-├── values_orig     # 컨테이너 플랫폼 소스 컨트롤 Helm Charts values.yaml 원본 파일 위치 
+├── script          # Location of Container Platform Source Control Deployment Related Variables and Script File
+├── images          # Location of Container Platform Source Control Image File
+├── charts          # Location of Container Platform Source Control Helm Charts File
+├── values_orig     # Location of Container Platform Source Control Helm Charts values.yaml Source File 
 ```
 
 <br>
 
-#### <div id='3.2.2'>3.2.2. 컨테이너 플랫폼 소스 컨트롤 변수 정의
-컨테이너 플랫폼 소스 컨트롤을 배포하기 전 변수 값 정의가 필요하다. 배포에 필요한 정보를 확인하여 변수를 설정한다.
+#### <div id='3.2.2'>3.2.2. Define Container Platform SourceControl Variable
+Defining of variable values is required before deploying container platform source controls. Set the variable by checking the information required for deployment.
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script
@@ -134,21 +134,21 @@ K8S_MASTER_NODE_IP="xx.xxx.xxx.xx"
 PROVIDER_TYPE="standalone"           
 ```
 
-- **K8S_MASTER_NODE_IP** <br>Kubernetes Master Node Public IP 입력<br><br>
-- **PROVIDER_TYPE** <br>컨테이너 플랫폼 소스 컨트롤 제공 타입 입력 <br>
-   + 본 가이드는 단독 배포 설치 가이드로 **'standalone'** 값 입력 필요
+- **K8S_MASTER_NODE_IP** <br>Enter Kubernetes Master Node Public IP<br><br>
+- **PROVIDER_TYPE** <br>Enter Container Platform Source Control Providing Type <br>
+   + This guide is a standalone installation guide that requires **'standalone'** values
 <br>    
 
-:bulb: Keycloak 기본 배포 방식은 **HTTP**이며 인증서를 통한 **HTTPS**를 설정되어 있는 경우
-> [Keycloak TLS 설정](../container-platform-portal/paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md)
+:bulb: Keycloak default deployment method is **HTTP**, and **HTPS** via certificate is enabled
+> [Keycloak TLS Settings](../container-platform-portal/paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md)
 
-컨테이너 플랫폼 소스 컨트롤 변수 파일 내 아래 내용을 수정한다.
+Modify the contents below in the container platform source control variable file.
 ```
 $ vi container-platform-source-control-vars.sh    
 ```    
 ```
-# KEYCLOAK_URL 값 http -> https 로 변경 
-# Domain으로 nip.io를 사용하는 경우 아래와 같이 변경
+# Change KEYCLOAK_URL Value http -> https  
+# If you are using nip.io as a Domain, change as shown below:
     
 ....  
 # KEYCLOAK    
@@ -156,8 +156,8 @@ KEYCLOAK_URL="https:\/\/${K8S_MASTER_NODE_IP}.nip.io:32710"   # Keycloak url (in
 ....     
 ```
 
-#### <div id='3.2.3'>3.2.3. 컨테이너 플랫폼 소스 컨트롤 배포 스크립트 실행
-컨테이너 플랫폼 소스 컨트롤 배포를 위한 배포 스크립트를 실행한다.
+#### <div id='3.2.3'>3.2.3. Execute Container Platform SourceControl Deployment Script
+Execute the deployment script for deploying the container platform source control.
 
 ```
 $ chmod +x deploy-container-platform-source-control.sh
@@ -179,10 +179,10 @@ TEST SUITE: None
 
 <br>
     
-- **컨테이너 플랫폼 소스 컨트롤**
+- **Container Platform Source Control**
 
 ```
-# 소스 컨트롤 리소스 확인
+# Check Source Control Resource
 $ kubectl get all -n paas-ta-container-platform-source-control
 ```
 ```
@@ -213,8 +213,8 @@ replicaset.apps/container-platform-source-control-ui-deployment-55dc694d8c      
 
 <br>
 
-#### <div id='3.2.4'>3.2.4. (참조) 컨테이너 플랫폼 소스 컨트롤 리소스 삭제
-배포된 컨테이너 플랫폼 소스 컨트롤 리소스의 삭제를 원하는 경우 아래 스크립트를 실행한다.<br>
+#### <div id='3.2.4'>3.2.4. (Refer) Delete Container Platform SourceControl Resource
+To delete the deployed container platform source control resource, follow the script shown below.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script
@@ -238,62 +238,62 @@ namespace "paas-ta-container-platform-source-control" deleted
 ...
 ```
 
-## <div id='4'>4. 컨테이너 플랫폼 소스 컨트롤 접속  
-컨테이너 플랫폼 소스 컨트롤 페이지는 아래 주소로 접속 가능하다.<br>
-{K8S_MASTER_NODE_IP} 값은 **Kubernetes Master Node Public IP** 값을 입력한다.
+## <div id='4'>4. Container Platform SourceControl Access  
+The container platform source control page can be accessed through the address below.<br>
+For {K8S_MASTER_NODE_IP} value, enter **Kubernetes Master Node Public IP** value.
 
-- 컨테이너 플랫폼 소스 컨트롤 standalone 접속 URI : **http://{K8S_MASTER_NODE_IP}:30094** <br>
+- Container Platform Source Control standalone Access URI : **http://{K8S_MASTER_NODE_IP}:30094** <br>
 
 <br>
     
-### <div id='4.1'/>4.1. 컨테이너 플랫폼 소스 컨트롤 관리자 로그인
-컨테이너 플랫폼 소스 컨트롤 접속 초기 정보는 아래와 같다.
-- http://{K8S_MASTER_NODE_IP}:30094에 접속한다.   
-- username : **admin** / password : **admin** 계정으로 컨테이너 플랫폼 소스 컨트롤에 로그인한다.
+### <div id='4.1'/>4.1. Container Platform SourceControl Operator Log in
+The initial information for accessing the container platform source control is as follows.
+- Access to http://{K8S_MASTER_NODE_IP}:30094.   
+- Use username : **admin** / password : **admin** account to log in to Container Platform Source Control.
 ![image](https://user-images.githubusercontent.com/80228983/146140178-76e85cbb-03a0-4a84-9059-7e5074c1d90e.png)
 
 <br>    
 
 
-### <div id='4.2'/>4.2. 컨테이너 플랫폼 소스 컨트롤 사용자 회원가입/로그인
-#### 사용자 회원가입    
-- Keycloak(http://{K8S_MASTER_NODE_IP}:32710)에 접속한다.
-- Administration Console(관리자 페이지)로 접속한다. <br>
+### <div id='4.2'/>4.2. Container Platform SourceControl User Sign in/ Log in
+#### User Sign in    
+- Access to Keycloak(http://{K8S_MASTER_NODE_IP}:32710).
+- Access to the Administration Console. <br>
     ![image](https://user-images.githubusercontent.com/80228983/146140243-b01fe7b7-c610-4c74-b520-839b581ca178.png)
 <br>
 
-- username : **admin** / password : **admin** 계정으로 접속한다. <br>
+- Use the username : **admin** / password : **admin** account to access. <br>
     ![image](https://user-images.githubusercontent.com/80228983/146140270-06c6bc41-94cd-4947-8376-f6ade73b61ac.png)
 <br>
 
-- 좌측 메뉴 하단의 'Users' 목록을 클릭한다. <br>
+- Click 'Users' list from the left buttom of the menu. <br>
     ![image](https://user-images.githubusercontent.com/80228983/146140350-c2bed5ab-0683-47cf-838b-6c970e492605.png)
 <br>
 
-- 오른쪽 버튼인 Add User를 클릭한다. <br>
+- Click Add User at the right. <br>
     ![image](https://user-images.githubusercontent.com/80228983/146140392-1eb2d2e4-47d7-4fd2-8370-9d3e5b2a9871.png)
 <br>
 
-- Username 을 입력하고, Email Verified 스위치를 On으로 변경한다. 그 후 Save를 누른다. <br>
+- Enter Username and change the Email Verified switch in to On. Click Save. <br>
     ![image](https://user-images.githubusercontent.com/80228983/146140503-3ad5e8f7-613b-4583-83fe-3f6623736286.png)
 <br>
 
-- Credentials 탭으로 이동한다.
-- Password / PassWord Confirmation을 입력하여 비밀번호를 설정한다.
-- 임시번호가 아니라면 Temporary 스위치를 Off로 설정한다.<br>
+- Move to the Credentials tab.
+- Enter Password / PassWord Confirmation to set password.
+- If the password is not a temporary password, Set the Temporary switch into Off.<br>
     ![image](https://user-images.githubusercontent.com/80228983/146140746-54e57681-584c-43b3-93f1-f172205d34d2.png)
  <br>
 
-####  로그인   
-- http://{K8S_MASTER_NODE_IP}:30094에 접속한다.
-- 회원가입을 통해 등록된 계정으로 컨테이너 플랫폼 소스 컨트롤에 로그인한다.
+####  Login   
+- Access to http://{K8S_MASTER_NODE_IP}:30094.
+- Log in to the Container Platform Source Control by using the registered account.
     
 <br>    
 
-### <div id='4.3'/>4.3. 컨테이너 플랫폼 소스 컨트롤 사용 가이드
-- 컨테이너 플랫폼 소스컨트롤 사용 방법은 아래 사용가이드를 참고한다.  
-  + [컨테이너 플랫폼 소스 컨트롤 사용 가이드](../../use-guide/source-control/paas-ta-container-platform-source-control-use-guide.md)   
+### <div id='4.3'/>4.3. Container Platform SourceControl Use Guide
+- For the usage of Container Platform Source Control, refer to the use guide below.  
+  + [Container Platform Source Control Use Guide](../../use-guide/source-control/paas-ta-container-platform-source-control-use-guide.md)   
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl Installation Guide
