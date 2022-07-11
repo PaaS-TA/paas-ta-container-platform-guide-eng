@@ -1,47 +1,47 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl Installation Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [시스템 구성도](#1.3)  
-    1.4. [참고 자료](#1.4)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [System Configuration Diagram](#1.3)  
+    1.4. [References](#1.4)  
 
 2. [Prerequisite](#2)  
-    2.1. [NFS 서버 설치](#2.1)  
-    2.2. [컨테이너 플랫폼 포탈 설치](#2.2)  
+    2.1. [NFS Server Installation](#2.1)  
+    2.2. [Container Platform Portal Installation](#2.2)  
         
-3. [컨테이너 플랫폼 소스 컨트롤 배포](#3)  
-    3.1. [CRI-O insecure-registry 설정](#3.1)  
-    3.2. [컨테이너 플랫폼 소스 컨트롤 배포](#3.2)  
-    3.2.1. [컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드](#3.2.1)  
-    3.2.2. [컨테이너 플랫폼 소스 컨트롤 변수 정의](#3.2.2)    
-    3.2.3. [컨테이너 플랫폼 소스 컨트롤 배포 스크립트 실행](#3.2.3)    
-    3.2.4. [(참조) 컨테이너 플랫폼 소스 컨트롤 리소스 삭제](#3.2.4)    
+3. [Container Platform Source Control Deployment](#3)  
+    3.1. [CRI-O insecure-registry Setting](#3.1)  
+    3.2. [Container Platform Source Control Deployment](#3.2)  
+    3.2.1. [Container Platform Source Control Deployment File Download](#3.2.1)  
+    3.2.2. [Define Container Platform Source Control Variable](#3.2.2)    
+    3.2.3. [Execute Container Platform Source Control Deployment Script](#3.2.3)    
+    3.2.4. [(Refer) Delete Container Platform Source Control Resource](#3.2.4)    
 
-4. [컨테이너 플랫폼 소스 컨트롤 서비스 브로커](#4)   
-    4.1. [컨테이너 플랫폼 소스 컨트롤 사용자 인증 서비스 구성](#4.1)   
-    4.2. [컨테이너 플랫폼 소스 컨트롤 서비스 브로커 등록](#4.2)  
-    4.3. [컨테이너 플랫폼 소스 컨트롤 서비스 조회 설정](#4.3)    
-    4.4. [컨테이너 플랫폼 소스 컨트롤 사용 가이드](#4.4)       
+4. [Container Platform Source Control Service Broker](#4)   
+    4.1. [Container Platform Source Control User Authentication Service Configuration](#4.1)   
+    4.2. [Container Platform Source Control Service Broker Registration](#4.2)  
+    4.3. [Container Platform Source Control Service Lookup Setting](#4.3)    
+    4.4. [Container Platform Source Control Use Guide](#4.4)       
 
 
 
-## <div id='1'>1. 문서 개요
-### <div id='1.1'>1.1. 목적
+## <div id='1'>1. Document Outline
+### <div id='1.1'>1.1. Purpose
 본 문서(Container Platform Source Control 서비스 배포 설치 가이드)는 Kubernetes  Cluster 및 컨테이너 플랫폼 서비스 배포 형 포탈을 설치하고 컨테이너 플랫폼 서비스 배포형 소스 컨트롤 배포 방법을 기술하였다.<br>
 
 <br>
 
-### <div id='1.2'>1.2. 범위
+### <div id='1.2'>1.2. Range
 설치 범위는 Kubernetes Cluster 배포를 기준으로 작성하였다.
 
 <br>
 
-### <div id='1.3'>1.3. 시스템 구성도
+### <div id='1.3'>1.3. System Configuration Diagram
 ![image](https://user-images.githubusercontent.com/80228983/146350860-3722c081-7338-438d-b7ec-1fdac09160c4.png)
 <br>    
 시스템 구성은 Kubernetes Cluster(Master, Worker) 환경과 데이터 관리를 위한 네트워크 파일 시스템(NFS) 스토리지 서버로 구성되어 있다. 
@@ -50,14 +50,14 @@ Kubespray를 통해 설치된 Kubernetes Cluster 환경에 컨테이너 플랫�
 총 필요한 VM 환경으로는 Master Node VM: 1개, Worker Node VM: 1개 이상, NFS Server : 1개가 필요하고 본 문서는 Kubernetes Cluster에 컨테이너 플랫폼 소스 컨트롤 환경을 배포하는 내용이다. 네트워크 파일 시스템(NFS) 은 컨테이너 플랫폼에서 기본으로 제공하는 스토리지로 사용자 환경에 따라 다양한 종류의 스토리지를 사용할 수 있다. 
 
 
-### <div id='1.4'>1.4. 참고 자료
+### <div id='1.4'>1.4. References
 > https://kubernetes.io/ko/docs  
 
 <br>
 
 ## <div id='2'>2. Prerequisite
     
-### <div id='2.1'>2.1. NFS 서버 설치
+### <div id='2.1'>2.1. NFS Server Installation
 컨테이너 플랫폼 소스 컨트롤에서 사용할 스토리지 **NFS Storage Server** 설치가 사전에 진행되어야 한다.<br>
 NFS Storage Server 설치는 아래 가이드를 참조한다.  
 > [NFS 서버 설치](../nfs-server-install-guide.md)      
