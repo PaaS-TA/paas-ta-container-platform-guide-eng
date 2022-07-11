@@ -234,8 +234,8 @@ PROVIDER_TYPE="service"
 
 <br>    
 
-#### <div id='3.2.3'>3.2.3. 컨테이너 플랫폼 포털 배포 스크립트 실행
-컨테이너 플랫폼 포털 배포를 위한 배포 스크립트를 실행한다.
+#### <div id='3.2.3'>3.2.3. Execute Container Platform Portal Deployment Script
+Execute a deployment script for deploying a container platform portal.
 
 ```
 $ chmod +x deploy-container-platform-portal.sh
@@ -243,10 +243,10 @@ $ ./deploy-container-platform-portal.sh
 ```
 <br>
 
-컨테이너 플랫폼 포털 관련 리소스가 정상적으로 배포되었는지 확인한다.<br>
-리소스 Pod의 경우 Node에 바인딩 및 컨테이너 생성 후 Running 상태로 전환되기까지 몇 초가 소요된다.
+Verify if the resources related to the container platform portal is deployed normally.<br>
+In the case of the resource Pod, it takes several seconds to enter the Running state after binding and container creation at the Node.
 
-- **NFS 리소스 조회**
+- **Retrieve NFS Resource**
 >`$ kubectl get all -n nfs-storageclass`  
 ```
 $ kubectl get all -n nfs-storageclass
@@ -260,7 +260,7 @@ NAME                                             DESIRED   CURRENT   READY   AGE
 replicaset.apps/nfs-pod-provisioner-7fff84f48f   1         1         1       3m24s
 ```
 
-- **Harbor 리소스 조회**
+- **Retrieve Harbor Resource**
 >`$ kubectl get all -n harbor`   
 ```
 $ kubectl get all -n harbor
@@ -316,7 +316,7 @@ statefulset.apps/paas-ta-container-platform-harbor-redis      1/1     3m59s
 statefulset.apps/paas-ta-container-platform-harbor-trivy      1/1     3m59s
 ```
 
-- **MariaDB 리소스 조회**
+- **Retrieve MariaDB Resource**
 >`$ kubectl get all -n mariadb`  
 ```
 $ kubectl get all -n mariadb
@@ -330,7 +330,7 @@ NAME                                                  READY   AGE
 statefulset.apps/paas-ta-container-platform-mariadb   1/1     2m13s
 ```    
 
-- **Keycloak 리소스 조회**
+- **Retrieve Keycloak Resource**
 >`$ kubectl get all -n keycloak`  
 ```
 $ kubectl get all -n keycloak
@@ -349,7 +349,7 @@ NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/keycloak-5bdb65fcb5   2         2         2       3m10s
 ```
 
-- **컨테이너 플랫폼 포털 리소스 조회**
+- **Retrieve Container Platform Portal Resource**
 >`$ kubectl get all -n paas-ta-container-platform-portal`   
 ```
 $ kubectl get all -n paas-ta-container-platform-portal
@@ -388,9 +388,9 @@ replicaset.apps/container-platform-webuser-deployment-58b6b79669                
 
 <br>
 
-#### <div id='3.2.4'>3.2.4. (참조) 컨테이너 플랫폼 포털 리소스 삭제
-배포된 컨테이너 플랫폼 포털 리소스의 삭제를 원하는 경우 아래 스크립트를 실행한다.<br>
-:loudspeaker: (주의) 컨테이너 플랫폼 포털이 운영되는 상태에서 해당 스크립트 실행 시, **운영에 필요한 리소스가 모두 삭제**되므로 주의가 필요하다.<br>
+#### <div id='3.2.4'>3.2.4. (Refer)Delete Container Platform Portal Resource
+To delete the deployed container platform portal resource, perform the scrip below.<br>
+:loudspeaker: (Caution) Be aware that the  **whole resource necessary for the operation gets deleted** if the script is performed while the container platform portal is being operated.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-portal-deployment/script
@@ -422,39 +422,38 @@ Uninstalled plugin: cm-push
 
 <br>   
 
-## <div id='4'>4. 컨테이너 플랫폼 포털 사용자 인증 서비스 구성
-컨테이너 플랫폼 포털 사용자 인증은 Keycloak 서비스를 통해 관리된다. PaaS-TA 포털의 사용자 인증 서비스 UAA의 사용자 계정으로 컨테이너 플랫폼 포털 접속을 위해
-UAA 서비스를 ID 제공자(Identity Provider)로, Keycloak 서비스를 서비스 제공자(Service Provider)로 구성하는 단계가 필요하다.
+## <div id='4'>4. Configuring Container Platform Portal User Authentication Service
+Container platform portal user authentication is managed through the Keycloak service. To access the container platform portal with the user account of the PaaS-TA portal user authentication service UAA, a step is required to configure the UAA service as an identity provider and the Keycloak service as a service provider.
 
-#### <div id='4.1'>4.1. 컨테이너 플랫폼 포털 사용자 인증 구성 Deployment 다운로드
-UAA 서비스와 Keycloak 서비스 인증 구성을 위한 Deployment 파일을 다운로드 받아 아래 경로로 위치시킨다.<br>
-:bulb: 해당 내용은 PaaS-TA 포털이 설치된 **BOSH Inception**에서 진행한다.
+#### <div id='4.1'>4.1. Download Container Platform Portal User Authentication Configuration Deployment
+Download the Deployment file for configuring UAA service and Keycloak service authentication and locate it in the path below.<br>
+:bulb: It will be done at the **BOSH Inception** where PaaS-TA Portal is installed.
 
-+ 컨테이너 플랫폼 포털 사용자 인증 구성 Deployment 다운로드 :  
++ Download Container Platform Portal User Authentication Configuration Deployment :  
    [paas-ta-container-platform-saml-deployment.tar.gz](https://nextcloud.paas-ta.org/index.php/s/iJYjroasEA9BJgs/download)  
 
 ```
-# Deployment 파일 다운로드 경로 생성
+# Create Deployment File Download Path
 $ mkdir -p ~/workspace/container-platform
 $ cd ~/workspace/container-platform
 
-# Deployment 파일 다운로드 및 파일 경로 확인
+# Download Deployment File and Check File Path
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/iJYjroasEA9BJgs/download
 
 $ ls ~/workspace/container-platform
   paas-ta-container-platform-saml-deployment.tar.gz
 
-# Deployment 파일 압축 해제
+# Unzip Deployment File
 $ tar -xvf paas-ta-container-platform-saml-deployment.tar.gz
 ```
 <br>
 
-#### <div id='4.2'>4.2. 컨테이너 플랫폼 포털 사용자 인증 구성 변수 정의
-UAA 서비스와 Keycloak 서비스 인증 구성을 위한 변수 값 정의가 필요하다. 구성에 필요한 정보를 확인하여 변수를 설정한다.
+#### <div id='4.2'>4.2. Defining Container Platform Portal User Authentication Configurations
+Defining variable values for configuring UAA service and Keycloak service authentication is required. Set the variable by checking the information required for the configuration.
 
-:bulb: **Keycloak TLS HTTPS** 설정이 적용된 경우, Keycloak URL 변수 값 변경이 필요하다. <br>
-아래 가이드를 참조하여 변수 값을 변경한다.
-> [(서비스형 배포) 사용자 인증 서비스 구성 변경](paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md#3-서비스형-배포-사용자-인증-서비스-구성-변경)       
+:bulb: If **Keycloak TLS HTTPS** setting is applied, the Keycloak URL variable value needs to be changed. <br>
+Refer to the guide below to change the variable value.
+> [(Service Deployment) Change User Authentication Service Configuration](paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md#3-서비스형-배포-사용자-인증-서비스-구성-변경)       
 
 <br>
 
@@ -473,15 +472,15 @@ UAA_CLIENT_ADMIN_SECRET="admin-secret"                            # UAA Admin Cl
 ```
 
 
-- **PAASTA_SYSTEM_DOMAIN** <br> PaaS-TA 배포 시 지정했던 System Domain 명 입력<br><br>
-- **K8S_MASTER_NODE_IP** <br>Kubernetes Master Node Public IP 입력<br><br>
-- **UAA_CLIENT_ADMIN_ID** <br>UAAC Admin Client Admin ID 입력 (기본 값 : admin)<br><br>
-- **UAA_CLIENT_ADMIN_SECRET** <br>UAAC Admin Client에 접근하기 위한 Secret 변수 (기본 값 : admin-secret)<br><br>
+- **PAASTA_SYSTEM_DOMAIN** <br> Enter the System Domain name that was specified during PaaS-TA deployment<br><br>
+- **K8S_MASTER_NODE_IP** <br>Enter Kubernetes Master Node Public IP<br><br>
+- **UAA_CLIENT_ADMIN_ID** <br>Enter UAAC Admin Client Admin ID (Default value : admin)<br><br>
+- **UAA_CLIENT_ADMIN_SECRET** <br>Secret variable to access to UAAC Admin Client (Default value : admin-secret)<br><br>
 
 <br>
 
-#### <div id='4.3'>4.3. 컨테이너 플랫폼 포털 사용자 인증 구성 스크립트 실행
-UAA 서비스와 Keycloak 서비스 인증 구성을 위한 스크립트를 실행한다.
+#### <div id='4.3'>4.3. Execute Container Platform Portal User Authentication Configuration Script
+Execute script for configuring UAA service and Keycloak service authentication.
 
 ```
 $ chmod +x create-service-provider.sh
@@ -490,8 +489,8 @@ $ ./create-service-provider.sh
 
 <br>
 
-구성이 정상적으로 처리되었는지 확인한다. (**RESPONSE BODY 내 결과 확인**)
-- UAAC Service Providers 조회   
+Verify if the configuration is processed normally. (**Check result of RESPONSE BODY**)
+- Check UAAC Service Providers   
 >`$ uaac curl /saml/service-providers --insecure`     
 ```    
 $ uaac curl /saml/service-providers --insecure
@@ -530,13 +529,13 @@ RESPONSE BODY:
 
 <br>
 
-#### <div id='4.4'>4.4. (참조) 컨테이너 플랫폼 포털 사용자 인증 구성 해제
-UAA 서비스와 Keycloak 서비스 인증 구성 해제를 원하는 경우 아래 스크립트를 실행한다.<br>
-:loudspeaker: (주의) 컨테이너 플랫폼 포털이 운영되는 상태에서 해당 스크립트 실행 시, 사용자 인증 구성이 불가하므로 주의가 필요하다.<br>
+#### <div id='4.4'>4.4. (Refer) Unconfiguring Container Platform Portal User Authentication
+To unconfigure UAA service and Keycloak service authentication, run the script below.<br>
+:loudspeaker: (Note) When executing the script while the container platform portal is operating, caution is needed because user authentication cannot be configured.<br>
 
 
-##### 해제할 Service Provider ID 조회
-UAAC Service Providers 조회 후 **RESPONSE BODY** 결과 내 아래 조건을 가진 **Service Provider ID**를 조회한다.
+##### Look up for Service Provider ID to remove
+After retrieving UAAC Service Providers, Look for the **Service Provider ID**with the following conditions in the results in **RESPONSE BODY**.
 - `entityId : http://{K8S_MASTER_NODE_IP}:32710/auth/realms/container-platform-realm` <br>
 - `name : paas-ta-container-platform-saml-sp` <br>
 
@@ -548,7 +547,7 @@ RESPONSE BODY:
 [
   {
     "config": "{\"metaDataLocation\": .... }",
-    "id": "0679dca3-0461-4af9-b513-7c114b6f9110",   # 해제할 Service Provider ID
+    "id": "0679dca3-0461-4af9-b513-7c114b6f9110",   # Service Provider ID to remove
     "entityId": "http://xx.xxx.xxx.xx:32710/auth/realms/container-platform-realm",
     "name": "paas-ta-container-platform-saml-sp",
     "version": 0,
@@ -563,7 +562,7 @@ RESPONSE BODY:
 
 <br>
 
-해제할 **Service Provider ID** 조회 후 인증 구성 해제 스크립트를 실행한다.
+After retrieving for the **Service Provider ID** to remove, execute the unconfigure authentication script.
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-saml-deployment
@@ -581,14 +580,14 @@ DELETE https://uaa.13.125.147.203.nip.io/saml/service-providers/0679dca3-0461-4a
 
 <br>
 
-## <div id='5'>5. 컨테이너 플랫폼 포털 서비스 브로커
-컨테이너 플랫폼 PaaS-TA 서비스 형 포털로 설치하는 경우 CF와 Kubernetes에 배포된 컨테이너 플랫폼 포털 서비스 연동을 위해서 브로커를 등록해 주어야 한다.
-PaaS-TA 운영자 포털을 통해 서비스를 등록하고 공개하면, PaaS-TA 사용자 포털을 통해 서비스를 신청하여 사용할 수 있다.
+## <div id='5'>5. Container Platform Portal Service Broker
+When installing as a container platform PaaS-TA service-type portal, brokers must be registered to interwork the container platform portal service deployed to CF and Kubernetes.
+If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
 
-### <div id='5.1'>5.1. 컨테이너 플랫폼 포털 서비스 브로커 등록
-서비스 브로커 등록 시 개방형 클라우드 플랫폼에서 서비스 브로커를 등록할 수 있는 사용자로 로그인이 되어있어야 한다.
+### <div id='5.1'>5.1. Container Platform Portal Service Broker Registration
+When registering a service broker, you must be logged in as a user who can register a service broker on an open cloud platform.
 
-##### 서비스 브로커 목록을 확인한다.
+##### Check Service Broker List.
 >`$ cf service-brokers`
 ```
 $ cf service-brokers
@@ -599,17 +598,17 @@ No service brokers found
 ```
 
 
-##### 컨테이너 플랫폼 포털 서비스 브로커를 등록한다.
->`$ cf create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{서비스팩 URL}`
+##### Register Container Platform Portal Service Broker.
+>`$ cf create-service-broker {Servicepack Name} {Servicepack User ID} {Servicepack User Password} http://{Servicepack URL}`
 
-서비스팩 이름 : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭<br>
-서비스팩 사용자 ID/비밀번호 : 서비스팩에 접근할 수 있는 사용자 ID/비밀번호<br>
-서비스팩 URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL<br>
+Servicepack Name : Names seen on open cloud platforms for service pack management<br>
+Servicepack User ID/PW : User ID/password to access the service pack<br>
+Servicepack URL : URL where the API provided by the service pack is available<br>
 
 
-###### 컨테이너 플랫폼 운영자 포털 서비스 브로커 등록
+###### Register Container Platform Portal Service Broker
 >`$ cf create-service-broker container-platform-admin-portal-service-broker admin cloudfoundry http://{K8S_MASTER_NODE_IP}:32704`   
-###### 컨테이너 플랫폼 사용자 포털 서비스 브로커 등록     
+###### Register Container Platform Portal Service Broker     
 >`$ cf create-service-broker container-platform-user-portal-service-broker admin cloudfoundry http://{K8S_MASTER_NODE_IP}:32705`
 
 ```
@@ -623,7 +622,7 @@ OK
 ```    
 
 
-##### 등록된 컨테이너 플랫폼 포털 서비스 브로커를 확인한다.
+##### Check the registered container platform portal service broker.
 >`$ cf service-brokers`
 ```
 $ cf service-brokers
@@ -634,7 +633,7 @@ container-platform-user-portal-service-broker    http://xx.xxx.xxx.xx:32705
 ```
 
 
-##### 접근 가능한 서비스 목록을 확인한다.
+##### Check the accesible service list.
 >`$ cf service-access`     
 ```
 $ cf service-access
@@ -652,11 +651,11 @@ broker: container-platform-user-portal-service-broker
 ```
 
 
-##### 특정 조직에 해당 서비스 접근 허용을 할당한다.
+##### Assign authorization to access to a specific organization.
 
-###### 컨테이너 플랫폼 운영자 포털 서비스 접근 허용 할당  
+###### Assign Access to Container Platform Operator Portal Services  
 >`$ cf enable-service-access container-platform-admin-portal-service-broker`   
-###### 컨테이너 플랫폼 사용자 포털 서비스 접근 허용 할당     
+###### Assign Access to Container Platform User Portal Services     
 >`$ cf enable-service-access container-platform-user-portal-service-broker`
 
 ```
@@ -670,7 +669,7 @@ OK
 ```
 
 
-##### 접근 가능한 서비스 목록을 확인한다.
+##### Check accessible service list.
 >`$ cf service-access`
 
 ```
@@ -690,72 +689,72 @@ broker: container-platform-user-portal-service-broker
 
 <br>
 
-### <div id='5.2'>5.2. 컨테이너 플랫폼 포털 서비스 조회 설정
-해당 설정은 PaaS-TA 포털에서 컨테이너 플랫폼 포털 서비스를 조회하고 신청할 수 있도록 하기 위한 설정이다.
+### <div id='5.2'>5.2. Container Platform Portal Service Lookup Settings
+This setting is to enable the container platform portal service to be inquired and applied from the PaaS-TA portal.
 
-##### PaaS-TA 운영자 포털에 접속한다.
+##### Access to the PaaS-TA Operator Portal.
 ![image 007]
 
 
-##### 메뉴 [운영관리]-[카탈로그] 에서 앱서비스 탭 안에 Container Platform Admin Portal, Container Platform User Portal 서비스를 선택하여 설정을 변경한다.
+##### In [Operation Management]-[Catalog] menu,  select Container Platform Admin Portal and Container Platform User Portal services in the App Services tab and change the settings.
 ![image 008]
 
-##### Container Platform Admin Portal 서비스를 선택하여 아래와 같이 설정 변경 후 저장한다.
->`'서비스' 항목 : 'container-platform-admin-portal-service-broker' 로 선택` <br>
->`'공개' 항목 : 'Y' 로 체크`
+##### Select the Container Platform Admin Portal service and change the setting as shown below and save it.
+>`'Service' List : Select 'container-platform-admin-portal-service-broker'` <br>
+>`'Public' Catalog : Check as 'Y'`
 
 ![image 009]
 
-##### Container Platform User Portal 서비스를 선택하여 아래와 같이 설정 변경 후 저장한다.
->`'서비스' 항목 : 'container-platform-user-portal-service-broker' 로 선택` <br>
->`'공개' 항목 : 'Y' 로 체크`
+##### Select the Container Platform User Portal service and change the setting as follows and save it.
+>`'Service' Catalog : Select 'container-platform-user-portal-service-broker'` <br>
+>`'Public' Catalog : Check as 'Y'`
 
 ![image 010]    
 
 <br>
 
-#### :bulb: 컨테이너 플랫폼 운영자 포털 서비스 신청 시 유의사항
-- 컨테이너 플랫폼 운영자 포털 서비스의 경우 조직명 **'portal'** 조직에서만 신청 가능하다.
-- 컨테이너 플랫폼 운영자 포털 서비스는 전체 조직 내 한 조직에서만 신청 가능하며 이는 PaaS-TA Portal 배포 시 디폴트로 생성되는 조직 **'portal'** 로 지정하였다.
-- 서비스 신청 시 조직 **'portal'** 이 없는 경우 **'portal'** 명으로 조직 생성 후 서비스 신청이 필요하다.
+#### :bulb: Precautions when applying for container platform operator portal service
+- In the case of container platform operator portal service, application can only be made from the organization name **'portal'**.
+- The container platform operator portal service is available only from one organization within the entire organization, and it is designated as an organization **'portal'** that is created by default when the PaaS-TA Portal is deployed.
+- If there is no organization **'portal'** when applying for the service, it is necessary to create the organization with **'portal'** and apply for the service.
 
 <br>
 
->`컨테이너 플랫폼 운영자 포털 서비스 신청 시 조직 명 'portal' 확인 후 신청 필요`     
+>'When applying for the container platform operator portal service, you need to check the organization name 'portal' before applying.'     
 
 ![image 011]       
 
 <br>
 
-### <div id='5.3'/>5.3. 컨테이너 플랫폼 사용자/운영자 포털 사용 가이드
-- 컨테이너 플랫폼 포털 사용방법은 아래 사용가이드를 참고한다.  
-  + [컨테이너 플랫폼 운영자 포털 사용 가이드](../../use-guide/portal/container-platform-admin-portal-guide.md)    
-  + [컨테이너 플랫폼 사용자 포털 사용 가이드](../../use-guide/portal/container-platform-user-portal-guide.md)
+### <div id='5.3'/>5.3. Container Platform User/ Operator Portal Use Guide
+- Refer to the use guide below for container platform portal usage.  
+  + [Container Platform Operator Portal Use Guide](../../use-guide/portal/container-platform-admin-portal-guide.md)    
+  + [Container Platform User Portal Use Guide](../../use-guide/portal/container-platform-user-portal-guide.md)
 
 
 <br>
 
-## <div id='6'>6. 컨네이너 플랫폼 포털 참고
+## <div id='6'>6. Container Platform Portal Reference
 
-### <div id='6.1'>6.1. 운영자 Cluster Role Token 생성
-Cluster Role을 가진 운영자의 Service Account를 생성하고 해당 Service Account의 Token 값을 획득한다.<br>
-획득한 Token 값은 컨테이너 플랫폼 포털 배포 시 사용된다.
+### <div id='6.1'>6.1. Create Operator Cluster Role Token
+Create a service account of an operator with a cluster role and obtain the token value of the service account..<br>
+The acquired Token value is used when deploying the container platform portal.
 
-- Service Account를 생성한다.
+- Create Service Account.
 ```
-## {SERVICE_ACCOUNT} : 생성할 Service Account 명
+## {SERVICE_ACCOUNT} : Service Account Name to create
 
 $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl create serviceaccount k8sadmin -n kube-system)
 ```
 
-- 생성한 Service Account와 kubernetes에서 제공하는 ClusterRole 'cluster-admin'을 바인딩한다.
+- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by kubernetes.
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 (ex. kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8sadmin)
 ```
 
-- Service Account의 Mountable secrets 값을 확인한다.
+- Check the Mountable secrets value of Service Account.
 ```
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl describe serviceaccount k8sadmin -n kube-system)
@@ -765,23 +764,23 @@ $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 Mountable secrets:   k8sadmin-token-xxxx
 ```
 
-- Service Account의 Token을 획득한다.
+- Aquire Token of Service Account.
 
 ```
-## {SECRET_NAME} : Mountable secrets 값 입력
+## {SECRET_NAME} : Enter Mountable secrets Value
 
 $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
 ```
 
 <br>
 
-### <div id='6.2'>6.2. Kubernetes 리소스 생성 시 주의사항
+### <div id='6.2'>6.2. Precautions for Creating Kubernetes Resources
 
-컨테이너 플랫폼 이용 중 리소스 생성 시 다음과 같은 prefix를 사용하지 않도록 주의한다.
+Be careful not to use the following prefixes when creating resources while using the container platform.
 
-|Resource 명|생성 시 제외해야 할 prefix|
+|Resource Name|prefix to exclude when creating|
 |---|---|
-|전체 Resource|kube*|
+|All Resource|kube*|
 |Namespace|all|
 ||kubernetes-dashboard|
 ||paas-ta-container-platform-temp-namespace|
@@ -798,7 +797,7 @@ $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut 
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > 서비스형 배포 포털 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](/install-guide/Readme.md) > Service Deployment Portal Installation Guide
 
 [image 001]:images-v1.2/cp-001.png
 [image 002]:images-v1.2/cp-002.png
