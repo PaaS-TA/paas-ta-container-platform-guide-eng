@@ -63,7 +63,7 @@ For NFS Storage Server installation, refer to the guide below.
 > [NFS Server Installation](../nfs-server-install-guide.md)      
     
 ### <div id='2.2'>2.2. Container Platform Portal Installation
-The infrastructure to be used in the container platform pipeline must be pre-installed with the certificate server **KeyCloak Server**, database **Maria DB**, and repository server **Harbor**.
+The infrastructure to be used in the container platform pipeline must be pre-installed with the authenticating server **KeyCloak Server**, database **Maria DB**, and repository server **Harbor**.
 When deploying the PaaS-TA container platform portal, install all the infrastructure.
 Refer to the guide below for Container Platform infra installation.
 > [PaaS-TA Container Platform Portal Deployment](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md)     
