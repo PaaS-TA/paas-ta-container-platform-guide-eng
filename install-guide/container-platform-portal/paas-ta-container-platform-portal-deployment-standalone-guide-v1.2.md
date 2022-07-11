@@ -92,7 +92,7 @@ Set the port that should be opened for the IaaS Security Group.
 <br>
 
 ### <div id='2.2'>2.2. NFS Server Installation
-Storage **NFS Storage Server** installation to be used by container platform portal service must be installed ahead of time.<br>
+**NFS Storage Server** installation to be used by container platform portal service must be installed ahead of time.<br>
 Refer to the guide below for NFS Storage Server installation.  
 > [NFS Server Installation](../nfs-server-install-guide.md)      
 
