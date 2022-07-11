@@ -113,7 +113,7 @@ $ sudo apt-get update
 $ sudo apt-get install -y podman
 ```
 
-#### 2. Set crio.conf inside 'insecure-registries'
+#### 2.  Set'insecure-registries' inside crio.conf 
 ```
 $ sudo vi /etc/crio/crio.conf
 ```
@@ -128,11 +128,11 @@ insecure_registries = [
 ```
 
 ```
-# crio restart
+# restart crio 
 $ sudo systemctl restart crio
 ```
 
-#### 3. Set insecure in 'registry' Category in registries.conf
+#### 3. Set insecure in 'registry' category inside registries.conf
 ```
 $ sudo vi /etc/containers/registries.conf
 ```
@@ -148,7 +148,7 @@ location = "xx.xxx.xxx.xx:30002"
 ```
 
 ```
-# podman restart
+# Restart podman
 $ sudo systemctl restart podman
 ```
 
@@ -158,7 +158,7 @@ $ sudo systemctl restart podman
 
 #### <div id='3.2.1'>3.2.1. Container Platform Portal Deployment File Download
 Download the container platform portal Deployment file and locate it in the path below for container platform portal deployment.<br>
-Process the :bulb: content at Kubernetes **Master Node**.
+:bulb: Process the content at Kubernetes **Master Node**.
 
 + Container Platform Portal Deployment File Download :
    [paas-ta-container-platform-portal-deployment.tar.gz](https://nextcloud.paas-ta.org/index.php/s/wYJ3wim3WCxG7Ed/download)
@@ -220,10 +220,10 @@ PROVIDER_TYPE="standalone"
 
 - **K8S_MASTER_NODE_IP** <br>Enter Kubernetes Master Node Public IP<br><br>
 - **K8S_AUTH_BEARER_TOKEN** <br>Enter Kubernetes Bearer Token<br>
-   + Refer to [[5.1. Create Admin Cluster Role Token]](#5.1) to create and enter the Token value <br><br>
+   + Refer to [[5.1. Create Operator Cluster Role Token]](#5.1) to create and enter the Token value <br><br>
 - **NFS_SERVER_IP** <br>Enter NFS Server Private IP<br>
    + Enter the NFS Server Private IP installed through [[NFS Server Installation](../nfs-server-install-guide.md)] guide<br><br>
-- **PROVIDER_TYPE** <br>Enter Container Platform Portal Provider Type <br>
+- **PROVIDER_TYPE** <br>Enter Container Platform Portal Providing Type <br>
    + This guide is a portal standalone installation guide that requires **'standalone'** values
 
 <br>
