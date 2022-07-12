@@ -44,7 +44,7 @@ This document (Container Platform PaaS-TA Service Deployment Portal Installation
 <br>
 
 ### <div id='1.2'>1.2. Range
-The installation range was prepared based on the Kubernetes Cluster deployment..
+The installation range was prepared based on the Kubernetes Cluster deployment.
 
 <br>
 
@@ -63,7 +63,7 @@ System configuration consists of **Kubernetes Cluster(Master, Worker)** environm
 <br>
 
 ## <div id='2'>2. Prerequisite
-This installation guide is prepared based on installation in **Ubuntu 18.04** environment.
+This installation guide is prepared based on installation in the **Ubuntu 18.04** environment.
 
 ### <div id='2.1'>2.1. Firewall Information
 Set the port that should be opened for the IaaS security group.
@@ -530,7 +530,7 @@ RESPONSE BODY:
 <br>
 
 #### <div id='4.4'>4.4. (Refer) Unconfiguring Container Platform Portal User Authentication
-To unconfigure UAA service and Keycloak service authentication, run the script below.<br>
+To unconfigure the UAA service and Keycloak service authentication, run the script below.<br>
 :loudspeaker: (Note) When executing the script while the container platform portal is operating, caution is needed because user authentication cannot be configured.<br>
 
 
@@ -562,7 +562,7 @@ RESPONSE BODY:
 
 <br>
 
-After retrieving for the **Service Provider ID** to remove, execute the unconfigure authentication script.
+After retrieving the **Service Provider ID** to remove, execute the unconfigure authentication script.
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-saml-deployment
@@ -601,9 +601,9 @@ No service brokers found
 ##### Register Container Platform Portal Service Broker.
 >`$ cf create-service-broker {Servicepack Name} {Servicepack User ID} {Servicepack User Password} http://{Servicepack URL}`
 
-Servicepack Name : Names seen on open cloud platforms for service pack management<br>
-Servicepack User ID/PW : User ID/password to access the service pack<br>
-Servicepack URL : URL where the API provided by the service pack is available<br>
+Servicepack Name: Names seen on open cloud platforms for service pack management<br>
+Servicepack User ID/PW: User ID/password to access the service pack<br>
+Servicepack URL: URL where the API provided by the service pack is available<br>
 
 
 ###### Register Container Platform Portal Service Broker
@@ -633,7 +633,7 @@ container-platform-user-portal-service-broker    http://xx.xxx.xxx.xx:32705
 ```
 
 
-##### Check the accesible service list.
+##### Check the accessible service list.
 >`$ cf service-access`     
 ```
 $ cf service-access
@@ -651,7 +651,7 @@ broker: container-platform-user-portal-service-broker
 ```
 
 
-##### Assign authorization to access to a specific organization.
+##### Assign authorization to access a specific organization.
 
 ###### Assign Access to Container Platform Operator Portal Services  
 >`$ cf enable-service-access container-platform-admin-portal-service-broker`   
@@ -678,7 +678,7 @@ Getting service access as admin...
 
 broker: container-platform-admin-portal-service-broker
    offering                                         plan       access   orgs
-   container-platform-admin-portal-service-broker   Advenced   all
+   container-platform-admin-portal-service-broker   Advanced   all
 
 broker: container-platform-user-portal-service-broker
    offering                                        plan       access   orgs
@@ -701,20 +701,20 @@ This setting is to enable the container platform portal service to be inquired a
 
 ##### Select the Container Platform Admin Portal service and change the setting as shown below and save it.
 >`'Service' List : Select 'container-platform-admin-portal-service-broker'` <br>
->`'Public' Catalog : Check as 'Y'`
+>`' Public' Catalog: Check as 'Y'`
 
 ![image 009]
 
 ##### Select the Container Platform User Portal service and change the setting as follows and save it.
 >`'Service' Catalog : Select 'container-platform-user-portal-service-broker'` <br>
->`'Public' Catalog : Check as 'Y'`
+>`' Public' Catalog: Check as 'Y'`
 
 ![image 010]    
 
 <br>
 
 #### :bulb: Precautions when applying for container platform operator portal service
-- In the case of container platform operator portal service, application can only be made from the organization name **'portal'**.
+- In the case of container platform operator portal service, the application can only be made from the organization name **'portal'**.
 - The container platform operator portal service is available only from one organization within the entire organization, and it is designated as an organization **'portal'** that is created by default when the PaaS-TA Portal is deployed.
 - If there is no organization **'portal'** when applying for the service, it is necessary to create the organization with **'portal'** and apply for the service.
 
@@ -748,13 +748,13 @@ $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl create serviceaccount k8sadmin -n kube-system)
 ```
 
-- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by kubernetes.
+- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by Kubernetes.
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 (ex. kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8sadmin)
 ```
 
-- Check the Mountable secrets value of Service Account.
+- Check the Mountable secrets value of the Service Account.
 ```
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl describe serviceaccount k8sadmin -n kube-system)

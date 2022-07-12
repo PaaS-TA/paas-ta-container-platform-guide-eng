@@ -46,7 +46,7 @@ The installation range was prepared based on the Kubernetes Cluster deployment.
 <br>
 The system configuration consists of a Kubernetes Cluster (Master, Worker) environment and a Network File System (NFS) storage server for data management. 
 Kubespray-installed Kubernetes Cluster environment provided through the container platform portal which are
-Harbor manages container platform pipeline images and Helm charts, Keycloak that manages container platform pipeline user authentication, and MariaDB (RDBMS) which manages container platform pipeline metadata.
+Harbor manages container platform pipeline images and Helm charts, Keycloak manages container platform pipeline user authentication, and MariaDB (RDBMS) manages container platform pipeline metadata.
  The container platform pipeline provides the environment required for pipeline operation, such as Jenkins Server (Ci-Server), which manages continuous integration and deployment functions, Sonarqube (Inspection-Server) for static analysis, and Spring Config Server (Config-Server), which manages the configuration of the deployed application. 
 The total VM environment required is one Master Node VM, one or more Worker Node VMs, and one NFS Server, and this document is about deploying a container platform pipeline environment in a Kubernetes cluster. Network File System (NFS) is the storage provided by the container platform and can use various types of storage depending on the user environment.
 
@@ -197,7 +197,7 @@ $ ./deploy-container-platform-pipeline.sh
 ...
 NAME: paas-ta-container-platform-pipeline-api
 LAST DEPLOYED: Tue Dec 14 04:23:06 2021
-NAMESPACE: paas-ta-container-platfrom-pipeline
+NAMESPACE: paas-ta-container-platform-pipeline
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None

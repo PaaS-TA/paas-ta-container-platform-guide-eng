@@ -31,7 +31,7 @@
 
 ## <div id='1'>1. Document Outline
 ### <div id='1.1'>1.1. Purpose
-This document (Container Platform Source Control Stand-Alone Deployment Installation Guide) describes how sourcecontrols are deployed in a stand-alone deployment Kubernetes Cluster environment where container platform portals are deployed.<br>
+This document (Container Platform Source Control Stand-Alone Deployment Installation Guide) describes how source controls are deployed in a stand-alone deployment Kubernetes Cluster environment where container platform portals are deployed.<br>
 
 <br>
 
@@ -115,7 +115,7 @@ $ tar xvfz paas-ta-container-platform-source-control-deployment.tar.gz
 <br>
 
 #### <div id='3.2.2'>3.2.2. Define Container Platform SourceControl Variable
-Defining of variable values is required before deploying container platform source controls. Set the variable by checking the information required for deployment.
+Defining variable values is required before deploying container platform source controls. Set the variable by checking the information required for deployment.
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script
@@ -214,7 +214,7 @@ replicaset.apps/container-platform-source-control-ui-deployment-55dc694d8c      
 <br>
 
 #### <div id='3.2.4'>3.2.4. (Refer) Delete Container Platform SourceControl Resource
-To delete the deployed container platform source control resource, follow the script shown below.<br>
+To delete the deployed container platform source control resource, follow the script below.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script

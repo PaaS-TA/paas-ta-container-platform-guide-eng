@@ -238,7 +238,7 @@ $ ./deploy-container-platform-portal.sh
 ```
 <br>
 
-Verify if the resources related to the container platform portal is deployed normally.<br>
+Verify if the resources related to the container platform portal are deployed normally.<br>
 In the case of the resource Pod, it takes several seconds to enter the Running state after binding and container creation at the Node.
 
 
@@ -469,7 +469,7 @@ $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (ex. kubectl create serviceaccount k8sadmin -n kube-system)
 ```
 
-- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by kubernetes.
+- Bind the created Service Account and the ClusterRole 'cluster-admin' provided by Kubernetes.
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 (ex. kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8sadmin)

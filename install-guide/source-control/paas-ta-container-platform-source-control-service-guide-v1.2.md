@@ -32,22 +32,22 @@
 
 ## <div id='1'>1. Document Outline
 ### <div id='1.1'>1.1. Purpose
-본 문서(Container Platform Source Control 서비스 배포 설치 가이드)는 Kubernetes  Cluster 및 컨테이너 플랫폼 서비스 배포 형 포탈을 설치하고 컨테이너 플랫폼 서비스 배포형 소스 컨트롤 배포 방법을 기술하였다.<br>
+This document (Container Platform Source Control Service Deployment Installation Guide) installs the Kubernetes Cluster and Container Platform Service Deployment Portal and describes how to deploy Container Platform Service Deployment Source Control.<br>
 
 <br>
 
 ### <div id='1.2'>1.2. Range
-설치 범위는 Kubernetes Cluster 배포를 기준으로 작성하였다.
+The installation range was prepared based on the Kubernetes Cluster deployment.
 
 <br>
 
 ### <div id='1.3'>1.3. System Configuration Diagram
 ![image](https://user-images.githubusercontent.com/80228983/146350860-3722c081-7338-438d-b7ec-1fdac09160c4.png)
 <br>    
-시스템 구성은 Kubernetes Cluster(Master, Worker) 환경과 데이터 관리를 위한 네트워크 파일 시스템(NFS) 스토리지 서버로 구성되어 있다. 
-Kubespray를 통해 설치된 Kubernetes Cluster 환경에 컨테이너 플랫폼 소스 컨트롤 이미지 및 Helm Chart를 관리하는 Harbor, 컨테이너 플랫폼 소스 컨트롤 사용자 인증을 관리하는 Keycloak, 컨테이너 플랫폼 소스 컨트롤 메타 데이터를 관리하는 MariaDB(RDBMS)가 컨테이너 플랫폼 포탈을 통해서 제공된다.
- 컨테이너 플랫폼 소스 컨트롤에서는 소스를 관리하는 SCM-Server를 컨테이너로 제공한다. 
-총 필요한 VM 환경으로는 Master Node VM: 1개, Worker Node VM: 1개 이상, NFS Server : 1개가 필요하고 본 문서는 Kubernetes Cluster에 컨테이너 플랫폼 소스 컨트롤 환경을 배포하는 내용이다. 네트워크 파일 시스템(NFS) 은 컨테이너 플랫폼에서 기본으로 제공하는 스토리지로 사용자 환경에 따라 다양한 종류의 스토리지를 사용할 수 있다. 
+The system configuration consists of a Kubernetes Cluster (Master, Worker) environment and a Network File System (NFS) storage server for data management. 
+Harbor, which manages container platform source control images and HelmCharts, Keycloak, which manages container platform source control user authentication, and MariaDB (RDBMS), which manages container platform source control metadata, are provided through the container platform portal.
+ The Container Platform Source Control provides an SCM-Server that manages the source as a container. 
+The total VM environment required is one Master Node VM, one or more Worker Node VMs, and one NFS Server, and this document is about deploying a container platform source control environment in a Kubernetes cluster. Network File System (NFS) is the storage provided by the container platform and can use various types of storage depending on the user environment. 
 
 
 ### <div id='1.4'>1.4. References
@@ -58,63 +58,63 @@ Kubespray를 통해 설치된 Kubernetes Cluster 환경에 컨테이너 플랫�
 ## <div id='2'>2. Prerequisite
     
 ### <div id='2.1'>2.1. NFS Server Installation
-컨테이너 플랫폼 소스 컨트롤에서 사용할 스토리지 **NFS Storage Server** 설치가 사전에 진행되어야 한다.<br>
-NFS Storage Server 설치는 아래 가이드를 참조한다.  
-> [NFS 서버 설치](../nfs-server-install-guide.md)      
+Installation of storage **NFS Storage Server** to be used by the container platform source control must be performed ahead.<br>
+Refer to the guide below for NFS Storage Server installation.  
+> [NFS Server Installation](../nfs-server-install-guide.md)      
     
-### <div id='2.2'>2.2. 컨테이너 플랫폼 포탈 설치
-컨테이너 플랫폼 소스 컨트롤에서 사용할 인프라로 인증서버 **KeyCloak Server**, 데이터베이스 **Maria DB**, 레포지토리 서버 **Harbor** 설치가 사전에 진행되어야 한다.
-파스타 컨테이너 플랫폼 포탈 배포 시 해당 인프라를 모두 설치한다.
-컨테이너 플랫폼 포탈 설치는 아래 가이드를 참조한다.
-> [파스타 컨테이너 플랫폼 포탈 배포](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md)     
+### <div id='2.2'>2.2. Container Platform Portal Installation
+Installation of the certificate server **KeyCloak Server**, database **Maria DB**, and repository server **Harbor** must be performed in advance as the infrastructure to be used by the container platform source control.
+When deploying the pasta container platform portal, all of the infrastructures will be installed.
+Refer to the guide below for installing the container platform portal.
+> [PaaS-TA Container Platform Portal Deployment](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md)     
 
   
-## <div id='3'>3. 컨테이너 플랫폼 소스 컨트롤 배포
+## <div id='3'>3. Container Platform Source Control Deployment
 
-### <div id='3.1'>3.1. CRI-O insecure-registry 설정
-컨테이너 플랫폼 소스 컨트롤 배포 시 이미지 및 패키지 파일 업로드는 클러스터에 설치된 Private Repository에 한다.
-컨테이너 플랫폼 포탈을 통해 배포된 Private Repository(Harbor)에 컨테이너 플랫폼 소스 컨트롤 관련 이미지 및 패키지 파일 업로드한다. 
+### <div id='3.1'>3.1. CRI-O insecure-registry Setting
+When deploying the container platform source control, upload images and package files to the private repository installed in the cluster.
+Upload the container platform portal to the deployed Private Repository (Harbor) with images and package files related to the container platform source control. 
 
-Private Repository 배포에 필요한 CRI-O insecure-registry 설정은 아래 가이드를 참조한다.
-> [CRI-O insecure-registry 설정](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md#3.1)      
+Refer to the guide below for the CRI-O insecure-registry settings required for a Private Repository deployment.
+> [CRI-O insecure-registry Setting](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md#3.1)      
 
-### <div id='3.2'>3.2. 컨테이너 플랫폼 소스 컨트롤 배포
+### <div id='3.2'>3.2. Container Platform Source Control Deployment
     
-#### <div id='3.2.1'>3.2.1. 컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드
-컨테이너 플랫폼 소스 컨트롤 배포를 위해 컨테이너 플랫폼 소스 컨트롤 Deployment 파일을 다운로드 받아 아래 경로로 위치시킨다.<br>
-:bulb: 해당 내용은 Kubernetes **Master Node**에서 진행한다.
+#### <div id='3.2.1'>3.2.1. Container Platform Source Control Deployment File Download
+Download the container platform source control Deployment file and locate it in the path below for container platform source control deployment.<br>
+:bulb: Process this content at the **Master Node** of Kubernetes. 
 
-+ 컨테이너 플랫폼 소스 컨트롤 Deployment 파일 다운로드 :  
++ Container Platform Source Control Deployment File Download :  
    [paas-ta-container-platform-source-control-deployment.tar](https://nextcloud.paas-ta.org/index.php/s/6WG9C29tjQGY8We)  
 
 ```
-# Deployment 파일 다운로드 경로 생성
+# Create Deployment File Download Path
 $ mkdir -p ~/workspace/container-platform
 $ cd ~/workspace/container-platform
 
-# Deployment 파일 다운로드 및 파일 경로 확인
+# Deployment File Download and Check File Path
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/6WG9C29tjQGY8We/download
 
 $ ls ~/workspace/container-platform
   ...
   paas-ta-container-platform-source-control-deployment.tar.gz
   ...
-# Deployment 파일 압축 해제
+# Unzip Deployment File
 $ tar xvfz paas-ta-container-platform-source-control-deployment.tar.gz
 ```
 
-- Deployment 파일 디렉토리 구성
+- Configure Deployment File Directory
 ```
-├── script          # 컨테이너 플랫폼 소스 컨트롤 배포 관련 변수 및 스크립트 파일 위치
-├── images          # 컨테이너 플랫폼 소스 컨트롤 이미지 파일 위치
-├── charts          # 컨테이너 플랫폼 소스 컨트롤 Helm Charts 파일 위치
-├── values_orig     # 컨테이너 플랫폼 소스 컨트롤 Helm Charts values.yaml 원본 파일 위치 
+├── script          # Location of Container Platform Source Control Deployment Related Variables and Script File
+├── images          # Location of Container Platform Source Control Image File
+├── charts          # Location of Container Platform Source Control Helm Charts File
+├── values_orig     # Location of Container Platform Source Control Helm Charts values.yaml Source File 
 ```
 
 <br>
 
-#### <div id='3.2.2'>3.2.2. 컨테이너 플랫폼 소스 컨트롤 변수 정의
-컨테이너 플랫폼 소스 컨트롤을 배포하기 전 변수 값 정의가 필요하다. 배포에 필요한 정보를 확인하여 변수를 설정한다.
+#### <div id='3.2.2'>3.2.2. Define Container Platform SourceControl Variable
+Defining variable values is required before deploying container platform source controls. Set the variable by checking the information required for deployment.
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script
@@ -133,21 +133,21 @@ K8S_MASTER_NODE_IP="xx.xxx.xxx.xx"
 PROVIDER_TYPE="service"
 ```
 
-- **K8S_MASTER_NODE_IP** <br>Kubernetes Master Node Public IP 입력<br><br>
-- **PROVIDER_TYPE** <br>컨테이너 플랫폼 소스 컨트롤 제공 타입 입력 <br>
-   + 본 가이드는 서비스 배포 설치 가이드로 **'service'** 값 입력 필요
+- **K8S_MASTER_NODE_IP** <br>Enter Kubernetes Master Node Public IP<br><br>
+- **PROVIDER_TYPE** <br>Enter Container Platform Source Control Providing Type <br>
+   + This guide is a service deployment installation guide that requires **'service'** values
 <br>    
 
-:bulb: Keycloak 기본 배포 방식은 **HTTP**이며 인증서를 통한 **HTTPS**를 설정되어 있는 경우
-> [Keycloak TLS 설정](../container-platform-portal/paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md)
+:bulb: Keycloak default deployment method is **HTTP**, and **HTPS** via certificate is set
+> [Keycloak TLS Setting](../container-platform-portal/paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md)
 
-컨테이너 플랫폼 소스 컨트롤 변수 파일 내 아래 내용을 수정한다.
+Modify the contents below in the container platform source control variable file.
 ```
 $ vi container-platform-source-control-vars.sh    
 ```    
 ```
-# KEYCLOAK_URL 값 http -> https 로 변경 
-# Domain으로 nip.io를 사용하는 경우 아래와 같이 변경
+# Change KEYCLOAK_URL value http -> https 
+# If you are using nip.io as a Domain, change as shown below:
     
 ....  
 # KEYCLOAK    
@@ -155,8 +155,8 @@ KEYCLOAK_URL="https:\/\/${K8S_MASTER_NODE_IP}.nip.io:32710"   # Keycloak url (in
 ....     
 ```
 
-#### <div id='3.2.3'>3.2.3. 컨테이너 플랫폼 소스 컨트롤 배포 스크립트 실행
-컨테이너 플랫폼 소스 컨트롤 배포를 위한 배포 스크립트를 실행한다.
+#### <div id='3.2.3'>3.2.3. Execute Container Platform SourceControl Deployment Script
+Execute the deployment script for deploying the container platform source control.
 
 ```
 $ chmod +x deploy-container-platform-source-control.sh
@@ -197,10 +197,10 @@ TEST SUITE: None
 
 <br>
     
-- **컨테이너 플랫폼 소스 컨트롤**
+- **Container Platform Source Control**
 
 ```
-# 소스 컨트롤 리소스 확인
+# Check Source Control Resource
 $ kubectl get all -n paas-ta-container-platform-source-control
 ```
 ```
@@ -232,8 +232,8 @@ replicaset.apps/container-platform-source-control-ui-deployment-85f754cfc6      
 
 <br>
 
-#### <div id='3.2.4'>3.2.4. (참조) 컨테이너 플랫폼 소스 컨트롤 리소스 삭제
-배포된 컨테이너 플랫폼 소스 컨트롤 리소스의 삭제를 원하는 경우 아래 스크립트를 실행한다.<br>
+#### <div id='3.2.4'>3.2.4. (Refer) Delete Container Platform Source Control Resource
+To delete the deployed container platform source control resource, follow the script shown below.<br>
 
 ```
 $ cd ~/workspace/container-platform/paas-ta-container-platform-source-control-deployment/script
@@ -257,21 +257,21 @@ namespace "paas-ta-container-platform-source-control" deleted
 ...
 ```
   
-## <div id='4'>4. 컨테이너 플랫폼 소스 컨트롤 서비스 브로커
-컨테이너 플랫폼 PaaS-TA 서비스 형 소스 컨트롤으로 설치하는 경우 CF와 Kubernetes에 배포된 컨테이너 플랫폼 소스 컨트롤 서비스 연동을 위해서 브로커를 등록해 주어야 한다.
-PaaS-TA 운영자 포탈을 통해 서비스를 등록하고 공개하면, PaaS-TA 사용자 포탈을 통해 서비스를 신청하여 사용할 수 있다.
+## <div id='4'>4. Container Platform Source Control Service Broker
+When installing as a container platform PaaS-TA service-type source control, brokers must be registered for the container platform source control service integration deployed to CF and Kubernetes.
+If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
   
-## <div id='4.1'>4.1. 컨테이너 플랫폼 소스 컨트롤 사용자 인증 서비스 구성
-컨테이너 플랫폼 소스 컨트롤을 서비스로 사용하기 위해서는 **사용자 인증 서비스** 구성이 사전에 진행되어야 한다.<br>
-사용자 인증 서비스 구성은 아래 가이드를 참조한다.
-> [사용자 인증 서비스 구성](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md#4)      
-컨테이너 플랫폼 포탈 사용자 인증 서비스 구성 시, 소스 컨트롤에도 적용된다.
+## <div id='4.1'>4.1. Container Platform Source Control User Authentication Service Configuration
+To use the container platform source control as a service, the **user authentication service** configuration must be performed in advance.<br>
+For user authentication service configuration, refer to the guide below.
+> [User Authentication Service Configuration](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md#4)      
+When configuring the container platform portal user authentication service, it also applies to source control.
 
-### <div id='4.2'>4.2. 컨테이너 플랫폼 소스 컨트롤 서비스 브로커 등록
-:bulb: 해당 내용은 PaaS-TA 포털이 설치된 **BOSH Inception**에서 진행한다.
-서비스 브로커 등록 시 개방형 클라우드 플랫폼에서 서비스 브로커를 등록할 수 있는 사용자로 로그인이 되어있어야 한다.
+### <div id='4.2'>4.2. Container Platform Source Control Service Broker Registration
+:bulb: This will be done at **BOSH Inception** with PaaS-TA Portal installed.
+When registering a service broker, you must be logged in as a user who can register a service broker on an open cloud platform.
 
-##### 서비스 브로커 목록을 확인한다.
+##### Check Service Broker List.
 >`$ cf service-brokers` 
 ```
 $ cf service-brokers
@@ -282,15 +282,15 @@ No service brokers found
 ```
     
     
-##### 컨테이너 플랫폼 소스 컨트롤 서비스 브로커를 등록한다.
->`$ cf create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{서비스팩 URL}`
+##### Register Container Platform Source Control Service Broker.
+>`$ cf create-service-broker {Servicepack Name} {Servicepack User ID} {Servicepack User Password} http://{Servicepack URL}`
 
-서비스팩 이름 : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭<br>
-서비스팩 사용자 ID/비밀번호 : 서비스팩에 접근할 수 있는 사용자 ID/비밀번호<br>
-서비스팩 URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL<br>
+Servicepack Name: Name shown at the Open Cloud Platform for Servicepack management<br>
+Servicepack User ID/PW : User ID/PW to access to the servicepack<br>
+Servicepack URL: URL that can use the API provided by the servicepack<br>
 
 
-###### 컨테이너 플랫폼 소스 컨트롤 서비스 브로커 등록 
+###### Register Container Platfrom Source Control Service Broker 
 >`$ cf create-service-broker container-platform-source-control-service-broker admin cloudfoundry http://{K8S_MASTER_NODE_IP}:30093`   
 
 
@@ -301,7 +301,7 @@ OK
 ```    
 
     
-##### 등록된 컨테이너 플랫폼 소스 컨트롤 서비스 브로커를 확인한다.
+##### Check the registered Container Platform Source Control Service Broker.
 >`$ cf service-brokers` 
 ```
 $ cf service-brokers 
@@ -311,7 +311,7 @@ container-platform-source-control-service-broker   http://xx.xxx.xxx.xx:30093
 ```
 
     
-##### 접근 가능한 서비스 목록을 확인한다.
+##### Check the accessible service list.
 >`$ cf service-access`     
 ```
 $ cf service-access 
@@ -323,9 +323,9 @@ broker: container-platform-source-control-service-broker
 ```
 
         
-##### 특정 조직에 해당 서비스 접근 허용을 할당한다.
+##### Assign access permission of the service to a specific organization.
 
-###### 컨테이너 플랫폼 소스 컨트롤 서비스 접근 허용 할당  
+###### Assign access to Container Platform Source Contril Service  
 >`$ cf enable-service-access scm-manager`  
 
 ```
@@ -334,7 +334,7 @@ Enabling access to all plans of service offering scm-manager for all orgs as adm
 OK
 ```
         
-##### 접근 가능한 서비스 목록을 확인한다.
+##### Check accessible service list.
 >`$ cf service-access` 
 
 ```
@@ -347,34 +347,34 @@ broker: container-platform-source-control-service-broker
 
 <br>
     
-### <div id='4.3'>4.3. 컨테이너 플랫폼 소스 컨트롤 서비스 조회 설정
-해당 설정은 PaaS-TA 포탈에서 컨테이너 플랫폼 소스 컨트롤 서비스를 조회하고 신청할 수 있도록 하기 위한 설정이다.
+### <div id='4.3'>4.3. Container Platform Source Control Service Lookup Setting
+A setting for viewing and applying for the container platform source control service on the PaaS-TA portal.
 
-##### PaaS-TA 운영자 포탈에 접속한다.
+##### Access to the PaaS-TA Operator Portal.
 
 
-##### 메뉴 [운영관리]-[카탈로그] 에서 앱서비스 탭 안에 Container Platform Source Control 서비스를 선택하여 설정을 변경한다.
+##### In the [OperationManagement]-[Catalog] menu, select Container Platform Source Control Service from the App service tab and change settings.
 ![image](https://user-images.githubusercontent.com/80228983/146296230-2e3a90fa-44ac-4e13-9472-dfb3a1655a98.png)
 
-##### Container Platform Source-control 서비스를 선택하여 아래와 같이 설정 변경 후 저장한다.
->`'서비스' 항목 : 'scm-manager' 으로 선택` <br>
->`'공개' 항목 : 'Y' 로 체크`    
+##### Select Container Platform Source-control Service, set as shown below and save.
+>`'Service' Catalog : Select 'scm-manager'` <br>
+>`'Public' Catalog : Check as 'Y'`    
 
 ![image](https://user-images.githubusercontent.com/80228983/146360677-bd0878f4-85ac-48fc-9e30-6bc49a74381f.png)
 
 
-##### PaaS-TA 사용자 포탈에 접속한다.
+##### Access to PaaS-TA User Portal.
 
-##### 메뉴 [카탈로그]-[서비스] 에서 서비스 탭 안에 Container Platform Source Control 서비스를 선택하여 서비스를 생성한다.
+##### In the [Catalog]-[Service] menu, select Container Platform Source Control Service from the service tab and create Service.
 ![image](https://user-images.githubusercontent.com/80228983/146360859-7388527a-e570-4985-b4bc-e5b4b3f19c55.png)
 
 <br>
 
     
-### <div id='4.4'/>4.4. 컨테이너 플랫폼 소스 컨트롤 사용 가이드
-- 컨테이너 플랫폼 소스 컨트롤 사용방법은 아래 사용가이드를 참고한다.  
-  + [컨테이너 플랫폼 소스 컨트롤 사용 가이드](../../use-guide/source-control/paas-ta-container-platform-source-control-use-guide.md)   
+### <div id='4.4'/>4.4. Container Platform Source Control Use Guide
+- For the usage of Container Platform Source Control, refer to the use guide below.  
+  + [Container Platform Source Control Use Guide](../../use-guide/source-control/paas-ta-container-platform-source-control-use-guide.md)   
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > SourceControl Installation Guide

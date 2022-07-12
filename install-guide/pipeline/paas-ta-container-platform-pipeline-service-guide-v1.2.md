@@ -47,7 +47,7 @@ The installation range was prepared based on the Kubernetes Cluster deployment.
 <br>
 The system configuration consists of a Kubernetes Cluster (Master, Worker) environment and a Network File System (NFS) storage server for data management. 
 Kubespray-installed Kubernetes Cluster environment provided through the container platform portal which are
-Harbor manages container platform pipeline images and Helm charts, Keycloak that manages container platform pipeline user authentication, and MariaDB (RDBMS) which manages container platform pipeline metadata.
+Harbor manages container platform pipeline images and Helm charts, Keycloak manages container platform pipeline user authentication, and MariaDB (RDBMS) manages container platform pipeline metadata.
 The container platform pipeline provides the environment required for pipeline operation, such as Jenkins Server (Ci-Server), which manages continuous integration and deployment functions, Sonarqube (Inspection-Server) for static analysis, and Spring Config Server (Config-Server), which manages the configuration of the deployed application.
 The total VM environment required is one Master Node VM, one or more Worker Node VMs, and one NFS Server, and this document is about deploying a container platform pipeline environment in a Kubernetes cluster. Network File System (NFS) is the storage provided by the container platform and can use various types of storage depending on the user environment. 
 
@@ -174,7 +174,7 @@ CF_API_URL="https:\/\/api.xx.xxx.xxx.xx.nip.io"
 :bulb: Keycloak's default deployment method is **HTTP** and **HTTPS** via certificate is enabled
 > [Keycloak TLS Setting](../container-platform-portal/paas-ta-container-platform-portal-deployment-keycloak-tls-setting-guide-v1.2.md)
 
-Modifiy the contents under the container platform pipeline variable file..
+Modify the contents under the container platform pipeline variable file.
 ```
 $ vi container-platform-pipeline-vars.sh    
 ```    
@@ -202,7 +202,7 @@ $ ./deploy-container-platform-pipeline.sh
 ...
 NAME: paas-ta-container-platform-pipeline-api
 LAST DEPLOYED: Tue Dec 14 04:23:06 2021
-NAMESPACE: paas-ta-container-platfrom-pipeline
+NAMESPACE: paas-ta-container-platform-pipeline
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
@@ -309,10 +309,10 @@ namespace "paas-ta-container-platform-pipeline" deleted
   
 ## <div id='4'>4. Container Platform Pipeline Service Broker
 When installing as a container platform PaaS-TA service pipeline, brokers must be registered to interwork the container platform pipeline service deployed to CF and Kubernetes.
-If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal..
+If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
   
 ## <div id='4.1'>4.1. Container Platform Pipeline User Authentication Service Configuration
-To use the container platform pipeline as a service, **user authentication service** configuration must be performed in advance.<br>
+To use the container platform pipeline as a service, the **user authentication service** configuration must be performed in advance.<br>
 Refer to the guide below for configuring the user authentication service.
 > [User Authentication Service Configuration](../container-platform-portal/paas-ta-container-platform-portal-deployment-service-guide-v1.2.md#4)      
 When configuring the container platform portal user authentication service, it also gets applied to the pipeline.
@@ -335,9 +335,9 @@ No service brokers found
 ##### Register Container Platform Pipeline Service Broker.
 >`$ cf create-service-broker {Servicepack Name} {Servicepack USer ID} {Servicepack User Password} http://{Servicepack URL}`
 
-Servicepack Name : Name shown at the Open Cloud Platform for Servicepack Management<br>
+Servicepack Name: Name shown at the Open Cloud Platform for Servicepack Management<br>
 Servicepack User ID/PW : User ID/ Password for servicepack access<br>
-Servicepack URL : URL that can use the API provided by the servicepack<br>
+Servicepack URL: URL that can use the API provided by the servicepack<br>
 
 
 ###### Container Platform Pipeline Service Broker Registration 
@@ -406,15 +406,15 @@ A setting for retrieving and applying for container platform pipeline service on
 ##### In [Operation Management]-[Catalog] menu, select the Container Platform Pipeline service in the App Service tab and change the settings.
 ![image](https://user-images.githubusercontent.com/80228983/146296230-2e3a90fa-44ac-4e13-9472-dfb3a1655a98.png)
 
-##### Select the Container Platform Pipeline service and change the setting as follows and save it..
+##### Select the Container Platform Pipeline service and change the setting as follows and save it.
 >`'Service' Catalog : Select 'container-platform-pipeline'` <br>
->`'Public' Catalog : Check as 'Y'`    
+>`' Public' Catalog: Check as 'Y'`    
 
 ![image](https://user-images.githubusercontent.com/80228983/146296316-3bbb70d4-ce31-42f6-9ec0-019c0f12d774.png)
 
 ##### Access to PaaS-TA User Portal.
 
-##### In [Catalog]-[Service] menu, select the container platform pipeline service in the service tab to create service.
+##### In the [Catalog]-[Service] menu, select the container platform pipeline service in the service tab to create a service.
 ![image](https://user-images.githubusercontent.com/80228983/146296949-fceac26c-86b6-40fb-b005-dcc84b3f081c.png)
 
 <br>
