@@ -183,14 +183,14 @@ Install KubeEdge CloudCore on the Master Node in the Cloud area and proceed with
 ### <div id='2.5'> 2.5. KubeEdge EdgeCore Installation
 After pre-installing CRI-O on **Edge Node** in the Edge area, install KubeEdge Edge Core to proceed with the setup. In the case of EdgeNode, the installation should proceed in **Ubuntu 20.04** environment for CRI-Oarm64 installation.
 
-- If the EdgeNode environment is **RaspberryPie**, add the following information. If it is not a raspberry pie environment, skip the following two steps and proceed from the Edge Node CRI-O installation process.
+- If the EdgeNode environment is **Raspberry Pi**, add the following information. If it is not a Raspberry Pi environment, skip the following two steps and proceed from the Edge Node CRI-O installation process.
 ```
 # vi /boot/firmware/cmdline.txt
 
 ... cgroup_enable=memory cgroup_memory=1 (Add at the very last)
 ```
 
-- Before installing CRI-O, there is an APT issue in the **Raspberry Pie Ubuntu 20.04** arm64 version, and the following action is taken.
+- Before installing CRI-O, there is an APT issue in the **Raspberry Pi Ubuntu 20.04** arm64 version, and the following action is taken.
 ```
 # killall apt apt-get
 
@@ -203,14 +203,14 @@ After pre-installing CRI-O on **Edge Node** in the Edge area, install KubeEdge E
 # apt-get update
 ```
 
-- Process **Rasberry Pie** Reboot.
+- Process **Raspberry Pi** Reboot.
 ```
 # reboot
 ```
 
 - Process CRI-O installation at **Edge Node**.
 ```
-## When installing CRI-O after the Rasberry Pie Reboot, switch to Root authority.
+## When installing CRI-O after the Raspberry Pi Reboot, switch to Root authority.
 $ sudo su -
 
 # cd paas-ta-container-platform-deployment/edge
