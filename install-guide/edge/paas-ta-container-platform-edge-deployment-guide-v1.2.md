@@ -25,7 +25,7 @@
 
 4. [Create Container Platform Operator and Acquire Token](#4)  
   4.1. [Create Cluster Role Operator and Acquire Token](#4.1)  
-  4.2. [Namespace User Token Acquire](#4.2)  
+  4.2. [Acquire Namespace User Token](#4.2)  
 
 5. [Precautions When Creating Resource](#5)
 
@@ -47,8 +47,8 @@ The installation range was prepared based on the basic installation to verify Ku
 
 ### <div id='1.3'> 1.3. System Configuration Diagram
 The system configuration consists of a Kubernetes Cluster (Master, Worker, Edge) environment. <br>
-Install the Kubernetes Cluster (Master, Worker) through Kubespray and KubeEdge in the Kubernetes Cluster and Edge environment. Pod provides middleware environments such as Database and Private registry to deploy to Container Platform portal environments to Kubernetes clusters with Container Image. <br>
-The total required VM environment is **Master VM: 1, Worker VM: 1 or more, Edge VM: 1 or more**, and this document contains the installation of Master VM, Worker VM, and Edge VM to configure the Kubernetes Cluster environment.
+Install the Kubernetes Cluster (Master, Worker) through Kubespray and KubeEdge in the Kubernetes Cluster and Edge environment. The pod provides middleware environments such as Database and Private registry to deploy to Container Platform portal environments to Kubernetes clusters with Container Image. <br>
+The total required VM environment is **Master VM: 1, Worker VM: 1 or more, Edge VM: 1 or more**and this document contains the installation of Master VM, Worker VM, and Edge VM to configure the Kubernetes Cluster environment.
 
 ![image 001]
 
@@ -64,9 +64,9 @@ The total required VM environment is **Master VM: 1, Worker VM: 1 or more, Edge 
 ## <div id='2'> 2. KubeEdge Installation
 
 ### <div id='2.1'> 2.1. Prerequisite
-This installation guide is based on installation in **Ubuntu 18.04** environment. For EdgeNode, **arm64 architecture**, perform installation in **Ubuntu 20.04** environment for CRI-O installation. In this guide, the environment of EdgeNode was written based on **Ubuntu 20.04 arm64**. For KubeEdge installation, CRI-O, Kubernetes Native Cluster must be deployed on the system.
+This installation guide is based on installation in the **Ubuntu 18.04** environment. For EdgeNode, **arm64 architecture**, perform installation in **Ubuntu 20.04** environment for CRI-O installation. In this guide, the environment of EdgeNode was written based on **Ubuntu 20.04 arm64**. For KubeEdge installation, CRI-O, Kubernetes Native Cluster must be deployed on the system.
 
-Main software and package version information required for KubeEdge installation is as follows.
+The main software and package version information required for KubeEdge installation are as follows.
 
 |Main Software|Version|
 |---|---|
@@ -134,7 +134,7 @@ The Kubernetes official guide document recommends the following when deploying c
 
 <br>
 
-### <div id='2.2'> 2.2. Kubernetes Native Cluster Delployment
+### <div id='2.2'> 2.2. Kubernetes Native Cluster Deployment
 For KubeEdge installation, the Kubernetes cluster must be deployed in the Cloud area, and after deployment, the Edge Node must be deployed in the Edge area.
 
 - Deploy Kubernetes Cluster through Kubespray in the Cloud area.
@@ -290,7 +290,7 @@ Since KubeEdge does not support Ingress and CNI at the time of writing this inst
                 operator: DoesNotExist
 ```
 
-- In case of OpenStack, modify DaemonSet yaml to prevent csi cinder nodeplugin on Edge Node at **Master Node**.
+- In the case of OpenStack, modify DaemonSet yaml to prevent csi cinder nodeplugin on Edge Node at **Master Node**.
 ```
 # kubectl edit daemonsets.apps csi-cinder-nodeplugin -n kube-system
 ```
@@ -310,7 +310,7 @@ Since KubeEdge does not support Ingress and CNI at the time of writing this inst
 
 
 ### <div id='2.7'> 2.7. Enable the kubectl logs feature
-In KubeEdge, there is a issue that cannot use kubectl logs command as basic. The installation guide provides a setting guide for activating a corresponding function.  
+In KubeEdge, there is an issue that cannot use the kubectl logs command as basic. The installation guide provides a setting guide for activating a corresponding function.  
 
 - Modify the cloudcore.yaml file at **Master Node**. (change enable: true)
 ```
@@ -386,14 +386,14 @@ Environment="CHECK_EDGECORE_ENVIRONMENT=false"
 <br>
 
 ### <div id='2.8'> 2.8. EdgeMesh Deployment 
-Starting with KubeEdge v1.8, EdgeMesh is separated from EdgeCore modules as a separate Pod, providing the EdgeMesh Server, Agent Pod deployment guide.
+Starting with KubeEdge v1.8, EdgeMesh is separated from EdgeCore modules as a separate Pod, providing the EdgeMesh Server, and Agent Pod deployment guide.
 
-- **Master Node**에서 EdgeMesh Pod 배포 전 관련 CRDs 배포를 진행한다.
+- **Master Node** deploys relevant CRDs before Edge Mesh Pod is deployed.
 ```
 #  kubectl apply -f edgemesh/crds/istio/
 ```
 
-- **Edge Node**에서 EdgeCore설정 변경 및 서비스 재시작을 통해 EdgeNode의 List-Watch를 활성화한다.
+-  Enable List-Watch on EdgeNode by changing Edge Core settings and restarting services on **Edge Node**.
 ```
 # vi /etc/kubeedge/config/edgecore.yaml
 ```
@@ -401,12 +401,12 @@ Starting with KubeEdge v1.8, EdgeMesh is separated from EdgeCore modules as a se
 ```
 modules:
   ..
-  edgeMesh: (추가)
-    enable: false (추가)
+  edgeMesh: (Added)
+    enable: false (Added)
   ..
   metaManager:
     metaServer:
-      enable: true (수정)
+      enable: true (Modified)
 ..
 ```
 
@@ -414,7 +414,7 @@ modules:
 # source restart-edgecore.sh
 ```
 
-- **Master Node**에서 CloudCore의 설정 변경 및 서비스 재시작을 진행한다.
+- change the settings of CloudCore and restart the service at **Master Node**.
 ```
 # vi /etc/kubeedge/config/cloudcore.yaml
 ```
@@ -423,7 +423,7 @@ modules:
 modules:
   ..
   dynamicController:
-    enable: true (수정)
+    enable: true (Modified)
 ..
 ```
 
@@ -431,7 +431,7 @@ modules:
 # source restart-cloudcore.sh
 ```
 
-- **Master Node**에서 EdgeMesh Server가 배포될 VM의 호스트명 정보를 수정한다.
+- On **Master Node**, modify the hostname information for the VM where the EdgeMesh Server will be deployed.
 ```
 # vi edgemesh/server/06-deployment.yaml
 
@@ -439,24 +439,24 @@ modules:
 spec:
   hostNetwork: true
 #     use label to selector node
-  nodeName: {MASTER_HOSTNAME} (수정)
+  nodeName: {MASTER_HOSTNAME} (Modified)
 ...
 ```
 
-- **Master Node**에서 EdgeMesh Server 배포를 진행한다.
+- Deploy EdgeMesh Server at **Master Node**.
 ```
 # kubectl apply -f edgemesh/server/
 ```
 
-- **Master Node**에서 EdgeMesh Agent 배포를 진행한다.
+- Deploy EdgeMesh Agent at **Master Node**.
 ```
 # kubectl apply -f edgemesh/agent/
 ```
 
 <br>
 
-### <div id='2.9'> 2.9. KubeEdge 설치 확인
-Kubernetes Node 및 kube-system Namespace의 Pod를 확인하여 KubeEdge 설치를 확인한다.
+### <div id='2.9'> 2.9. KubeEdge Installation Check
+Check the Pod of the Kubernetes Node and kube-system Namespace to verify the installation of the KubeEdge.
 
 ```
 # kubectl get nodes
@@ -497,55 +497,55 @@ nodelocaldns-l9s47                         1/1     Running   0          37m
 
 <br>
 
-## <div id='3'> 3. KubeEdge Reset (참고)
-Cloud Side, Edge Side에서 KubeEdge를 중지한다. 필수구성요소는 삭제하지 않는다.
+## <div id='3'> 3. KubeEdge Reset (Refer)
+Stop KubeEdge from Cloud Side and Edge Side. Do not delete the required components.
 
-- Cloud Side에서 cloudcore를 중지하고 kubeedge Namespace와 같은 Kubernetes Master에서 KubeEdge 관련 리소스를 삭제한다.
+- Stop cloudcore on the Cloud Side and delete KubeEdge-related resources on the Kubernetes Master, such as kubeEdge Namespace.
 ```
 # keadm reset --kube-config=$HOME/.kube/config
 ```
 
-- Edge Side에서 edgecore를 중지한다.
+- Stop edgecore from Edge Side.
 ```
 # keadm reset
 ```
 
 <br>
 
-## <div id='4'> 4. 컨테이너 플랫폼 운영자 생성 및 Token 획득 (참고)
+## <div id='4'> 4. Create Container Platform Operator and Acquire Token (Refer)
 
-### <div id='4.1'> 4.1. Cluster Role 운영자 생성 및 Token 획득
-KubeEdge 설치 이후에 Cluster Role을 가진 운영자의 Service Account를 생성한다. 해당 Service Account의 Token은 운영자 포털에서 Super Admin 계정 생성 시 이용된다.
+### <div id='4.1'> 4.1. Create Cluster Role Operator and Acquire Token
+After installing KubeEdge, create a service account for an operator with a Cluster Role. Token of the service account is used to create a Super Admin account in the operator portal.
 
-- Service Account를 생성한다.
+- Create Service Account.
 ```
-## {SERVICE_ACCOUNT} : Service Account 명
+## {SERVICE_ACCOUNT} : Service Account Name
 
 $ kubectl create serviceaccount {SERVICE_ACCOUNT} -n kube-system
 (eg. kubectl create serviceaccount k8sadmin -n kube-system)
 ```
 
-- Cluster Role을 생성한 Service Account에 바인딩한다.
+- Bind at the Cluster Role at the Service Account created.
 ```
 $ kubectl create clusterrolebinding {SERVICE_ACCOUNT} --clusterrole=cluster-admin --serviceaccount=kube-system:{SERVICE_ACCOUNT}
 ```
 
-- 생성한 Service Account의 Token을 획득한다.
+- Acquire the Token of the created Service Account.
 ```
-## {SECRET_NAME} : Mountable secrets 값 확인
+## {SECRET_NAME} : Check Mountable secrets Value
 
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n kube-system
 
 $ kubectl describe secret {SECRET_NAME} -n kube-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
 ```
 
-### <div id='4.2'> 4.2. Namespace 사용자 Token 획득
-포털에서 Namespace 생성 및 사용자 등록 이후 Token값을 획득 시 이용된다.
+### <div id='4.2'> 4.2. Acquire Namespace User Token
+It is used to obtain the Token value after the creation of Namespace and user registration in the portal.
 
-- Namespace 사용자의 Token을 획득한다.
+- Acquired Token of Namespace User.
 ```
-## {SECRET_NAME} : Mountable secrets 값 확인
-## {NAMESPACE} : Namespace 명
+## {SECRET_NAME} : Check Mountable secrets Value
+## {NAMESPACE} : Name of Namespace 
 
 $ kubectl describe serviceaccount {SERVICE_ACCOUNT} -n {NAMESPACE}
 
@@ -554,12 +554,12 @@ $ kubectl describe secret {SECRET_NAME} -n {NAMESPACE} | grep -E '^token' | cut 
 
 <br>
 
-## <div id='5'> 5. Resource 생성 시 주의사항
-사용자가 직접 Resource를 생성 시 다음과 같은 prefix를 사용하지 않도록 주의한다.
+## <div id='5'> 5. Precautions When Creating Resource
+When users create their resources, be careful not to use the following prefixes.
 
-|Resource 명|생성 시 제외해야 할 prefix|
+|Resource Name|prefix to exclude when creating|
 |---|---|
-|전체 Resource|kube*|
+|All Resource|kube*|
 |Namespace|all|
 ||kubernetes-dashboard|
 ||paas-ta-container-platform-temp-namespace|
@@ -578,4 +578,4 @@ $ kubectl describe secret {SECRET_NAME} -n {NAMESPACE} | grep -E '^token' | cut 
 
 [image 001]:images/edge-v1.2.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge 설치 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge Installation Guide
