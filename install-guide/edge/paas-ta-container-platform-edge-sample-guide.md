@@ -1,44 +1,44 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge 샘플 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge Sample Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)  
-  1.3. [시스템 구성도](#1.3)  
-  1.4. [참고자료](#1.4)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)  
+  1.3. [System Configuration Diagram](#1.3)  
+  1.4. [References](#1.4)  
 
-2. [KubeEdge Sample 배포](#2)  
-  2.1. [Web 기반 KubeEdge Counter Sample](#2.1)  
-  2.2. [Edge 기반 KubeEdge 온도 수집 Sample](#2.2)  
-
-<br>
-
-## <div id='1'> 1. 문서 개요
-
-### <div id='1.1'> 1.1. 목적
-본 문서 (KubeEdge Sample 배포 가이드) 는 Raspberry Pi 및 온습도 센서 (DHT11)을 이용하여 실제 Edge 환경과 Device를 구성하여 Sample을 배포 및 확인하는 방법을 기술하였다.
+2. [KubeEdge Sample Deployment](#2)  
+  2.1. [Web Based KubeEdge Counter Sample](#2.1)  
+  2.2. [Edge Based KubeEdge Temperature Collect Sample](#2.2)  
 
 <br>
 
-### <div id='1.2'> 1.2. 범위
-설치 범위는 KubeEdge 실제 Edge 환경을 구성 및 검증하기 위한 KubeEdge Sample 배포 가이드를 기준으로 작성하였다.
+## <div id='1'> 1. Document Outline
+
+### <div id='1.1'> 1.1. Purpose
+This document (Kube Edge Sample Deployment Guide) describes how to deploy and verify samples by configuring the actual Edge environment and device using Raspberry Pi and Thermo-Humidity Sensor (DHT11).
 
 <br>
 
-### <div id='1.3'> 1.3. 시스템 구성도
-시스템 구성은 Kubernetes Cluster(Master, Worker)와 Raspberry Pi(Edge), DHT11 센서(Device) 환경으로 구성되어 있다.
-Kubespray를 통해 Kubernetes Cluster(Master, Worker)를 설치하고 Kubernetes 환경에 KubeEdge를 설치한다.
-총 필요한 VM 환경으로는 **Master VM: 1개, Worker VM: 1개 이상, Raspberry Pi: 1개 이상**이 필요하다.
-본 문서는 실제 Edge 환경을 구성하기 위한 Edge 환경 구성 및 검증 내용이다.
+### <div id='1.2'> 1.2. Range
+The installation range was prepared based on the Kube Edge Sample deployment guide to configure and verify the actual Kube Edge environment.
+
+<br>
+
+### <div id='1.3'> 1.3. System Configuration Diagram
+he system configuration consists of a Kubernetes Cluster Kubernetes Cluster(Master, Worker)와 Raspberry Pi(Edge), DHT11 Sensor(Device) environment.
+Install the Kubernetes Cluster (Master, Worker) through Kubespray and install KubeEdge in the Kubernetes environment.
+Total VM environments require **Master VM: 1 or more, Worker VM: 1 or more, Raspberry Pi: 1 or more**.
+This document is about the configuration and verification of the Edge environment for configuring the actual Edge environment.
 
 ![image 001]
 
 <br>
 
-### <div id='1.4'> 1.4. 참고자료
+### <div id='1.4'> 1.4. References
 > https://kubeedge.io/en/docs/developer/device_crd/
 > https://github.com/kubeedge/examples
 > https://github.com/kubeedge/examples/blob/master/kubeedge-counter-demo/README.md
@@ -46,20 +46,20 @@ Kubespray를 통해 Kubernetes Cluster(Master, Worker)를 설치하고 Kubernete
 
 <br>
 
-## <div id='2'> 2. KubeEdge Sample 환경 설정
-본 가이드에서는 두가지의 Sample을 이용하여 Cloud, Edge 간 데이터 통신을 확인한다.
-Cloud 환경에 Kubernetes Cluster를 구성하였으며 Raspberry Pi를 이용하여 Edge Node를 추가하였다.
-Raspberry Pi에는 온습도 센서 (DHT11)를 연결, 구성하였다.
+## <div id='2'> 2. KubeEdge Sample Environment Setting
+In this guide, data communication between Cloud and Edge is checked using two samples.
+Kubernetes Cluster was configured in the Cloud environment, and Edge Node was added using Raspberry Pi.
+A temperature and humidity sensor DHT11 was connected to Raspberry Pi.
 
-Container Platform 포털 설치 진행 전 KubeEdge Sample을 배포하려면 별도로 Podman 설치를 진행해야한다. Podman 설치는 포털 설치 가이드의 **3.1. CRI-O insecure-registry 설정**을 참고한다.
+Before installing the Container Platform portal, install Podman separately to deploy the KubeEdge Sample. For Podman installation, see **3.1. CRI-O secure-registry Setting** in the portal installation guide.
 > https://github.com/PaaS-TA/paas-ta-container-platform/blob/master/install-guide/container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md#3.1
 
 <br>
 
-### <div id='2.1'> 2.1. Web 기반 KubeEdge Counter Sample
-**Master Node**에서 Web Application을 배포한 후 **Edge Node**에서 Counter Application 배포를 진행한다.
+### <div id='2.1'> 2.1. Web Based KubeEdge Counter Sample
+Deploy the Web Application from **Master Node** and then proceed to Deploy the Counter Application from **Edge Node**.
 
-- **Master Node**와 **Edge Node**에서 Sample 배포에 필요한 파일을 다운로드한다.
+- Download the files required for sample deployment from **Master Node** and **Edge Node**.
 ```
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/Bb8diHCZr7wNbcj/download
 
@@ -68,7 +68,7 @@ $ tar zxvf kubeedge-sample.tar.gz
 
 <br>
 
-- **Master Node**에서 Container Image 파일을 Load한다.
+- Load Container Image file from **Master Node**.
 ```
 $ cd ~/kubeedge-sample/kubeedge-counter/amd64
 
@@ -77,7 +77,7 @@ $ sudo podman load -i kubeedge-counter-app.tar
 
 <br>
 
-- **Edge Node**에서 Container Image 파일을 Load한다.
+- Load Container Image file from **Edge Node**.
 ```
 $ cd ~/kubeedge-sample/kubeedge-counter/arm64
 
@@ -86,25 +86,25 @@ $ sudo podman load -i kubeedge-pi-counter.tar
 
 <br>
 
-- **Master Node**에서 DeviceModel, DeviceInstance를 배포한다.
+- Deploy DeviceModel and DeviceInstance from **Master Node**.
 ```
 $ cd ~/kubeedge-sample/kubeedge-counter/
 
-## DeviceModel 배포
+## DeviceModel Deployment
 $ kubectl apply -f kubeedge-counter-model.yaml
 
-## DeviceInstance 내 호스트명 변경 ()
-$ sed -i "s/{EDGE_NODE_NAME}/{{실제 엣지노드 호스트명}}/g" kubeedge-counter-instance.yaml
+## Change hostname in DeviceInstance ()
+$ sed -i "s/{EDGE_NODE_NAME}/{{Actual Edge Node Hostname}}/g" kubeedge-counter-instance.yaml
 
 ex) sed -i "s/{EDGE_NODE_NAME}/paasta-cp-edge-1/g" kubeedge-counter-instance.yaml
 
-## DeviceInstance 배포
+## DeviceInstance Deployment
 $ kubectl apply -f kubeedge-counter-instance.yaml
 ```
 
 <br>
 
-- **Master Node**에서 Web Application, Counter Application을 배포한다.
+- Deploy  Web Application and Counter Application from **Master Node**.
 ```
 $ kubectl apply -f kubeedge-web-controller-app.yaml
 
@@ -113,12 +113,12 @@ $ kubectl apply -f kubeedge-pi-counter-app.yaml
 
 <br>
 
-- 브라우저에서 배포된 Web에 접근하여 Counter 기능을 제어한다. Cloud 영역에 배포된 Web을 통해 Edge 영역에 배포된 Counter Application을 제어하여 Counter 값을 얻을 수 있다.
+- Access the deployment web from a browser to control the Counter function. Counter values can be obtained by controlling the counter application deployed in the Edge area through the web deployment in the Cloud area.
 ![image 002]
 
 <br>
 
-- **Master Node**에서 Device의 정보를 확인하여 수집중인 Counter 정보를 확인한다. 하단의 value 값 업데이트가 확인된다.
+- Check the device information in **Master Node** and check the counter information being collected. The values value update is checked below.
 ```
 $ kubectl get device counter -oyaml -w
 ```
@@ -141,9 +141,9 @@ status:
 
 <br>
 
-- **Edge Node**에서 '$hw/events/device/counter/twin/update' 토픽을 구독하여 전달되는 데이터를 확인한다.
+- Subscribe the '$hw/events/device/counter/twin/update' topic on **Edge Node** to view the datas being transferred.
 ```
-## mosquitto_sub 명령어 사용을 위해서는 다음 패키지 설치를 진행한다.
+## Install the package below to use the mosquitto_sub command.
 $ sudo apt install mosquitto-clients
 
 $ mosquitto_sub -h 127.0.0.1 -t '$hw/events/device/counter/twin/update' -p 1883
@@ -158,10 +158,10 @@ $ mosquitto_sub -h 127.0.0.1 -t '$hw/events/device/counter/twin/update' -p 1883
 <br>
 
 
-### <div id='2.2'> 2.2. Edge 기반 KubeEdge 온도 수집 Sample
-**Edge Node (Raspberry Pi)** 에서 GPIO를 이용하여 DHT11 온도센서를 구성하였으며, Temperature Application을 배포하였다.
+### <div id='2.2'> 2.2. Edge Based KubeEdge Temperature Collect Sample
+The DHT11 temperature sensor was configured using GPIO at the **Edge Node (Raspberry Pi)**. Temperature Application was deployed.
 
-- **Master Node**와 **Edge Node**에서 Sample 배포에 필요한 파일을 다운로드한다.
+- Download the file necessary for Sample Deployment in **Master Node** and **Edge Node**.
 ```
 $ wget --content-disposition https://nextcloud.paas-ta.org/index.php/s/Bb8diHCZr7wNbcj/download
 
@@ -170,7 +170,7 @@ $ tar zxvf kubeedge-sample.tar.gz
 
 <br>
 
-- **Edge Node**에서 Container Image 파일을 Load한다.
+- Load Container Image file from **Edge Node**.
 ```
 $ cd ~/kubeedge-sample/kubeedge-temperature/arm64
 
@@ -179,32 +179,32 @@ $ sudo podman load -i kubeedge-temperature.tar
 
 <br>
 
-- **Master Node**에서 DeviceModel, DeviceInstance를 배포한다.
+- Deploy DeviceModel and DeviceInstance from **Master Node**.
 ```
 $ cd ~/kubeedge-sample/kubeedge-temperature/
 
-## DeviceModel 배포
+## DeviceModel Deployment
 $ kubectl apply -f model.yaml
 
-## DeviceInstance 내 호스트명 변경 ()
-$ sed -i "s/{EDGE_NODE_NAME}/{{실제 엣지노드 호스트명}}/g" instance.yaml
+## Change hotname in DeviceInstance ()
+$ sed -i "s/{EDGE_NODE_NAME}/{{Actual Edge Node Hostname}}/g" instance.yaml
 
 ex) sed -i "s/{EDGE_NODE_NAME}/paasta-cp-edge-1/g" instance.yaml
 
-## DeviceInstance 배포
+## DeviceInstance Deployment
 $ kubectl apply -f instance.yaml
 ```
 
 <br>
 
-- **Master Node**에서 Web Application, Counter Application을 배포한다.
+- Deploy Web Application and Counter Application from **Master Node**.
 ```
-## deployment 내 nodeSelector 변경
+## Change nodeSelector in deployment
 $ vi deployment.yaml
 
 ...
 nodeSelector:
-  kubernetes.io/hostname: {{EDGE_NODE_NAME}} (변경)
+  kubernetes.io/hostname: {{EDGE_NODE_NAME}} (Modified)
 ...
 
 $ kubectl apply -f deployment.yaml
@@ -212,7 +212,7 @@ $ kubectl apply -f deployment.yaml
 
 <br>
 
-- **Master Node**에서 Device의 정보를 확인하여 수집중인 온도 정보를 확인한다.
+- Check the device information on the **Master Node** check the temperature information being collected.
 ```
 $ kubectl get device temperature -oyaml -w
 ```
@@ -234,9 +234,9 @@ status:
 
 <br>
 
-- **Edge Node**에서 '$hw/events/device/temperature/twin/update' 토픽을 구독하여 전달되는 데이터를 확인한다.
+- Subscribe the '$hw/events/device/temperature/twin/update' topic on **Edge Node** to view the datas being transferred.
 ```
-## mosquitto_sub 명령어 사용을 위해서는 다음 패키지 설치를 진행한다.
+## Install the package below to use the mosquitto_sub command.
 $ sudo apt install mosquitto-clients
 
 $ mosquitto_sub -h 127.0.0.1 -t '$hw/events/device/temperature/twin/update' -p 1883
@@ -254,4 +254,4 @@ $ mosquitto_sub -h 127.0.0.1 -t '$hw/events/device/temperature/twin/update' -p 1
 [image 001]:images/edge-v1.2.png
 [image 002]: images/kubeedge-counter-web.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge 샘플 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Install](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/install-guide/Readme.md) > Edge Sample Guide
