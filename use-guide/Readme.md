@@ -1,16 +1,16 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Use
-# Container Platform(CP) - 이용 가이드
+# Container Platform(CP) - Use Guide
 
-## 포털 이용 가이드
-- 운영자 포털
-  + [운영자 포털 사용 가이드](portal/container-platform-admin-portal-guide.md)
-- 사용자 포털
-  + [사용자 포털 사용 가이드](portal/container-platform-user-portal-guide.md) 
+## Portal Use Guide
+- Operator Portal
+  + [Operator Portal Use Guide](portal/container-platform-admin-portal-guide.md)
+- User Portal
+  + [User Portal Use Guide](portal/container-platform-user-portal-guide.md) 
 
-## 서비스 이용 가이드
-- Pipeline 서비스
-  + [Pipeline 서비스 사용 가이드](pipeline/paas-ta-container-platform-pipeline-use-guide.md)
-- Source Control 서비스
-  + [Source Control 서비스 사용 가이드](source-control/paas-ta-container-platform-source-control-use-guide.md)
+## Service Use Guide
+- Pipeline Service
+  + [Pipeline Service Use Guide](pipeline/paas-ta-container-platform-pipeline-use-guide.md)
+- Source Control Service
+  + [Source Control Service Use Guide](source-control/paas-ta-container-platform-source-control-use-guide.md)
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > CP Use
