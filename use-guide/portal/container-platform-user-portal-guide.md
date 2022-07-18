@@ -1,521 +1,521 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > User Portal Use Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)
-    * [1.1. 목적](#1-1)
-    * [1.2. 범위](#1-2)
-2. [컨테이너 플랫폼 사용자포털 접속](#2)
-    * [2.1. 컨테이너 플랫폼 사용자포털 회원가입](#2-1)
-    * [2.2. 컨테이너 플랫폼 사용자포털 로그인](#2-2)    
-3. [컨테이너 플랫폼 사용자포털 메뉴얼](#3)
-    * [3.1. 컨테이너 플랫폼 사용자포털 메뉴 구성](#3-1)
-    * [3.2. 컨테이너 플랫폼 사용자포털 메뉴 설명](#3-2)
+1. [Document Outline](#1)
+    * [1.1. Purpose](#1-1)
+    * [1.2. Range](#1-2)
+2. [Container Platform Platform User Portal Access](#2)
+    * [2.1. Container Platform User Portal Sign in](#2-1)
+    * [2.2. Container Platform User Portal Log in](#2-2)    
+3. [Container Platform User Portal Manual](#3)
+    * [3.1. Container Platform User Portal Menu Configuration](#3-1)
+    * [3.2. Container Platform User Portal Menu Description](#3-2)
     * [3.2.1. Intro](#3-2-1)
     * [3.2.1.1. Overview](#3-2-1-1)
     * [3.2.1.2. Access](#3-2-1-2)
     * [3.2.1.3. Private Repository](#3-2-1-3)
     * [3.2.2. Namespaces](#3-2-1-3)
-    * [3.2.2.1. Namespace 상세 조회](#3-2-2-1)
+    * [3.2.2.1. Namespace Details Check](#3-2-2-1)
     * [3.2.3. Nodes](#3-2-3)
-    * [3.2.3.1. Node 상세 조회](#3-2-3-1)
+    * [3.2.3.1. Node Details Check](#3-2-3-1)
     * [3.2.4. Users](#3-2-2)
-    * [3.2.4.1. User 목록 조회](#3-2-4-1)
-    * [3.2.4.2. User Role 변경](#3-2-4-2)
+    * [3.2.4.1. User List Check](#3-2-4-1)
+    * [3.2.4.2. User Role Change](#3-2-4-2)
     * [3.2.5. Roles](#3-2-5)
-    * [3.2.5.1 Role 목록 조회](#3-2-5-1)
-    * [3.2.5.2 Role 상세 조회](#3-2-5-2)
+    * [3.2.5.1 Role List Check](#3-2-5-1)
+    * [3.2.5.2 Role Details Check](#3-2-5-2)
     * [3.2.6. Workloads](#3-2-6)
     * [3.2.6.1. Deployments](#3-2-6-1)
-    * [3.2.6.1.1. Deployment 목록 조회](#3-2-6-1-1)
-    * [3.2.6.1.2. Deployment 상세 조회](#3-2-6-1-2)
-    * [3.2.6.1.3. Deployment 생성](#3-2-6-1-3)
-    * [3.2.6.1.4. Deployment 수정](#3-2-6-1-4)
-    * [3.2.6.1.5. Deployment 삭제](#3-2-6-1-5)
+    * [3.2.6.1.1. Deployment List Check](#3-2-6-1-1)
+    * [3.2.6.1.2. Deployment Details Check](#3-2-6-1-2)
+    * [3.2.6.1.3. Create Deployment](#3-2-6-1-3)
+    * [3.2.6.1.4. Modify Deployment](#3-2-6-1-4)
+    * [3.2.6.1.5. Delete Deployment](#3-2-6-1-5)
     * [3.2.6.2. Pods](#3-2-6-2)
-    * [3.2.6.2.1. Pod 목록 조회](#3-2-6-2-1)
-    * [3.2.6.2.2. Pod 상세 조회](#3-2-6-2-2)
-    * [3.2.6.2.3. Pod 생성](#3-2-6-2-3)
-    * [3.2.6.2.4. Pod 수정](#3-2-6-2-4)
-    * [3.2.6.2.5. Pod 삭제](#3-2-6-2-5)
+    * [3.2.6.2.1. Pod List Check](#3-2-6-2-1)
+    * [3.2.6.2.2. Pod Details Check](#3-2-6-2-2)
+    * [3.2.6.2.3. Create Pod](#3-2-6-2-3)
+    * [3.2.6.2.4. Modify Pod](#3-2-6-2-4)
+    * [3.2.6.2.5. Delete Pod](#3-2-6-2-5)
     * [3.2.6.3. Replica Sets](#3-2-6-3)
-    * [3.2.6.3.1. Replica Set 목록 조회](#3-2-6-3-1)
-    * [3.2.6.3.2. Replica Set 상세 조회](#3-2-6-3-2)
-    * [3.2.6.3.3. Replica Set 생성](#3-2-6-3-3)
-    * [3.2.6.3.4. Replica Set 수정](#3-2-6-3-4)
-    * [3.2.6.3.5. Replica Set 삭제](#3-2-6-3-5)
+    * [3.2.6.3.1. Replica Set List Check](#3-2-6-3-1)
+    * [3.2.6.3.2. Replica Set Details Check](#3-2-6-3-2)
+    * [3.2.6.3.3. Create Replica Set](#3-2-6-3-3)
+    * [3.2.6.3.4. Modify Replica Set](#3-2-6-3-4)
+    * [3.2.6.3.5. Delete Replica Set](#3-2-6-3-5)
     * [3.2.7. Services](#3-2-7)
-    * [3.2.7.1. Service 목록 조회](#3-2-7-1)
-    * [3.2.7.2. Service 상세 조회](#3-2-7-2)
-    * [3.2.7.3. Service 생성](#3-2-7-3)
-    * [3.2.7.4. Service 수정](#3-2-7-4)
-    * [3.2.7.5. Service 삭제](#3-2-7-5)
+    * [3.2.7.1. Service List Check](#3-2-7-1)
+    * [3.2.7.2. Service Details Check](#3-2-7-2)
+    * [3.2.7.3. Create Service](#3-2-7-3)
+    * [3.2.7.4. Modify Service](#3-2-7-4)
+    * [3.2.7.5. Delete Service](#3-2-7-5)
     * [3.2.8. Storages](#3-2-8)
-    * [3.2.8.1. Persistent Volume Claim 목록 조회](#3-2-8-1)
-    * [3.2.8.2. Persistent Volume Claim 상세 조회](#3-2-8-2)
-    * [3.2.8.3. Persistent Volume Claim 생성](#3-2-8-3)
-    * [3.2.8.4. Persistent Volume Claim 수정](#3-2-8-4)
-    * [3.2.8.5. Persistent Volume Claim 삭제](#3-2-8-5)
+    * [3.2.8.1. Persistent Volume Claim List Check](#3-2-8-1)
+    * [3.2.8.2. Persistent Volume Claim Details Check](#3-2-8-2)
+    * [3.2.8.3. Create Persistent Volume Claim](#3-2-8-3)
+    * [3.2.8.4. Modify Persistent Volume Claim](#3-2-8-4)
+    * [3.2.8.5. Delete Persistent Volume Claim](#3-2-8-5)
 
 
 ----
 
-# <div id='1'/> 1. 문서 개요
+# <div id='1'/> 1. Document Outline
 
-## <div id='1-1'/> 1.1. 목적
-본 문서는 컨테이너 플랫폼 사용자포털 사용 방법에 대해 기술하였다.
+## <div id='1-1'/> 1.1. Purpose
+This document describes how to use the container platform user portal.
 
-## <div id='1-2'/> 1.2. 범위
-본 문서는 Windows 환경을 기준으로 컨테이너 플랫폼 사용자포털의 사용 방법에 대해 기술하였다.
-
-<br>
-
-
-# <div id='2'/> 2. 컨테이너 플랫폼 사용자포털 접속
-컨테이너 플랫폼 사용자포털은 아래 주소로 접속 가능하다.<br>
-{K8S_MASTER_NODE_IP} 값은 **Kubernetes Master Node Public IP** 값을 입력한다.
-
-- 컨테이너 플랫폼 사용자포털 접속 URI : **http://{K8S_MASTER_NODE_IP}:32702** <br>
+## <div id='1-2'/> 1.2. Range
+This document describes how to use the container platform user portal based on the Windows environment.
 
 <br>
 
-### <div id='2-1'/> 2.1. 컨테이너 플랫폼 사용자포털 회원가입
 
-#### 사용자 회원가입    
-- http://{K8S_MASTER_NODE_IP}:32702에 접속한다.
-- 하단의 'Register' 버튼을 클릭한다.
+# <div id='2'/> 2. Container Platform Platform User Portal Access
+The container platform user portal can be accessed at the address below.<br>
+For {K8S_MASTER_NODE_IP} value, enter **Kubernetes Master Node Public IP** value.
+
+- Container Platform Platform User Portal Access URI : **http://{K8S_MASTER_NODE_IP}:32702** <br>
+
+<br>
+
+### <div id='2-1'/> 2.1. Container Platform User Portal Sign in
+
+#### User Sign in    
+- Access to http://{K8S_MASTER_NODE_IP}:32702.
+- Clicj 'Register' button below.
 
 ![IMG_001]
 
 
-- 등록할 사용자 계정정보를 입력 후 'Register' 버튼을 클릭하여 컨테이너 플랫폼 사용자포털에 회원가입한다.
+- After entering the user account information to be registered, click the 'Register' button to register as a member of the container platform user portal.
 
 ![IMG_002]
 
-- 컨테이너 플랫폼 사용자포털은 회원가입 후 바로 이용이 불가하며 Cluster 관리자 혹은 Namespace 관리자로부터 해당 사용자가 이용할 Namespace와 Role을 할당 받은 후 포털 이용이 가능하다.   
+- The container platform user portal is not available immediately after members sign in. The portal can be used after receiving the Namespace and Role to be used by the user from the Cluster Manager or Namespace manager.   
 
 ![IMG_003]
 
 
-### <div id='2-2'/> 2.2. 컨테이너 플랫폼 사용자포털 로그인
-- http://{K8S_MASTER_NODE_IP}:32702에 접속한다.
-- 회원가입을 통해 등록된 계정으로 컨테이너 플랫폼 사용자포털에 로그인한다.
+### <div id='2-2'/> 2.2. Container Platform User Portal Log in
+- Access to http://{K8S_MASTER_NODE_IP}:32702.
+- Log in to the container platform user portal with a registered account through a member sign in.
 
 ![IMG_108]
 
 <br>
 
-## <div id='3'/> 3. 컨테이너 플랫폼 사용자포털 메뉴얼
+## <div id='3'/> 3. Container Platform User Portal Manual
 
 
-## <div id='3-1'/> 3.1. 컨테이너 플랫폼 사용자포털 메뉴 구성
-| <center>메뉴</center> | <center>분류</center> | <center>설명</center> |
+## <div id='3-1'/> 3.1. Container Platform User Portal Menu Configuration
+| <center>Menu</center> | <center>Classification</center> | <center>Description</center> |
 | :--- | :--- | :--- |
-| Intro | Overview | 컨테이너 플랫폼 사용자포털 대시보드 |
-|| Access | 컨테이너 플랫폼 사용자포털 CLI 사용을 위한 환경 설정 정보 관리 |
-|| Private Repository | Private Repository 를 컨테이너 상에 배포 및 사용하기 위한 설정 정보 관리 |
-| Namespaces | Namespaces | Namespaces 조회 |
-| Nodes | Nodes | Nodes 조회 |
-| Users | Users | 사용자 관리 |
-| Roles | Roles | Roles 조회 |
-| Workloads | Overview | Workloads 대시보드 |
-|| Deployments | Deployments 정보 관리 |
-|| Pods | Pods 정보 관리 |
-|| Replica Sets | Replica Sets 정보 관리 |
-| Services | Services | Services 정보 관리 |
-| Storages | Persistent Volume Claims | Persistent Volume Claims 정보 관리 |
+| Intro | Overview | Container Platform User Portal Dashboard |
+|| Access | Managing configuration information for using the Container Platform User Portal CLI |
+|| Private Repository | Manage setup information for deploying and using Private Repository on containers |
+| Namespaces | Namespaces | Namespaces Check |
+| Nodes | Nodes | Nodes check |
+| Users | Users | Manage User |
+| Roles | Roles | Roles check |
+| Workloads | Overview | Workloads Dashboard |
+|| Deployments | Deployments information management |
+|| Pods | Pods information management |
+|| Replica Sets | Replica Sets information management |
+| Services | Services | Services information management |
+| Storages | Persistent Volume Claims | Persistent Volume Claims information management |
 
 
 
-## <div id='3-2'/> 3.2. 컨테이너 플랫폼 사용자포털 메뉴 설명
-본 장에서는 컨테이너 플랫폼 사용자포털의 메뉴에 대한 설명을 기술한다.
+## <div id='3-2'/> 3.2. Container Platform User Portal Menu Description
+This chapter describes the menu of the container platform user portal.
 
 ### <div id='3-2-1'/> 3.2.1. Intro
 
 #### <div id='3-2-1-1'/> 3.2.1.1. Overview
-- Namespace 정보, Resource Quota 정보, Limit Range 정보를 조회한다.
+- Check the Namespace information, Resource Quota information, Limit Range information.
 
-1. Intro의 Overview 탭을 클릭하여 Overview 페이지로 이동한다.
+1. Proceed to the Overview page by clicking the Overview tab of the Intro.
 
 ![IMG_004]
 
 
 #### <div id='3-2-1-2'/> 3.2.1.2. Access
-- 컨테이너 플랫폼의 CLI 사용을 위한 환경 설정 정보를 조회한다.
+- The configuration setting information for using the CLI of the container platform is checked.
 
-1. Intro의 Access 탭을 클릭하여 Access 페이지로 이동한다.
+1. Click the Access tab of the Intro to go to the Access page.
 
 ![IMG_005]
 
 
 #### <div id='3-2-1-3'/> 3.2.1.3. Private Repository
-- Private Repository의 정보 및 접속 링크를 포함한다.
+- Includes information and access links from the Private Repository.
 
-1. Intro의 Private Repository 탭을 클릭하여 Private Repository 페이지로 이동한다.
+1. Click the Intro's Private Repository tab to go to the Private Repository page.
 
 ![IMG_006]
 
 ### <div id='3-2-2'/> 3.2.2. Namespaces
-#### <div id='3-2-2-1'/> 3.2.2.1. Namespace 상세 조회
+#### <div id='3-2-2-1'/> 3.2.2.1. Namespace Details Check
 
-- Namespace 상세 페이지는 Details, Events 탭으로 구성된다.
+- The Namespace detail page consists of the Details, Events tab.
 
-1. Intro의 Overview 탭에서 Namespace 명을 클릭하여 Namespace 상세 페이지로 이동한다.
+1. click Namespace Name to go to the Namespace detail page from the Overview tab of the Intro.
 
-#### Intro의 Overview 탭
+#### Overview Tab of Intro
 ![IMG_007]
 
-#### Namespace 상세 페이지
+#### Namespace Details Page
 ![IMG_009]
 ![IMG_010]
 
 ### <div id='3-2-3'/> 3.2.3. Nodes
-#### <div id='3-2-3-1'/> 3.2.3.1. Node 상세 조회
+#### <div id='3-2-3-1'/> 3.2.3.1. Node Details Check
 
-- Node 상세 페이지는 Summary, Details, Events 탭으로 구성된다.
+- The Node detail page consists of Summary, Details, and Events tabs.
 
-1. Pods 목록에서 Node 명을 클릭하여 Node 상세 페이지로 이동한다.
-#### Pod 목록
+1. Click the Node name in the Pods list to go to the Node Details page.
+#### Pod List
 ![IMG_011]
 
-#### Node 상세 페이지
+#### Node Details Page
 ![IMG_012]
 ![IMG_013]
 ![IMG_014]
 
 
 ### <div id='3-2-4'/> 3.2.4. Users
--  사용자포털을 이용하는 사용자 계정 정보와 Role을 관리한다.
+-  User account information and Role using the user portal are managed.
 
-| <center>사용자 유형</center> | <center>기능</center> |
+| <center>User Type</center> | <center>Function</center> |
 | :--- | :--- |
-| Cluster 관리자 | 운영자 포털 접근, 사용자 Namespace/Role 할당  |
-| Namespace 관리자 |사용자포털 접근, 사용자 Namespace/Role 할당  |
-| 일반 사용자 | 사용자포털 접근|
+| Cluster Operator | Access to operator portal, assign user Namespace/Role  |
+| Namespace Operator |Access to operator portal, assign user Namespace/Role  |
+| Normal User | Access to operator portal|
 
-- Cluster 관리자는 사용자에게 Namespace/Role을 할당 할 수 있다. 해당 작업은 운영자포털에서 가능하다.
-- Namespace 관리자는 본인이 관리하는 Namespace 사용자의 Role 변경 및 해당 Namespace를 미사용하는 사용자에게 접근 권한을 할당할 수 있다.
+- Cluster administrators can assign Namespace/Role to users. The task is available on the operator portal.
+- The Namespace administrator can change the role of the Namespace user he manages and assign access to users who do not use the Namespace.
 
-#### <div id='3-2-4-1'/> 3.2.4.1. User 목록 조회
-1. 상단 우측 아이콘 클릭 후 메뉴 'Users' 에 접속하여 해당 Namespace의 User 목록을 조회한다.
+#### <div id='3-2-4-1'/> 3.2.4.1. User List Check
+1. Click the upper right icon and access the menu 'Users' to view the list of users in the corresponding Namespace.
 
 ![IMG_015]
 ![IMG_017]
 
 
-#### <div id='3-2-4-2'/> 3.2.4.2. User Role 변경
-1. 사용자의 Role 변경은 **Namespace 관리자**만 수행 가능하다.
+#### <div id='3-2-4-2'/> 3.2.4.2. User Role Change
+1. Changing of the User's Role can be done only by the **Namespace operator**.
 
-#### User 목록 페이지
+#### User List Page
 ![IMG_018]
 
-#### User Role 설정 페이지
+#### User Role Setting Page
 ![IMG_019]
 
--  해당 Namespace 사용자의 Role을 변경 혹은 해당 Namespace 미사용자 User ID 좌측의 체크박스를 선택하여(접근 권한 할당) 저장버튼을 클릭한다. 
+-  Change the Role of the corresponding Namespace user or select the check box to the left of the corresponding Namespace non-user User ID (assign access) and click the Save button.
 
 ![IMG_020]
 ![IMG_021]
 
 ### <div id='3-2-5'/> 3.2.5. Roles
-#### <div id='3-2-5-1'/> 3.2.5.1. Role 목록 조회
+#### <div id='3-2-5-1'/> 3.2.5.1. Role List Check
 
-1.  Role 목록을 조회한다.
+1.  Check the Role List.
 
 ![IMG_022]
 
 
-#### <div id='3-2-5-2'/> 3.2.5.2. Role 상세 조회
+#### <div id='3-2-5-2'/> 3.2.5.2. Role Details Check
 
-- Role 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+- The Role detail page consists of Details, Events, and YAML tabs.
 
-1. Role 목록에서 Role 명을 클릭하여 Role 상세 페이지로 이동한다.
+1. Click the Role name in the Role list to go to the Role Details page.
 
-#### Role 목록 페이지
+#### Role List Page
 ![IMG_023]
 
-#### Role 상세 페이지
+#### Role Details Page
 ![IMG_024]
 ![IMG_025]
 ![IMG_026]
 
 ### <div id='3-2-6'/> 3.2.6. Workloads
--  Overview, Deployments, Pods, Replica Sets 목록을 조회한다.
+-  Check the Overview, Deployments, Pods, and Replica Sets List.
 
 ![IMG_027]
 
 #### <div id='3-2-6-1'/> 3.2.6.1. Deployments
 
-##### <div id='3-2-6-1-1'/> 3.2.6.1.1. Deployment 목록 조회
-1. Workloads의 Deployment 탭을 클릭하여 Deployment 목록 페이지로 이동한다.
+##### <div id='3-2-6-1-1'/> 3.2.6.1.1. Deployment List Check
+1. Click the Deployment tab of Workloads to go to the Deployment list page.
 
 ![IMG_028]
 
-##### <div id='3-2-6-1-2'/> 3.2.6.1.2. Deployment 상세 조회
-- Deployment 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+##### <div id='3-2-6-1-2'/> 3.2.6.1.2. Deployment Details Check
+- The Deployment Details page consists of the Details, Events, and YAML tabs.
 
 
-1. Deployment 목록에서 Deployment명을 클릭하여 Deployment 상세 페이지로 이동한다.
+1. Click the Deployment name in the Deployment list to go to the Deployment Details page.
 
-#### Deployment 목록 페이지
+#### Deployment List Page
 ![IMG_029]
 
-#### Deployment 상세 페이지
+#### Deployment Details Page
 ![IMG_030]
 ![IMG_031]
 ![IMG_032]
 
-##### <div id='3-2-6-1-3'/> 3.2.6.1.3. Deployment 생성
-1. Deployment 목록에서 생성 버튼을 클릭하여 Deployment 생성 페이지로 이동한다.
+##### <div id='3-2-6-1-3'/> 3.2.6.1.3. Create Deployment
+1. Click the Create button in the Deployment list to go to the Create Deployment page.
 
-#### Deployment 목록 페이지
+#### Deployment List Page
 ![IMG_033]
 
-#### Deployment 생성 페이지
+#### Deployment Creating Page
 ![IMG_034]
 ![IMG_035]
 ![IMG_036]
 
 
-##### <div id='3-2-6-1-4'/> 3.2.6.1.4. Deployment 수정
-1. Deployment 상세에서 수정 버튼을 클릭하여 Deployment 수정 페이지로 이동한다.
+##### <div id='3-2-6-1-4'/> 3.2.6.1.4. Modify Deployment
+1. Click the Modify button in Deployment Details to go to the Modify Deployment page.
 
-#### Deployment 상세 페이지
+#### Deployment Details Page
 ![IMG_037]
 
-#### Deployment 수정 페이지
+#### Deployment Modifying Page
 ![IMG_038]
 ![IMG_039]
 ![IMG_040]
 
-##### <div id='3-2-6-1-5'/> 3.2.6.1.5. Deployment 삭제
-1. Deployment 상세에서 삭제 버튼을 클릭하면 Deployment 삭제 팝업창이 뜬다.
+##### <div id='3-2-6-1-5'/> 3.2.6.1.5. Delete Deployment
+1. When you click the Delete button in Deployment Details, the Delete Deployment pop-up window appears.
 
-#### Deployment 상세 페이지
+#### Deployment Details Page
 ![IMG_041]
 
-#### Deployment 삭제 팝업창
+#### Deployment Delete Pop-up Screen
 ![IMG_042]
 ![IMG_043]
 
 #### <div id='3-2-6-2'/> 3.2.6.2. Pods
 
-##### <div id='3-2-6-2-1'/> 3.2.6.2.1. Pod 목록 조회
-1. Workloads의 Pods 탭을 클릭하여 Pod 목록 페이지로 이동한다.
+##### <div id='3-2-6-2-1'/> 3.2.6.2.1. Pod List Check
+1. Click the Pods tab of the Workloads to go to the Pod list page.
 
 ![IMG_044]
 
-##### <div id='3-2-6-2-2'/> 3.2.6.2.2. Pod 상세 조회
-- Pod 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+##### <div id='3-2-6-2-2'/> 3.2.6.2.2. Pod Details Check
+- The Pod detail page consists of Details, Events, and YAML tabs.
 
-1. Pod 목록에서 Pod 명을 클릭하여 Pod 상세 페이지로 이동한다.
+1. Click the Pod name in the Pod list to go to the Pod details page.
 
-#### Pod 목록 페이지
+#### Pod List Page
 ![IMG_045]
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_046]
 ![IMG_047]
 ![IMG_048]
 
-##### <div id='3-2-6-2-3'/> 3.2.6.2.3. Pod 생성
-1. Pod 목록에서 생성 버튼을 클릭하여 Pod 생성 페이지로 이동한다.
+##### <div id='3-2-6-2-3'/> 3.2.6.2.3. Create Pod
+1. Click the Create button in the Pod list to go to the Create Pod page.
 
-#### Pod 목록 페이지
+#### Pod List Page
 ![IMG_049]
 
-#### Pod 생성 페이지
+#### Pod Creating Page
 ![IMG_050]
 ![IMG_051]
 ![IMG_052]
 
-##### <div id='3-2-6-2-4'/> 3.2.6.2.4. Pod 수정
-1. Pod 상세에서 수정 버튼을 클릭하여 Pod 수정 페이지로 이동한다.
+##### <div id='3-2-6-2-4'/> 3.2.6.2.4. Modify Pod
+1. Click the Modify button in Pod Details to go to the Modify Pod page.
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_053]
 
-#### Pod 수정 페이지
+#### Pod Modifying Page
 ![IMG_054]
 ![IMG_055]
 ![IMG_056]
 
-##### <div id='3-2-6-2-5'/> 3.2.6.2.5. Pod 삭제
-1. Pod 상세에서 삭제 버튼을 클릭하면 Pod 삭제 팝업창이 뜬다.
+##### <div id='3-2-6-2-5'/> 3.2.6.2.5. Delete Pod
+1. Click the Delete button in Pod Details, then a Pod Delete pop-up window appears.
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_057]
 
-#### Pod 삭제 팝업창
+#### Pod Delete Pop-up Screen
 ![IMG_058]
 ![IMG_059]
 
 
 #### <div id='3-2-6-3'/> 3.2.6.3. Replica Sets
 
-##### <div id='3-2-6-3-1'/> 3.2.6.3.1. Replica Set 목록 조회
-1. Workloads의 Replica Sets 탭을 클릭하여 Replica Set 목록 페이지로 이동한다.
+##### <div id='3-2-6-3-1'/> 3.2.6.3.1. Replica Set List Check
+1. Click the Replica Sets tab in Workloads to go to the Replica Set list page.
 
 ![IMG_060]
 
-##### <div id='3-2-6-3-2'/> 3.2.6.3.2. Replica Set 상세 조회
-- Replica Set 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+##### <div id='3-2-6-3-2'/> 3.2.6.3.2. Replica Set Details Check
+- The Replica Set detail page consists of Details, Events, and YAML tabs.
 
-1. Replica Set 목록에서 Replica Set 명을 클릭하여 Replica Set 상세 페이지로 이동한다.
+1. Click the Replica Set name in the Replica Set list to go to the Replica Set detail page.
 
-#### Replica Set 목록 페이지
+#### Replica Set List Page
 ![IMG_061]
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_062]
 ![IMG_063]
 ![IMG_064]
 
-##### <div id='3-2-6-3-3'/> 3.2.6.3.3. Replica Set 생성
-1. Replica Set 목록에서 생성 버튼을 클릭하여 Replica Set 생성 페이지로 이동한다.
+##### <div id='3-2-6-3-3'/> 3.2.6.3.3. Create Replica Set
+1. Click the Create button in the Replica Set list to go to the Create Replica Set page.
 
-#### Replica Set 목록 페이지
+#### Replica Set List Page
 ![IMG_065]
 
-#### Replica Set 생성 페이지
+#### Replica Set Details Page
 ![IMG_066]
 ![IMG_067]
 ![IMG_068]
 
-##### <div id='3-2-6-3-4'/> 3.2.6.3.4. Replica Set 수정
-1. Replica Set 상세에서 수정 버튼을 클릭하여 Replica Set 수정 페이지로 이동한다.
+##### <div id='3-2-6-3-4'/> 3.2.6.3.4. Modify Replica Set
+1. Click the Modify button in Replica Set Details to go to the Modify Replica Set page.
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_069]
 
-#### Replica Set 수정 페이지
+#### Replica Set Modifying Page
 ![IMG_070]
 ![IMG_071]
 ![IMG_072]
 
-##### <div id='3-2-6-3-5'/> 3.2.6.3.5. Replica Set 삭제
-1. Replica Set 상세에서 삭제 버튼을 클릭하면 Replica Set 삭제 팝업창이 뜬다.
+##### <div id='3-2-6-3-5'/> 3.2.6.3.5. Delete Replica Set
+1. click the Delete button in Replica Set Details, then the Delete Replica Set pop-up window appears.
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_073]
 
-#### Replica Set 삭제 팝업창
+#### Replica Set Delete Pop-up Screen
 ![IMG_074]
 ![IMG_075]
 
 
-### <div id='3-2-7'/> 3.2.7. Services 메뉴
+### <div id='3-2-7'/> 3.2.7. Services Menu
 
-#### <div id='3-2-7-1'/> 3.2.7.1. Service 목록 조회
-1. Services 메뉴를 클릭하여 Service 목록 페이지로 이동한다.
+#### <div id='3-2-7-1'/> 3.2.7.1. Service List Check
+1. Click the Services menu to go to the Service List page.
 
 ![IMG_076]
 
 
-#### <div id='3-2-7-2'/> 3.2.7.2. Service 상세 조회
-- Service 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+#### <div id='3-2-7-2'/> 3.2.7.2. Service Details Check
+- The Service Details page consists of Details, Events, and YAML tabs.
 
-1. Service 목록에서 Service 명을 클릭하여 Service 상세 페이지로 이동한다.
+1. Click the service name in the Service list to go to the Service Details page.
 
-#### Service 목록 페이지
+#### Service List Page
 ![IMG_077]
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_078]
 ![IMG_079]
 ![IMG_080]
 
-##### <div id='3-2-7-3'/> 3.2.7.3. Service 생성
-1. Service 목록에서 생성 버튼을 클릭하여 Service 생성 페이지로 이동한다.
+##### <div id='3-2-7-3'/> 3.2.7.3. Create Service
+1. Click the Create button in the Service list to go to the Create Service page.
 
-#### Service 목록 페이지
+#### Service List Page
 ![IMG_081]
 
-#### Service 생성 페이지
+#### Service Creating Page
 ![IMG_082]
 ![IMG_083]
 ![IMG_084]
 
-##### <div id='3-2-7-4'/> 3.2.7.4. Service 수정
-1. Service 상세에서 수정 버튼을 클릭하여 Service 수정 페이지로 이동한다.
+##### <div id='3-2-7-4'/> 3.2.7.4. Modify Service
+1. Click the Modify button in Service Details to go to the Modify Service page.
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_085]
 
-#### Service 수정 페이지
+#### Service Modifying Page
 ![IMG_086]
 ![IMG_087]
 ![IMG_088]
 
-##### <div id='3-2-7-5'/> 3.2.7.5. Service 삭제
-1. Service 상세에서 삭제 버튼을 클릭하면 Service 삭제 팝업창이 뜬다.
+##### <div id='3-2-7-5'/> 3.2.7.5. Delete Service
+1. Click the Delete button in Service Details, then a pop-up window for Delete Service appears.
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_089]
 
-#### Service 삭제 팝업창
+#### Service Delete Pop-up screen
 ![IMG_090]
 ![IMG_091]
 
 
-### <div id='3-2-8'/> 3.2.8. Storages 메뉴
+### <div id='3-2-8'/> 3.2.8. Storages menu
 
-#### <div id='3-2-8-1'/> 3.2.8.1. Persistent Volume Claim 목록 조회
-1. Storages 메뉴를 클릭하여 Persistent Volume Claim 목록 페이지로 이동한다.
+#### <div id='3-2-8-1'/> 3.2.8.1. Persistent Volume Claim List Check
+1. Click the Storages menu to go to the Persistent Volume Claim list page.
 
 ![IMG_092]
 
-#### <div id='3-2-8-2'/> 3.2.8.2. Persistent Volume Claim 상세 조회
-- Persistent Volume Claim 상세 페이지는 Details, Events, YAML 탭으로 구성된다.
+#### <div id='3-2-8-2'/> 3.2.8.2. Persistent Volume Claim Details Check
+- The Persistent Volume Claim detail page consists of Details, Events, and YAML tabs.
 
-1. Persistent Volume Claim 목록에서 Persistent Volume Claim 명을 클릭하여 Persistent Volume Claim 상세 페이지로 이동한다.
+1.  Click the Persistent Volume Claim name to go to the Persistent Volume Claim detail page from the Persistent Volume Claim list.
 
-#### Persistent Volume Claim 목록 페이지
+#### Persistent Volume Claim List Page
 ![IMG_093]
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_094]
 ![IMG_095]
 ![IMG_096]
 
-##### <div id='3-2-8-3'/> 3.2.8.3. Persistent Volume Claim 생성
-1. Persistent Volume Claim 목록에서 생성 버튼을 클릭하여 Persistent Volume Claim 생성 페이지로 이동한다.
+##### <div id='3-2-8-3'/> 3.2.8.3. Create Persistent Volume Claim
+1. Click the Create button in the Persistent Volume Claim list to go to the Create Persistent Volume Claim page.
 
-#### Persistent Volume Claim 목록 페이지
+#### Persistent Volume Claim List Page
 ![IMG_097]
 
-#### Persistent Volume Claim 생성 페이지
+#### Persistent Volume Claim Creating Page
 ![IMG_098]
 ![IMG_099]
 ![IMG_100]
 
 
-##### <div id='3-2-8-4'/> 3.2.8.4. Persistent Volume Claim 수정
-1. Persistent Volume Claim 상세에서 수정 버튼을 클릭하여 Persistent Volume Claim 수정 페이지로 이동한다.
+##### <div id='3-2-8-4'/> 3.2.8.4. Modify Persistent Volume Claim
+1. Click the Modify button in the Persistent Volume Claim details to go to the Correct Persistent Volume Claim page.
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_101]
 
-#### Persistent Volume Claim 수정 페이지
+#### Persistent Volume Claim Modifying Page
 ![IMG_102]
 ![IMG_103]
 ![IMG_104]
 
-##### <div id='3-2-8-5'/> 3.2.8.5. Persistent Volume Claim 삭제
-1. Persistent Volume Claim 상세에서 삭제 버튼을 클릭하면 Persistent Volume Claim 삭제 팝업창이 뜬다.
+##### <div id='3-2-8-5'/> 3.2.8.5. Delete Persistent Volume Claim
+1. Click the Delete button in Persistent Volume Claim details, then a Delete Persistent Volume Claim pop-up window appears.
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_105]
 
-#### Persistent Volume Claim 삭제 팝업창
+#### Persistent Volume Claim Delete Pop-up Screen
 ![IMG_106]
 ![IMG_107]
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 사용자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > User Portal Use Guide
 
 ----
 
