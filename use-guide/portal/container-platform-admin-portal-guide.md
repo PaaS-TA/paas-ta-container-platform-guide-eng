@@ -1,197 +1,197 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 운영자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > Operator Portal Use Guide
 
 <br>
 
 ## Table of Contents
 
-1. [문서 개요](#1)
-    * [1.1. 목적](#1-1)
-    * [1.2. 범위](#1-2)
-2. [컨테이너 플랫폼 운영자포털 접속](#2)
-    * [2.1. 컨테이너 플랫폼 운영자포털 로그인](#2-1)    
-3. [컨테이너 플랫폼 운영자포털 메뉴얼](#3)
-    * [3.1. 컨테이너 플랫폼 운영자포털 메뉴 구성](#3-1)
-    * [3.2. 컨테이너 플랫폼 운영자포털 메뉴 설명](#3-2)
+1. [Document Outline](#1)
+    * [1.1. Purpose](#1-1)
+    * [1.2. Range](#1-2)
+2. [Container Platform Operator Portal Access](#2)
+    * [2.1. Container Platform Operator Portal Log in](#2-1)    
+3. [Container Platform Operator Portal Manual](#3)
+    * [3.1. Container Platform Operator Portal Menu Configuration](#3-1)
+    * [3.2. Container Platform Operator Portal Menu Description](#3-2)
     * [3.2.1. Overview](#3-2-1)
-    * [3.2.1.1. Overview 목록 조회](#3-2-1-1)
-    * [3.2.1.2. Overview Namespace 변경](#3-2-1-2)
-    * [3.2.2. Clusters 메뉴](#3-2-2)
+    * [3.2.1.1. Overview List Check](#3-2-1-1)
+    * [3.2.1.2. Overview Namespace Change](#3-2-1-2)
+    * [3.2.2. Clusters Menu](#3-2-2)
     * [3.2.2.1. Namespaces](#3-2-2-1)
-    * [3.2.2.1.1. Namespace 목록 조회](#3-2-2-1-1)
-    * [3.2.2.1.2. Namespace 상세 조회](#3-2-2-1-2)
-    * [3.2.2.1.3. Namespace 생성](#3-2-2-1-3)
-    * [3.2.2.1.4. Namespace 수정](#3-2-2-1-4)
-    * [3.2.2.1.5. Namespace 삭제](#3-2-2-1-5)
+    * [3.2.2.1.1. Namespace List Check](#3-2-2-1-1)
+    * [3.2.2.1.2. Namespace Details Check](#3-2-2-1-2)
+    * [3.2.2.1.3. Create Namespace](#3-2-2-1-3)
+    * [3.2.2.1.4. Modify Namespace](#3-2-2-1-4)
+    * [3.2.2.1.5. Delete Namespace](#3-2-2-1-5)
     * [3.2.2.2. Nodes](#3-2-2-2)
-    * [3.2.2.2.1. Node 목록 조회](#3-2-2-2-1)
-    * [3.2.2.2.2. Node 상세 조회](#3-2-2-2-2)
-    * [3.2.3. Workloads 메뉴](#3-2-3)
+    * [3.2.2.2.1. Node List Check](#3-2-2-2-1)
+    * [3.2.2.2.2. Node Details Check](#3-2-2-2-2)
+    * [3.2.3. Workloads Menu](#3-2-3)
     * [3.2.3.1. Deployments](#3-2-3-1)
-    * [3.2.3.1.1. Deployment 목록 조회](#3-2-3-1-1)
-    * [3.2.3.1.2. Deployment 상세 조회](#3-2-3-1-2)
-    * [3.2.3.1.3. Deployment 생성](#3-2-3-1-3)
-    * [3.2.3.1.4. Deployment 수정](#3-2-3-1-4)
-    * [3.2.3.1.5. Deployment 삭제](#3-2-3-1-5)
+    * [3.2.3.1.1. Deployment List Check](#3-2-3-1-1)
+    * [3.2.3.1.2. Deployment Details Check](#3-2-3-1-2)
+    * [3.2.3.1.3. Create Deployment](#3-2-3-1-3)
+    * [3.2.3.1.4. Modify Deployment](#3-2-3-1-4)
+    * [3.2.3.1.5. Delete Deployment](#3-2-3-1-5)
     * [3.2.3.2. Pods](#3-2-3-2)
-    * [3.2.3.2.1. Pod 목록 조회](#3-2-3-2-1)
-    * [3.2.3.2.2. Pod 상세 조회](#3-2-3-2-2)
-    * [3.2.3.2.3. Pod 생성](#3-2-3-2-3)
-    * [3.2.3.2.4. Pod 수정](#3-2-3-2-4)
-    * [3.2.3.2.5. Pod 삭제](#3-2-3-2-5)
+    * [3.2.3.2.1. Pod List Check](#3-2-3-2-1)
+    * [3.2.3.2.2. Pod Details Check](#3-2-3-2-2)
+    * [3.2.3.2.3. Create Pod](#3-2-3-2-3)
+    * [3.2.3.2.4. Modify Pod](#3-2-3-2-4)
+    * [3.2.3.2.5. Delete Pod](#3-2-3-2-5)
     * [3.2.3.3. Replica Sets](#3-2-3-3)
-    * [3.2.3.3.1. Replica Set 목록 조회](#3-2-3-3-1)
-    * [3.2.3.3.2. Replica Set 상세 조회](#3-2-3-3-2)
-    * [3.2.3.3.3. Replica Set 생성](#3-2-3-3-3)
-    * [3.2.3.3.4. Replica Set 수정](#3-2-3-3-4)
-    * [3.2.3.3.5. Replica Set 삭제](#3-2-3-3-5)
-    * [3.2.4. Services 메뉴](#3-2-4)
-    * [3.2.4.1. Service 목록 조회](#3-2-4-1)
-    * [3.2.4.2. Service 상세 조회](#3-2-4-2)
-    * [3.2.4.3. Service 생성](#3-2-4-3)
-    * [3.2.4.4. Service 수정](#3-2-4-4)
-    * [3.2.4.5. Service 삭제](#3-2-4-5)
-    * [3.2.5. Storages 메뉴](#3-2-5)
+    * [3.2.3.3.1. Replica Set List Chek](#3-2-3-3-1)
+    * [3.2.3.3.2. Replica Set Details Check](#3-2-3-3-2)
+    * [3.2.3.3.3. Create Replica Set](#3-2-3-3-3)
+    * [3.2.3.3.4. Modify Replica Set](#3-2-3-3-4)
+    * [3.2.3.3.5. Delete Replica Set](#3-2-3-3-5)
+    * [3.2.4. Services Menu](#3-2-4)
+    * [3.2.4.1. Service List Check](#3-2-4-1)
+    * [3.2.4.2. Service Details Check](#3-2-4-2)
+    * [3.2.4.3. Create Service](#3-2-4-3)
+    * [3.2.4.4. Modify Service](#3-2-4-4)
+    * [3.2.4.5. Delete Service](#3-2-4-5)
+    * [3.2.5. Storages Menu](#3-2-5)
     * [3.2.5.1. Persistent Volumes](#3-2-5-1)
-    * [3.2.5.1.1. Persistent Volume 목록 조회](#3-2-5-1-1)
-    * [3.2.5.1.2. Persistent Volume 상세 조회](#3-2-5-1-2)
-    * [3.2.5.1.3. Persistent Volume 생성](#3-2-5-1-3)
-    * [3.2.5.1.4. Persistent Volume 수정](#3-2-5-1-4)
-    * [3.2.5.1.5. Persistent Volume 삭제](#3-2-5-1-5)
+    * [3.2.5.1.1. Persistent Volume List Check](#3-2-5-1-1)
+    * [3.2.5.1.2. Persistent Volume Details Check](#3-2-5-1-2)
+    * [3.2.5.1.3. Create Persistent Volume](#3-2-5-1-3)
+    * [3.2.5.1.4. Modify Persistent Volume](#3-2-5-1-4)
+    * [3.2.5.1.5. Delete Persistent Volume](#3-2-5-1-5)
     * [3.2.5.2. Persistent Volume Claims](#3-2-5-2)
-    * [3.2.5.2.1. Persistent Volume Claim 목록 조회](#3-2-5-2-1)
-    * [3.2.5.2.2. Persistent Volume Claim 상세 조회](#3-2-5-2-2)
-    * [3.2.5.2.3. Persistent Volume Claim 생성](#3-2-5-2-3)
-    * [3.2.5.2.4. Persistent Volume Claim 수정](#3-2-5-2-4)
-    * [3.2.5.2.5. Persistent Volume Claim 삭제](#3-2-5-2-5)
+    * [3.2.5.2.1. Persistent Volume Claim List Chek](#3-2-5-2-1)
+    * [3.2.5.2.2. Persistent Volume Claim Details Check](#3-2-5-2-2)
+    * [3.2.5.2.3. Create Persistent Volume Claim](#3-2-5-2-3)
+    * [3.2.5.2.4. Modify Persistent Volume Claim](#3-2-5-2-4)
+    * [3.2.5.2.5. Delete Persistent Volume Claim](#3-2-5-2-5)
     * [3.2.5.3. Storage Classes](#3-2-5-3)
-    * [3.2.5.3.1. Storage Class 목록 조회](#3-2-5-3-1)
-    * [3.2.5.3.2. Storage Class 상세 조회](#3-2-5-3-2)
-    * [3.2.5.3.3. Storage Class 생성](#3-2-5-3-3)
-    * [3.2.5.3.4. Storage Class 수정](#3-2-5-3-4)
-    * [3.2.5.3.5. Storage Class 삭제](#3-2-5-3-5)
-    * [3.2.6. Managements 메뉴](#3-2-6)
+    * [3.2.5.3.1. Storage Class List Check](#3-2-5-3-1)
+    * [3.2.5.3.2. Storage Class Details Check](#3-2-5-3-2)
+    * [3.2.5.3.3. Create Storage Class](#3-2-5-3-3)
+    * [3.2.5.3.4. Modify Storage Class](#3-2-5-3-4)
+    * [3.2.5.3.5. Delete Storage Class](#3-2-5-3-5)
+    * [3.2.6. Managements Menu](#3-2-6)
     * [3.2.6.1. Users](#3-2-6-1)
-    * [3.2.6.1.1. 클러스터 관리자 조회](#3-2-6-1-1)  
-    * [3.2.6.1.2. 클러스터 관리자 상세 조회](#3-2-6-1-2)  
-    * [3.2.6.1.3. 일반 사용자 목록 조회](#3-2-6-1-3)  
-    * [3.2.6.1.4. 일반 사용자 상세 조회](#3-2-6-1-4)  
-    * [3.2.6.1.5. User 수정](#3-2-6-1-5)  
+    * [3.2.6.1.1. Cluster Operator Check](#3-2-6-1-1)  
+    * [3.2.6.1.2. Cluster Operator Details Check](#3-2-6-1-2)  
+    * [3.2.6.1.3. Normal User List Check](#3-2-6-1-3)  
+    * [3.2.6.1.4. Normal User Details Check](#3-2-6-1-4)  
+    * [3.2.6.1.5. Modify User](#3-2-6-1-5)  
     * [3.2.6.2. Roles](#3-2-6-2)  
-    * [3.2.6.2.1. Role 목록 조회](#3-2-6-2-1)
-    * [3.2.6.2.2. Role 상세 조회](#3-2-6-2-2)
-    * [3.2.6.2.3. Role 생성](#3-2-6-2-3)
-    * [3.2.6.2.4. Role 수정](#3-2-6-2-4)
-    * [3.2.6.2.5. Role 삭제](#3-2-6-2-5)
+    * [3.2.6.2.1. Role List Check](#3-2-6-2-1)
+    * [3.2.6.2.2. Role Details Check](#3-2-6-2-2)
+    * [3.2.6.2.3. Create Role](#3-2-6-2-3)
+    * [3.2.6.2.4. Modify Role](#3-2-6-2-4)
+    * [3.2.6.2.5. Delete Role](#3-2-6-2-5)
     * [3.2.6.3. Resource Quotas](#3-2-6-3)
-    * [3.2.6.3.1. Resource Quota 목록 조회](#3-2-6-3-1)
-    * [3.2.6.3.2. Resource Quota 상세 조회](#3-2-6-3-2)
-    * [3.2.6.3.3. Resource Quota 생성](#3-2-6-3-3)
-    * [3.2.6.3.4. Resource Quota 수정](#3-2-6-3-4)
-    * [3.2.6.3.5. Resource Quota 삭제](#3-2-6-3-5)
+    * [3.2.6.3.1. Resource Quota List Check](#3-2-6-3-1)
+    * [3.2.6.3.2. Resource Quota Details Check](#3-2-6-3-2)
+    * [3.2.6.3.3. Create Resource Quota](#3-2-6-3-3)
+    * [3.2.6.3.4. Modify Resource Quota](#3-2-6-3-4)
+    * [3.2.6.3.5. Delete Resource Quota](#3-2-6-3-5)
     * [3.2.6.4. Limit Ranges](#3-2-6-4)
-    * [3.2.6.4.1. Limit Range 목록 조회](#3-2-6-4-1)
-    * [3.2.6.4.2. Limit Range 상세 조회](#3-2-6-4-2)
-    * [3.2.6.4.3. Limit Range 생성](#3-2-6-4-3)
-    * [3.2.6.4.4. Limit Range 수정](#3-2-6-4-4)
-    * [3.2.6.4.5. Limit Range 삭제](#3-2-6-4-5)
+    * [3.2.6.4.1. Limit Range List Check](#3-2-6-4-1)
+    * [3.2.6.4.2. Limit Range Details Check](#3-2-6-4-2)
+    * [3.2.6.4.3. Create Limit Range](#3-2-6-4-3)
+    * [3.2.6.4.4. Modify Limit Range](#3-2-6-4-4)
+    * [3.2.6.4.5. Delete Limit Range](#3-2-6-4-5)
 
 
 <br>
 
 
-# <div id='1'/> 1. 문서 개요
+# <div id='1'/> 1. Document Outline
 
-## <div id='1-1'/> 1.1. 목적
-본 문서는 컨테이너 플랫폼 운영자포털 사용 방법에 대해 기술하였다.
+## <div id='1-1'/> 1.1. Purpose
+This document describes on the usage of the container platform operator portal.
 
-## <div id='1-2'/> 1.2. 범위
-본 문서는 Windows 환경을 기준으로 컨테이너 플랫폼 운영자포털의 사용 방법에 대해 기술하였다.
-
-<br>
-
-
-# <div id='2'/> 2. 컨테이너 플랫폼 운영자포털 접속
-컨테이너 플랫폼 운영자포털은 아래 주소로 접속 가능하다.<br>
-{K8S_MASTER_NODE_IP} 값은 **Kubernetes Master Node Public IP** 값을 입력한다.
-
-- 컨테이너 플랫폼 운영자포털 접속 URI : **http://{K8S_MASTER_NODE_IP}:32703** <br>
+## <div id='1-2'/> 1.2. Range
+This document describes how to use the container platform operator portal based on the Windows environment.
 
 <br>
 
-## <div id='2-1'/> 2.1. 컨테이너 플랫폼 운영자포털 로그인
-컨테이너 플랫폼 운영자포털 접속 초기 정보는 아래와 같다.
-- http://{K8S_MASTER_NODE_IP}:32703에 접속한다.   
-- username : **admin** / password : **admin** 계정으로 컨테이너 플랫폼 운영자포털에 로그인한다.
+
+# <div id='2'/> 2. Container Platform Operator Portal Access
+The container platform operator portal can be accessed at the address below.<br>
+For {K8S_MASTER_NODE_IP} value, enter **Kubernetes Master Node Public IP** value.
+
+- Container Platform Operator Portal Access URI : **http://{K8S_MASTER_NODE_IP}:32703** <br>
+
+<br>
+
+## <div id='2-1'/> 2.1. Container Platform Operator Portal Log in
+The initial information on accessing the container platform operator portal is as follows.
+- Access to http://{K8S_MASTER_NODE_IP}:32703.   
+- Log in to the container platform operator's portal by using the username : **admin** / password : **admin** account.
 
 ![IMG_004]
 
 <br>
 
-# <div id='3'/> 3. 컨테이너 플랫폼 운영자포털 메뉴얼
+# <div id='3'/> 3. Container Platform Operator Portal Manual
 
 
-## <div id='3-1'/> 3.1. 컨테이너 플랫폼 운영자포털 메뉴 구성
-| <center>메뉴</center> | <center>분류</center> | <center>설명</center> |
+## <div id='3-1'/> 3.1. Container Platform Operator Portal Menu Configuration
+| <center>Menu</center> | <center>Classification</center> | <center>Description</center> |
 | :--- | :--- | :--- |
-|| Overview | 컨테이너 플랫폼 대시보드 |
-| Clusters | Namespaces | Namespaces 정보 관리 |
-|| Nodes | Nodes 정보 관리 |
-| Workloads | Deployments | Deployments 정보 관리 |
-|| Pods | Pods 정보 관리 |
-|| Replica Sets | Replica Sets 정보 관리 |
-| Services | Services | Services 정보 관리 |
-| Storages | Persistent Volumes | Persistent Volumes 정보 관리 |
-|| Persistent Volume Claims | Persistent Volume Claims 정보 관리 |
-|| Storage Classes | Storage Classes 정보 관리 |
-| Managements | Users | 사용자 관리 |
-|| Roles | Roles 관리 |
-|| Resource Quotas | Resource Quotas 정보 관리 |
-|| Limit Ranges | Limit Ranges 정보 관리 |
+|| Overview | Container Platform Dashboard |
+| Clusters | Namespaces | Manages Namespaces Information |
+|| Nodes | Manages Nodes Information |
+| Workloads | Deployments | Manages Deployments Information |
+|| Pods | Manages Pods Information |
+|| Replica Sets | Manages Replica Sets Information |
+| Services | Services | Manages Services Information |
+| Storages | Persistent Volumes | Manages Persistent Volumes Information |
+|| Persistent Volume Claims | Manages Persistent Volume Claims Information |
+|| Storage Classes | Manages Storage Classes Information |
+| Managements | Users | Manages User |
+|| Roles | Manages Roles |
+|| Resource Quotas | Manages Resource Quotas Information |
+|| Limit Ranges | Manages Limit Ranges Information |
 
 <br>
 
-## <div id='3-2'/> 3.2. 컨테이너 플랫폼 운영자포털 메뉴 설명
-본 장에서는 컨테이너 플랫폼 운영자포털의 메뉴에 대한 설명을 기술하였다.
+## <div id='3-2'/> 3.2. Container Platform Operator Portal Menu Description
+This chapter describes the menu of the container platform operator portal.
 
 ### <div id='3-2-1'/> 3.2.1. Overview
-#### <div id='3-2-1-1'/> 3.2.1.1. Overview 목록 조회
-- Namespace, Deployment, Pod, User의 개수와 Deployment, Pod, ReplicaSet의 차트를 조회한다.
+#### <div id='3-2-1-1'/> 3.2.1.1. Overview List Chek
+- Look up the number of Namespace, Deployment, Pod, User, and charts of Deployment, Pod, and ReplicaSet.
 
-1. 로그인 후 첫 화면으로 Overview 페이지로 이동한다.
+1. After logging in, the first screen that appears is Overview page.
 
 ![IMG_005]
 
-#### <div id='3-2-1-2'/> 3.2.1.2. Overview Namespace 변경
-- 화면 상단 Select Box를 누른 후 전체 Namespace 목록에서 원하는 Namespace를 선택한다.
+#### <div id='3-2-1-2'/> 3.2.1.2. Overview Namespace Change
+- Click Select Box at the top of the screen and select the desired Namespace from the full Namespace list.
 
-1. Select Box에서 Namespace를 선택하면 해당 Namespace에 대한 Overview 정보가 조회된다.
+1. When you select Namespace in the Select Box, the Overview information for the Namespace is queried.
 
 ![IMG_006]
 ![IMG_007]
 
-### <div id='3-2-2'/> 3.2.2. Clusters 메뉴
+### <div id='3-2-2'/> 3.2.2. Clusters Menu
 #### <div id='3-2-2-1'/> 3.2.2.1. Namespaces
-##### <div id='3-2-2-1-1'/> 3.2.2.1.1. Namespace 목록 조회
-1. Clusters 메뉴의 Namespaces를 클릭하여 Namespace 목록 페이지로 이동한다.
+##### <div id='3-2-2-1-1'/> 3.2.2.1.1. Namespace List Check
+1. Click Namespace in the Clusters menu to go to the Namespace list page.
 
 ![IMG_009]
 
-##### <div id='3-2-2-1-2'/> 3.2.2.1.2. Namespace 상세 조회
-1. Namespace 목록에서 Namespace명을 클릭하여 Namespace 상세 페이지로 이동한다.
+##### <div id='3-2-2-1-2'/> 3.2.2.1.2. Namespace Details Check
+1. Click the Namespace name in the Namespace list to go to the Namespace detail page.
 
-#### Namespace 상세 페이지
+#### Namespace Details Page
 ![IMG_010]
 
-##### <div id='3-2-2-1-3'/> 3.2.2.1.3. Namespace 생성
-- Namespace 생성 페이지에서 해당 **Namespace의 관리자**, **Resource Quotas**, **Limit Ranges** 를 지정할 수 있다.
+##### <div id='3-2-2-1-3'/> 3.2.2.1.3. Create Namespace 
+- Can specify the appropriate **Operator od Namespace**, **Resource Quotas**, **Limit Ranges** on the Create Namespace page.
 
-1. Namespace 목록에서 생성 버튼을 클릭하여 Namespace 생성 페이지로 이동한다.
+1. NClick the Create button in the Namespace list to go to the Namespace creation page.
 
-#### Namespace 목록 페이지
+#### Namespace List Page
 ![IMG_011]
 
-#### Namespace 생성 페이지
-- **Admin User** 항목을 통해 해당 Namespace 관리자를 지정 할 수 있다.
+#### Namespace Creating Page
+- **Admin User** allows you to specify a corresponding Namespace administrator.
 
 ![IMG_012]
 ![IMG_013]
@@ -199,21 +199,21 @@
 ![IMG_015]
 ![IMG_016]
 
-##### <div id='3-2-2-1-4'/> 3.2.2.1.4. Namespace 수정
-Namespace 수정 페이지에서 해당 **Namespace의 관리자**, **Resource Quotas**, **Limit Ranges**를 수정할 수 있다.
+##### <div id='3-2-2-1-4'/> 3.2.2.1.4. Modify Namespace
+- Can modify the appropriate **Operator of Namespace**, **Resource Quotas**, **Limit Ranges** on the Modify Namespace page.
 
-1. Namespace 상세에서 수정 버튼을 클릭하여 Namespace 수정 페이지로 이동한다.
+1. Click the Modify button in Namespace Details to go to the Modify Namespace page.
 
-#### Namespace 상세 페이지
+#### Namespace Details Page
 ![IMG_017]
 
-#### Namespace 수정 페이지
-- **Admin User** 항목을 통해 해당 Namespace 관리자를 변경 할 수 있다.
+#### Namespace Modifying Page
+- Can change the corresponding Namespace manager through the **Admin User**.
 
 ![IMG_018]
 ![IMG_019]
 
-##### <div id='3-2-2-1-5'/> 3.2.2.1.5. Namespace 삭제
+##### <div id='3-2-2-1-5'/> 3.2.2.1.5. Delete Namespace
 1. Namespace 상세에서 삭제 버튼을 클릭하여 Namespace 삭제를 한다.
 
 #### Namespace 상세 페이지
