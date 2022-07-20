@@ -71,8 +71,8 @@
     * [3.2.5.3.5. Delete Storage Class](#3-2-5-3-5)
     * [3.2.6. Managements Menu](#3-2-6)
     * [3.2.6.1. Users](#3-2-6-1)
-    * [3.2.6.1.1. Cluster Operator Check](#3-2-6-1-1)  
-    * [3.2.6.1.2. Cluster Operator Details Check](#3-2-6-1-2)  
+    * [3.2.6.1.1. Cluster Administrator Check](#3-2-6-1-1)  
+    * [3.2.6.1.2. Cluster Administrator Details Check](#3-2-6-1-2)  
     * [3.2.6.1.3. Normal User List Check](#3-2-6-1-3)  
     * [3.2.6.1.4. Normal User Details Check](#3-2-6-1-4)  
     * [3.2.6.1.5. Modify User](#3-2-6-1-5)  
@@ -102,7 +102,7 @@
 # <div id='1'/> 1. Document Outline
 
 ## <div id='1-1'/> 1.1. Purpose
-This document describes on the usage of the container platform operator portal.
+This document describes the usage of the container platform operator portal.
 
 ## <div id='1-2'/> 1.2. Range
 This document describes how to use the container platform operator portal based on the Windows environment.
@@ -157,7 +157,7 @@ This chapter describes the menu of the container platform operator portal.
 #### <div id='3-2-1-1'/> 3.2.1.1. Overview List Chek
 - Look up the number of Namespace, Deployment, Pod, User, and charts of Deployment, Pod, and ReplicaSet.
 
-1. After logging in, the first screen that appears is Overview page.
+1. After logging in, the first screen that appears is the Overview page.
 
 ![IMG_005]
 
@@ -185,7 +185,7 @@ This chapter describes the menu of the container platform operator portal.
 ##### <div id='3-2-2-1-3'/> 3.2.2.1.3. Create Namespace 
 - Can specify the appropriate **Operator od Namespace**, **Resource Quotas**, **Limit Ranges** on the Create Namespace page.
 
-1. NClick the Create button in the Namespace list to go to the Namespace creation page.
+1. click the Create button in the Namespace list to go to the Namespace creation page.
 
 #### Namespace List Page
 ![IMG_011]
@@ -214,464 +214,464 @@ This chapter describes the menu of the container platform operator portal.
 ![IMG_019]
 
 ##### <div id='3-2-2-1-5'/> 3.2.2.1.5. Delete Namespace
-1. Namespace 상세에서 삭제 버튼을 클릭하여 Namespace 삭제를 한다.
+1. Click the Delete button in the Namespace details to delete Namespace.
 
-#### Namespace 상세 페이지
+#### Namespace Details Page
 ![IMG_020]
 
-#### Namespace 삭제 팝업창
+#### Namespace Delete Pop-up Screen
 ![IMG_021]
 ![IMG_022]
 
 #### <div id='3-2-2-2'/> 3.2.2.2. Nodes
-##### <div id='3-2-2-2-1'/> 3.2.2.2.1. Node 목록 조회
-1. Clusters 메뉴의 Nodes를 클릭하여 Node 목록 페이지로 이동한다.
+##### <div id='3-2-2-2-1'/> 3.2.2.2.1. Node List Check
+1. Click Nodes in the Clusters menu to go to the Node List page.
 
 ![IMG_023]
 
-##### <div id='3-2-2-2-2'/> 3.2.2.2.2. Node 상세 조회
-1. Node 목록에서 Node명을 클릭하여 Node 상세 페이지로 이동한다.
-#### Node 상세 페이지
+##### <div id='3-2-2-2-2'/> 3.2.2.2.2. Node Details Check
+1. Click the Node name in the Node list to go to the Node Details page.
+#### Node Details Page
 
 ![IMG_024]
 
-### <div id='3-2-3'/> 3.2.3. Workloads 메뉴
+### <div id='3-2-3'/> 3.2.3. Workloads Menu
 #### <div id='3-2-3-1'/> 3.2.3.1 Deployment
-##### <div id='3-2-3-1-1'/> 3.2.3.1.1. Deployment 목록 조회
-1. Workloads의 Deployments를 클릭하여 Deployment 목록 페이지로 이동한다.
+##### <div id='3-2-3-1-1'/> 3.2.3.1.1. Deployment List Check
+1. Click Deployments in Workloads to go to the Deployment List page.
 
 ![IMG_025]
 
-##### <div id='3-2-3-1-2'/> 3.2.3.1.2. Deployment 상세 조회
-1. Deployment 목록에서 Deployment명을 클릭하여 Deployment 상세 페이지로 이동한다.
+##### <div id='3-2-3-1-2'/> 3.2.3.1.2. Deployment Details Check
+1. In the Deployment list, click the Deployment name to proceed to the Deployment Details page.
 
-#### Deployment 상세 페이지
+#### Deployment Details Page
 ![IMG_026]
 
-##### <div id='3-2-3-1-3'/> 3.2.3.1.3. Deployment 생성
-1. Deployment 목록에서 생성 버튼을 클릭할 시 Deployment 생성 팝업창이 뜬다.
+##### <div id='3-2-3-1-3'/> 3.2.3.1.3. Create Deployment
+1. When you click the Create button in the Deployment list, the Create Deployment pop-up window appears.
 
-#### Deployment 목록 페이지
+#### Deployment List Page
 ![IMG_027]
 
-#### Deployment 생성 팝업창
+#### Create Deployment Pop-up Screen
 ![IMG_028]
 
-##### <div id='3-2-3-1-4'/> 3.2.3.1.4. Deployment 수정
-1. Deployment 상세에서 수정 버튼을 클릭할 시 Deployment 수정 팝업창이 뜬다.
+##### <div id='3-2-3-1-4'/> 3.2.3.1.4. Modify Deployment
+1. Click the Modify button in Deployment Details, the Deployment Modify pop-up window appears.
 
-#### Deployment 상세 페이지
+#### Deployment Details page
 ![IMG_029]
 
-#### Deployment 수정 팝업창
+####  Deployment Modifying Pop-up Screen
 ![IMG_030]
 
-##### <div id='3-2-3-1-5'/> 3.2.3.1.5. Deployment 삭제
-1. Deployment 상세에서 삭제 버튼을 클릭할 시 Deployment가 삭제된다.
+##### <div id='3-2-3-1-5'/> 3.2.3.1.5. Delete Deployment
+1. Click the Delete button in Deployment Details, Deployment is deleted.
 
-#### Deployment 상세 페이지
+#### Deployment Details Page
 ![IMG_031]
 
-#### Deployment 삭제 팝업창
+#### Deployment Deleting Pop-up Screen
 ![IMG_032]
 
 #### <div id='3-2-3-2'/> 3.2.3.2. Pods
-##### <div id='3-2-3-2-1'/> 3.2.3.2.1. Pod 목록 조회
-1. Workloads의 Pods를 클릭하여 Pod 목록 페이지로 이동한다.
+##### <div id='3-2-3-2-1'/> 3.2.3.2.1. Pod List Check
+1.Click Pods in the Workloads to go to the Pod list page.
 
 ![IMG_033]
 
-##### <div id='3-2-3-2-2'/> 3.2.3.2.2. Pod 상세 조회
-1. Pod 목록에서 Pod명을 클릭하여 Pod 상세 페이지로 이동한다.
+##### <div id='3-2-3-2-2'/> 3.2.3.2.2. Pod Details Check
+1. Click the Pod name in the Pod list to go to the Pod detail page.
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_034]
 
-##### <div id='3-2-3-2-3'/> 3.2.3.2.3. Pod 생성
-1. Pod 목록에서 생성 버튼을 클릭할 시 Pod 생성 팝업창이 뜬다.
+##### <div id='3-2-3-2-3'/> 3.2.3.2.3. Create Pod 
+1. Click the create button from the Pod list and the pop creating pop-up screen appears.
 
-#### Pod 목록 페이지
+#### Pod List Page
 ![IMG_035]
 
-#### Pod 생성 팝업창
+#### Pod Creating Pop-up Screen
 ![IMG_036]
 
-##### <div id='3-2-3-2-4'/> 3.2.3.2.4. Pod 수정
-1. Pod 상세에서 수정 버튼을 클릭할 시 Pod 수정 팝업창이 뜬다.
+##### <div id='3-2-3-2-4'/> 3.2.3.2.4. Modify Pod 
+1. click the Modify button in the Pod details, the Pod Modify pop-up screen appears.
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_037]
 
-#### Pod 수정 팝업창
+#### Pod Modifying Pop-up Screen
 ![IMG_038]
 
-##### <div id='3-2-3-2-5'/> 3.2.3.2.5. Pod 삭제
-1. Pod 상세에서 삭제 버튼을 클릭할 시 Pod 삭제가 삭제된다.
+##### <div id='3-2-3-2-5'/> 3.2.3.2.5. Delete Pod
+1. If you click the Delete button in the Pod details, the Pod deletion is completed.
 
-#### Pod 상세 페이지
+#### Pod Details Page
 ![IMG_039]
 
-#### Pod 삭제 팝업창
+#### Pod Deletion Pop-up Screen
 ![IMG_040]
 
 
 #### <div id='3-2-3-3'/> 3.2.3.3. Replica Sets
-##### <div id='3-2-3-3-1'/> 3.2.3.3.1. Replica Set 목록 조회
-1. Workloads의 Replica Sets을 클릭하여 Replica Set 목록 페이지로 이동한다.
+##### <div id='3-2-3-3-1'/> 3.2.3.3.1. Replica Set List Check
+1. Click Replica Sets in the Workloads to go to the Replica Set list page.
 
 ![IMG_041]
 
-##### <div id='3-2-3-3-2'/> 3.2.3.3.2. Replica Set 상세 조회
-1. Replica Set 목록에서 Replica Set명을 클릭하여 Replica Set 상세 페이지로 이동한다.
+##### <div id='3-2-3-3-2'/> 3.2.3.3.2. Replica Set Details Check
+1. click the Replica Set name to go to the Replica Set details page from the Replica Set List.
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_042]
 
-##### <div id='3-2-3-3-3'/> 3.2.3.3.3. Replica Set 생성
-1. Replica Set 목록에서 생성 버튼을 클릭할 시 Replica Set 생성 팝업창이 뜬다.
+##### <div id='3-2-3-3-3'/> 3.2.3.3.3. Create Replica Set
+1. Click the Create button in the Replica Set list and the Replica Set creating pop-up window appears.
 
-#### Replica Set 목록 페이지
+#### Replica Set List Page
 ![IMG_043]
 
-#### Replica Set  생성 팝업창
+#### Replica Set Creating Pop-up Screen
 ![IMG_044]
 
-##### <div id='3-2-3-3-4'/> 3.2.3.3.4. Replica Set 수정
-1. Replica Set 상세에서 수정 버튼을 클릭할 시 Replica Set 수정 팝업창이 뜬다.
+##### <div id='3-2-3-3-4'/> 3.2.3.3.4. Modify Replica Set
+1. Click the Modify button in the Replica Set details, a pop-up window for modifying the Replica Set appears.
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_045]
 
-#### Replica Set 수정 팝업창
+#### Replica Set Modifying Pop-up Screen
 ![IMG_046]
 
-##### <div id='3-2-3-3-5'/> 3.2.3.3.5. Replica Set 삭제
-1. Replica Set 상세에서 삭제 버튼을 클릭할 시 Replica Set이 삭제된다.
+##### <div id='3-2-3-3-5'/> 3.2.3.3.5. Delete Replica Set
+1. Click the Delete button in the Replica Set details to delete the Replica Set.
 
-#### Replica Set 상세 페이지
+#### Replica Set Details Page
 ![IMG_047]
 
-#### Replica Set 삭제 팝업창
+#### Replica Set Deleting Pop-up Screen
 ![IMG_048]
 
-### <div id='3-2-4'/> 3.2.4. Services 메뉴
-#### <div id='3-2-4-1'/> 3.2.4.1. Service 목록 조회
-1. Services를 클릭하여 Service 목록 페이지로 이동한다.
+### <div id='3-2-4'/> 3.2.4. Services Menu
+#### <div id='3-2-4-1'/> 3.2.4.1. Service List Check
+1. Click Services to proceed to the Service List page.
 
 ![IMG_049]
 
-#### <div id='3-2-4-2'/> 3.2.4.2. Service 상세 조회
-1. Service 목록에서 Service명을 클릭하여 Service 상세 페이지로 이동한다.
+#### <div id='3-2-4-2'/> 3.2.4.2. Service Details Check
+1. Click the Service name in the Service list to go to the Service Details page.
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_050]
 
-#### <div id='3-2-4-3'/> 3.2.4.3. Service 생성
-1. Service 목록에서 생성 버튼을 클릭할 시 Service 생성 팝업창이 뜬다.
+#### <div id='3-2-4-3'/> 3.2.4.3. Create Service
+1. Click the Create button in the Service list, a service creating pop-up window appears.
 
-#### Service 목록 페이지
+#### Service List Page
 ![IMG_051]
 
-#### Service 생성 팝업창
+#### Service Creating Pop-up Screen
 ![IMG_052]
 
-#### <div id='3-2-4-4'/> 3.2.4.4. Service 수정
-1. Service 상세에서 수정 버튼을 클릭할 시 Service 수정 팝업창이 뜬다.
+#### <div id='3-2-4-4'/> 3.2.4.4. Modify Service
+1. Click the Modify button in the Service Details, the Service Modifying pop-up window appears.
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_053]
 
-#### Service 수정 팝업창
+#### Service Modifying Pop-up Screen
 ![IMG_054]
 
-#### <div id='3-2-4-5'/> 3.2.4.5. Service 삭제
+#### <div id='3-2-4-5'/> 3.2.4.5. Delete Service
 
-1. Service 상세에서 삭제 버튼을 클릭할 시 Service가 삭제된다.
+1. Click the Delete button in the Service Details then the service gets deleted.
 
-#### Service 상세 페이지
+#### Service Details Page
 ![IMG_055]
 
-#### Service 삭제 팝업창
+#### Service Deleting Pop-up Screen
 ![IMG_056]
 
-### <div id='3-2-5'/> 3.2.5. Storages 메뉴
+### <div id='3-2-5'/> 3.2.5. Storages Menu
 #### <div id='3-2-5-1'/> 3.2.5.1. Persistent Volumes
-##### <div id='3-2-5-1-1'/> 3.2.5.1.1. Persistent Volume 목록 조회
-1. Storages의 Persistent Volumes를 클릭하여 Persistent Volume 목록 페이지로 이동한다.
+##### <div id='3-2-5-1-1'/> 3.2.5.1.1. Persistent Volume List Check
+1. Click Persistent Volumes in Storages to proceed to the Persistent Volumes list page.
 
 ![IMG_057]
 
-##### <div id='3-2-5-1-2'/> 3.2.5.1.2. Persistent Volume 상세 조회
-1. Persistent Volume 목록에서 Persistent Volume명을 클릭하여 Persistent Volume 상세 페이지로 이동한다.
+##### <div id='3-2-5-1-2'/> 3.2.5.1.2. Persistent Volume Details Check
+1.  Click the Persistent Volume name from the Persistent Volume List to go to the Persistent Volume details page.
 
-#### Persistent Volume 상세 페이지
+#### Persistent Volume Details Page
 ![IMG_058]
 
-##### <div id='3-2-5-1-3'/> 3.2.5.1.3. Persistent Volumee 생성
-1. Persistent Volume 목록에서 생성 버튼을 클릭할 시 Persistent Volume 생성 팝업창이 뜬다.
+##### <div id='3-2-5-1-3'/> 3.2.5.1.3. Create Persistent Volume
+1.  Click the Create button in the Persistent Volume list then the Persistent Volume Creation pop-up window appears.
 
-#### Persistent Volume 목록 페이지
+#### Persistent Volume List Page
 ![IMG_059]
 
-#### Persistent Volume 생성 팝업창
+#### Persistent Volume Creating Pop-up Screen
 ![IMG_060]
 
 
-##### <div id='3-2-5-1-4'/> 3.2.5.1.4. Persistent Volume 수정
-1. Persistent Volume 상세에서 수정 버튼을 클릭할 시 Persistent Volume 수정 팝업창이 뜬다.
+##### <div id='3-2-5-1-4'/> 3.2.5.1.4. Modify Persistent Volume
+1. Click the Modify button in the Persistent Volume Details then a Persistent Volume Modifying pop-up window appears.
 
-#### Persistent Volume 상세 페이지
+#### Persistent Volume Details Page
 ![IMG_061]
 
-#### Persistent Volume 수정 팝업창
+#### Persistent Volume Modifying Pop-up Screen
 ![IMG_062]
 
-##### <div id='3-2-5-1-5'/> 3.2.5.1.5. Persistent Volume 삭제
-1. Persistent Volume 상세에서 삭제 버튼을 클릭 할 시 Persistent Volume이 삭제된다.
+##### <div id='3-2-5-1-5'/> 3.2.5.1.5. Delete Persistent Volume
+1. Click the Delete button in the Persistent Volume details to delete the Persistent Volume.
 
-#### Persistent Volume 상세 페이지
+#### Persistent Volume Details Page
 ![IMG_063]
 
-#### Persistent Volume 삭제 팝업창
+#### Persistent Volume Deleting Pop-up Screen
 ![IMG_064]
 
 #### <div id='3-2-5-2'/> 3.2.5.2. Persistent Volume Claims
-##### <div id='3-2-5-2-1'/> 3.2.5.2.1. Persistent Volume Claim 목록 조회
-1. Storages의 Persistent Volume Claims를 클릭하여 Persistent Volume Claim 목록 페이지로 이동한다.
+##### <div id='3-2-5-2-1'/> 3.2.5.2.1. Persistent Volume Claim List Check
+1. Click Persistent Volume Claims in Storages to proceed to the Persistent Volume Claim list page.
 
 ![IMG_065]
 
-##### <div id='3-2-5-2-2'/> 3.2.5.2.2. Persistent Volume Claim 상세 조회
-1. Persistent Volume Claim 목록에서 Persistent Volume Claim명을 클릭하여 Persistent Volume Claim 상세 페이지로 이동한다.
+##### <div id='3-2-5-2-2'/> 3.2.5.2.2. Persistent Volume Claim Details Check
+1. In the Persistent Volume Claim list, click the Persistent Volume Claim name to go to the Persistent Volume Claim details page.
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_066]
 
-##### <div id='3-2-5-2-3'/> 3.2.5.2.3. Persistent Volumee Claim 생성
-1. Persistent Volume Claim 목록에서 생성 버튼을 클릭할 시 Persistent Volume Claim 생성 팝업창이 뜬다.
+##### <div id='3-2-5-2-3'/> 3.2.5.2.3. Create Persistent Volumee Claim
+1. Click the Create button in the Persistent Volume Claim list then a Persistent Volume Claim Creating pop-up window appears.
 
-#### Persistent Volume Claim 목록 페이지
+#### Persistent Volume Claim List Page
 ![IMG_067]
 
-#### Persistent Volume Claim 생성 팝업창
+#### Persistent Volume Claim Creating Pop-up Screen
 ![IMG_068]
 
-##### <div id='3-2-5-2-4'/> 3.2.5.2.4. Persistent Volume Claim 수정
-1. Persistent Volume Claim 상세에서 수정 버튼을 클릭할 시 Persistent Volume Claim 수정 팝업창이 뜬다.
+##### <div id='3-2-5-2-4'/> 3.2.5.2.4. Modify Persistent Volume Claim
+1. Click the Modify button in the Persistent Volume Claim Details then  the Persistent Volume Claim Modifying pop-up window appears.
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_069]
 
-#### Persistent Volume Claim 수정 팝업창
+#### Persistent Volume Claim Modifying Pop-up Screen
 ![IMG_070]
 
-##### <div id='3-2-5-2-5'/> 3.2.5.2.5. Persistent Volume Claim 삭제
-1. Persistent Volume Claim 상세에서 삭제 버튼을 클릭할 시 Persistent Volume Claim이 삭제된다.
+##### <div id='3-2-5-2-5'/> 3.2.5.2.5. Delete Persistent Volume Claim
+1. Click the Delete button in the Persistent Volume Claim details to delete the Persistent Volume Claim.
 
-#### Persistent Volume Claim 상세 페이지
+#### Persistent Volume Claim Details Page
 ![IMG_071]
 
-#### Persistent Volume Claim 삭제 팝업창
+#### Persistent Volume Claim Deleting Pop-up Screen
 ![IMG_072]
 
 #### <div id='3-2-5-3'/> 3.2.5.3. Storage Classes
-##### <div id='3-2-5-3-1'/> 3.2.5.3.1. Storage Class 목록 조회
-1. Storages의 Storage Classes를 클릭하여 Storage Class 목록 페이지로 이동한다.
+##### <div id='3-2-5-3-1'/> 3.2.5.3.1. Storage Class List Check
+1. Click Storage Classes in Storages to go to the Storage Classes list page.
 ![IMG_073]
 
-##### <div id='3-2-5-3-2'/> 3.2.5.3.2. Storage Class 상세 조회
-1. Storage Class 목록에서 Storage Class명을 클릭하여 Storage Class 상세 페이지로 이동한다.
+##### <div id='3-2-5-3-2'/> 3.2.5.3.2. Storage Class Details Check
+1. In the Storage Class list, click the Storage Class name to go to the Storage Class details page.
 
-#### Storage Class 상세 페이지
+#### Storage Class Details Page
 ![IMG_074]
 
-##### <div id='3-2-5-3-3'/> 3.2.5.3.3. Storage Class 생성
-1. Storage Class 목록에서 생성 버튼을 클릭할 시 Storage Class 생성 팝업창이 뜬다.
+##### <div id='3-2-5-3-3'/> 3.2.5.3.3. Create Storage Class
+1. Click the Create button in the Storage Class list, then a Storage Class Creating pop-up window appears.
 
-#### Storage Class 목록 페이지
+#### Storage Class List Page
 ![IMG_075]
 
-#### Storage Class 생성 팝업창
+#### Storage Class Creating Pop-up Screen
 ![IMG_076]
 
-##### <div id='3-2-5-3-4'/> 3.2.5.3.4. Storage Class 수정
-1. Storage Class 상세에서 수정 버튼을 클릭할 시 Storage Class 수정 팝업창이 뜬다.
+##### <div id='3-2-5-3-4'/> 3.2.5.3.4. Modify Storage Class
+1. Click the Modify button in Storage Class Details then a Storage Class Modifying pop-up window appears.
 
-#### Storage Class 상세 페이지
+#### Storage Class Details Page
 ![IMG_077]
 
-#### Storage Class 수정 팝업창
+#### Storage Class Modifying Pop-up Screen
 ![IMG_078]
 
-##### <div id='3-2-5-3-5'/> 3.2.5.3.5. Storage Class 삭제
-1. Storage Class 상세에서 삭제 버튼을 클릭할 시 Storage Class가 삭제된다.
+##### <div id='3-2-5-3-5'/> 3.2.5.3.5. Delete Storage Class
+1. Click the Delete button in the Storage Class details and the Storage Class gets deleted.
 
-#### Storage Class 상세 페이지
+#### Storage Class Details Page
 ![IMG_079]
 
-#### Storage Class 삭제 팝업창
+#### Storage Class Deleting Pop-up Screen
 ![IMG_080]
 
 ### <div id='3-2-6'/> 3.2.6. Managements
 #### <div id='3-2-6-1'/> 3.2.6.1. Users
-##### <div id='3-2-6-1-1'/> 3.2.6.1.1. 클러스터 관리자 조회
-1. Managements 메뉴의 Users를 선택하고 Administrator탭을 클릭하여 클러스터 관리자를 조회한다.
+##### <div id='3-2-6-1-1'/> 3.2.6.1.1. Cluster Administrator Check
+1. Select Users from the Management menu and click the Administrator tab to view the cluster administrator.
 
 ![IMG_081]
 
-##### <div id='3-2-6-1-2'/> 3.2.6.1.2. 클러스터 관리자 상세 조회
-1.  클러스터 관리자 User ID를 클릭하여 클러스터 관리자 상세 조회 페이지로 이동한다.
+##### <div id='3-2-6-1-2'/> 3.2.6.1.2. Cluster Administrator Details Check
+1.  Click the Cluster Administrator User ID to proceed to the Cluster Administrator Details page..
 
-#### 클러스터 관리자 상세 조회 페이지
+#### Cluster Administrator Details Check Page
 ![IMG_082]
 
-##### <div id='3-2-6-1-3'/> 3.2.6.1.3.  일반 사용자 목록 조회
-1. Managements 메뉴의 Users를 선택하고 User탭을 클릭하여 사용자 목록을 조회한다.
-  + Active 탭 : Namespace/Role이 할당된 사용자 목록 
-  + Inactive 탭 : Namespace/Role이 비할당된 사용자 목록
+##### <div id='3-2-6-1-3'/> 3.2.6.1.3.  Normal User List Check
+1. Select Users in the Management menu and click the User tab to view the list of users.
+  + Active Tab : List of users assigned with Namespace/Role
+  + Inactive Tab : List of users unassigned with Namespace/Role
 
 ![IMG_083]
 
-##### <div id='3-2-6-1-4'/> 3.2.6.1.4. 일반 사용자 상세 조회
-1.  일반 사용자 User ID를 클릭하여 일반 사용자 상세 조회 페이지로 이동한다.
+##### <div id='3-2-6-1-4'/> 3.2.6.1.4. Normal User Details Check
+1.  Click the Normal User ID to prcoeed to the Normal User Detail Check page.
 
-####  일반 사용자 상세 조회 페이지
+####  Normal User Detals Check Page
 ![IMG_084]
 
-##### <div id='3-2-6-1-5'/> 3.2.6.1.5. User 수정
-- User 수정 페이지에서 해당 사용자가 이용할 Namespace와 Role을 수정할 수 있다.
+##### <div id='3-2-6-1-5'/> 3.2.6.1.5. Modify User
+- Modify the Namespace and Role that the user will use from the User Modify page.
 
-1. User 상세에서 수정 버튼을 클릭하여 User 수정 페이지로 이동한다.
+1. Click the Modify button in the User Details to go to the User Modifying page.
 
-#### User 상세 페이지
+#### User Details Page
 ![IMG_086]
 
-#### User 수정 페이지
+#### User Modifying Page
 ![IMG_087]
 
-- 사용자에게 지정할 Namespace와 Role을 선택한다. 
+- Select the Namespace and Role to assign to the user. 
 
 ![IMG_088]
 ![IMG_089]
 ![IMG_090]
 
 #### <div id='3-2-6-2'/> 3.2.6.2. Roles
-##### <div id='3-2-6-2-1'/> 3.2.6.2.1. Role 목록 조회
-1. Managements 메뉴의 Roles를 클릭하여 Role 목록 페이지로 이동한다.
+##### <div id='3-2-6-2-1'/> 3.2.6.2.1. Role List Check
+1. Click the Roles from the Managements Menu and proceed to the Role List page.
 ![IMG_091]
 
-##### <div id='3-2-6-2-2'/> 3.2.6.2.2. Role 상세 조회
-1. Role 목록에서 Role명을 클릭하여 Role 상세 페이지로 이동한다.
+##### <div id='3-2-6-2-2'/> 3.2.6.2.2. Role Details Check
+1. Click the Role Name from Role List to proceed to the Role Details Page.
 
-#### Role 상세 페이지
+#### Role Details Page
 ![IMG_092]
 
-##### <div id='3-2-6-2-3'/> 3.2.6.2.3. Role 생성
-1. Role 목록에서 생성 버튼을 클릭할 시 Role 생성 팝업창이 뜬다.
+##### <div id='3-2-6-2-3'/> 3.2.6.2.3. Create Role
+1. Click the Create button from the Role List and a Role Creating Pop-up screen appears.
 
-#### Role 목록 페이지
+#### Role List Page
 ![IMG_093]
 
-#### Role 생성 팝업창
+#### Role Creating Pop-up Screen
 ![IMG_094]
 
-##### <div id='3-2-6-2-4'/> 3.2.6.2.4. Role 수정
-1. Role 상세에서 수정 버튼을 클릭할 시 Role 수정 팝업창이 뜬다.
+##### <div id='3-2-6-2-4'/> 3.2.6.2.4. Modify Role
+1. Click the Modify button in the Role Details, then the Role Modifying pop-up window appears.
 
-#### Role 상세 페이지
+#### Role Deatails Page
 ![IMG_095]
 
-#### Role 수정 팝업창
+#### Role Modifying Pop-up Screen
 ![IMG_096]
 
-##### <div id='3-2-6-2-5'/> 3.2.6.2.5. Role 삭제
-1. Role 상세에서 삭제 버튼을 클릭할 시 Role이 삭제된다.
+##### <div id='3-2-6-2-5'/> 3.2.6.2.5. Delete Role
+1. Click the Delete button in the Role details to delete the role.
 
-#### Role 상세 페이지
+#### Role Details Page
 ![IMG_097]
 
-#### Role 삭제 팝업창
+#### Role Deleting Pop-up Screen
 ![IMG_098]
 
 #### <div id='3-2-6-3'/> 3.2.6.3. Resource Quotas
-##### <div id='3-2-6-3-1'/> 3.2.6.3.1. Resource Quota 목록 조회
-1. Managements 메뉴의 Resource Quotas를 클릭하여 Resource Quota 목록 페이지로 이동한다.
+##### <div id='3-2-6-3-1'/> 3.2.6.3.1. Resource Quota List Check
+1. Click Resource Quotas in the Management menu to go to the Resource Quota list page.
 ![IMG_099]
 
-##### <div id='3-2-6-3-2'/> 3.2.6.3.2. Resource Quota 상세 조회
-1. Resource Quota 목록에서 Resource Quota명을 클릭하여 Resource Quota 상세 페이지로 이동한다.
+##### <div id='3-2-6-3-2'/> 3.2.6.3.2. Resource Quota Details Check
+1. In the Resource Quota list, click the Resource Quota name to go to the Resource Quota Details page.
 
-#### Resource Quota 상세 페이지
+#### Resource Quota Details Page
 ![IMG_100]
 
-##### <div id='3-2-6-3-3'/> 3.2.6.3.3. Resource Quota 생성
-1. Resource Quota 목록에서 생성 버튼을 클릭할 시 Resource Quota 생성 팝업창이 뜬다.
+##### <div id='3-2-6-3-3'/> 3.2.6.3.3. Create Resource Quota
+1. Click the Create button in the Resource Quota list, then a Resource Quota Creating pop-up window appears.
 
-#### Resource Quota 목록 페이지
+#### Resource Quota List Page
 ![IMG_101]
 
-#### Resource Quota 생성 팝업창
+#### Resource Quota Creating Pop-up Screen
 ![IMG_102]
 
-##### <div id='3-2-6-3-4'/> 3.2.6.3.4. Resource Quota 수정
-1. Resource Quota 상세에서 수정 버튼을 클릭할 시 Resource Quota 수정 팝업창이 뜬다.
+##### <div id='3-2-6-3-4'/> 3.2.6.3.4. Modify Resource Quota
+1. Click the Modify button in the Resource Quota Details, then a Resource Quota Modifying pop-up window appears.
 
-#### Resource Quota 상세 페이지
+#### Resource Quota Details Page
 ![IMG_103]
 
-#### Resource Quota 수정 팝업창
+#### Resource Quota Modifying Pop-up Screen
 ![IMG_104]
 
-##### <div id='3-2-6-3-5'/> 3.2.6.3.5. Resource Quota 삭제
-1. Resource Quota 상세에서 삭제 버튼을 클릭할 시 Resource Quota가 삭제된다.
+##### <div id='3-2-6-3-5'/> 3.2.6.3.5. Delete Resource Quota
+1. Click the Delete button in the Resource Quota Details to delete the Resource Quota.
 
-#### Resource Quota 상세 페이지
+#### Resource Quota Details Page
 ![IMG_105]
 
-#### Resource Quota 삭제 팝업창
+#### Resource Quota Delete Pop-up Screen
 ![IMG_106]
 
 #### <div id='3-2-6-4'/> 3.2.6.4. Limit Ranges
-##### <div id='3-2-6-4-1'/> 3.2.6.4.1. Limit Range 목록 조회
-1. Managements 메뉴의 Limit Ranges를 클릭하여 Limit Range 목록 페이지로 이동한다.
+##### <div id='3-2-6-4-1'/> 3.2.6.4.1. Limit Range List Check
+1. Click Limit Ranges in the Management menu to go to the Limit Range list page.
 ![IMG_107]
 
-##### <div id='3-2-6-4-2'/> 3.2.6.4.2. Limit Range 상세 조회
-1. Limit Range 목록에서 Limit Range명을 클릭하여 Limit Range 상세 페이지로 이동한다.
+##### <div id='3-2-6-4-2'/> 3.2.6.4.2. Limit Range Details Check
+1. Click the Limit Range name from the Limit Range list to go to the Limit Range detail page.
 
-#### Limit Range 상세 페이지
+#### Limit Range Details Page
 ![IMG_108]
 
-##### <div id='3-2-6-4-3'/> 3.2.6.4.3. Limit Range 생성
-1. Limit Range 목록에서 생성 버튼을 클릭할 시 Limit Range 생성 팝업창이 뜬다.
+##### <div id='3-2-6-4-3'/> 3.2.6.4.3. Create Limit Range
+1. Click the Create button in the Limit Range list then a Limit Range creating pop-up window appears.
 
-#### Limit Range 목록 페이지
+#### Limit Range List Page
 ![IMG_109]
 
-#### Limit Range 생성 팝업창
+#### Limit Range Creating Pop-up Screen
 ![IMG_110]
 
-##### <div id='3-2-6-4-4'/> 3.2.6.4.4. Limit Range 수정
-1. Limit Range 상세에서 수정 버튼을 클릭할 시 Limit Range 수정 팝업창이 뜬다.
+##### <div id='3-2-6-4-4'/> 3.2.6.4.4. Modify Limit Range
+1. Click the Modify button in the Limit Range details then a Limit Range Modifying pop-up window appears.
 
-#### Limit Range 상세 페이지
+#### Limit Range Details Page
 ![IMG_111]
 
-#### Limit Range 수정 팝업창
+#### Limit Range Modifying Pop-up Screen
 ![IMG_112]
 
-##### <div id='3-2-6-4-5'/> 3.2.6.4.5. Limit Range 삭제
-1. Limit Range 상세에서 삭제 버튼을 클릭할 시 Limit Range가 삭제된다.
+##### <div id='3-2-6-4-5'/> 3.2.6.4.5. Delete Limit Range
+1. Click the Delete button in the Limit Range details to delete the Limit Range.
 
-#### Limit Range 상세 페이지
+#### Limit Range Details Page
 ![IMG_113]
 
-#### Limit Range 삭제 팝업창
+#### Limit Range Deleting Pop-up Screen
 ![IMG_114]
 
 <br>
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > 운영자 포털 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](/use-guide/Readme.md) > Operator Portal Use Guide
 
 ----
 [IMG_001]:../images/v1.2/container-platform-portal/admin/cp-001.png
