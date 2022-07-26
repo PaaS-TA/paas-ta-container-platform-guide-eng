@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/use-guide/Readme.md) > Pipeline 서비스 사용 가이드
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [CP Use](https://github.com/PaaS-TA/paas-ta-container-platform-guide-eng/tree/master/use-guide/Readme.md) > Pipeline Service Use Guide
 
 <br>
 
