@@ -89,7 +89,7 @@ service:
   port: 8080
   https:
     port: 8443
-  targetPort: 8443 (수정)
+  targetPort: 8443 (Modify)
   nodePort: 32710
 ...
 ```
