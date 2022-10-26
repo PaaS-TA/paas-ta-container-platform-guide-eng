@@ -98,7 +98,7 @@ NFS storage capacity **28Gi** is recommended for cluster environments where cont
 
 ### <div id='3.1'>3.1. CRI-O insecure-registry Setting
 When deploying the container platform pipeline, upload the image and package file to the private repository installed in the cluster.
-Upload images and package files related to the container platform pipeline to the Private Repository (Harbor) distributed through the container platform portal. 
+Upload images and package files related to the container platform pipeline to the Private Repository (Harbor) deployed through the container platform portal. 
 
 Refer to the guide below for CRI-O insecure-registry settings needed for the Private Repository.
 > [CRI-O insecure-registry Setting](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md#3.1)      

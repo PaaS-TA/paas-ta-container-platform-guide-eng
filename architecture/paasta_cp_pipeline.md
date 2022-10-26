@@ -24,7 +24,7 @@ This document provides an architecture of PaaS-TA Container Platform Pipeline.
 
 
 ## Description
-The PaaS-TA container platform pipeline service provides the ability to build, test, static analysis and distribute, and pipelining applications to be developed, and provides a UI for managing environmental information of the applications being deployed.   
+The PaaS-TA container platform pipeline service provides the ability to build, test, static analysis and deploy, and pipelining applications to be developed, and provides a UI for managing environmental information of the applications being deployed.   
 
 
 ### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [CP Architecture](../README.md) > Pipeline
