@@ -61,7 +61,7 @@
 	* [3.2.2.4.4.4.    Stop Test Job](#3-2-2-4-4-4)
 	* [3.2.2.4.4.5.    Test Job Log/ History](#3-2-2-4-4-5)
 	* [3.2.2.4.4.6.    Add Test Job](#3-2-2-4-4-6)
-	* [3.2.2.4.4.7.    Test Job Job Quality Issue Results](#3-2-2-4-4-7)
+	* [3.2.2.4.4.7.    Test Job Quality Issue Results](#3-2-2-4-4-7)
 	* [3.2.2.4.4.8.    Duplicate Test Job](#3-2-2-4-4-8)
 	* [3.2.2.4.4.9.    Delete Test Job](#3-2-2-4-4-9)
 	* [3.2.2.4.5. Deployment Job](#3-2-2-4-5)
@@ -216,7 +216,7 @@ The user management menu is visible only to the manager, and this chapter descri
 1. Select an ID from the user dashboard to go to the user detail view/modify page.
 ![image](https://user-images.githubusercontent.com/80228983/146738595-22e7e2d3-c40e-46f8-816d-3d7fada97908.png)
 
-2. Check the users detailed information.
+2. Check the user's detailed information.
 ![image](https://user-images.githubusercontent.com/80228983/146738690-f1b61c35-06a9-466d-934c-0ed41c9b0f93.png)
 
 3. When you want to modify the information, enter a new input value. Authorities can be selected as administrators/users.
@@ -587,7 +587,7 @@ This chapter describes overall participant management, such as adding, modifying
 ***※	The test Job log/history can be viewed by the administrator and all pipeline participants, but the Run and Stop buttons can only be viewed by participants with creation and execution authority.***
 
 
-###### <div id='3-2-2-4-4-6'/> 3.2.2.4.4.6.	Test Job Job Quality Issue Results
+###### <div id='3-2-2-4-4-6'/> 3.2.2.4.4.6.	Test Job Quality Issue Results
 1.	Pressing the Log/History "Test Results" button on the Test Job will bring up the JUnit Test Results pop-up window of the source code performed.
 ![image](https://user-images.githubusercontent.com/80228983/146858037-941cd966-1375-48ca-81a6-8d3d02e4244d.png)
 ![image](https://user-images.githubusercontent.com/80228983/146858111-9b25dab5-85e0-4e43-af33-3aee82095eb4.png)
@@ -889,7 +889,7 @@ A page that manages the configuration settings of the deployed application. The 
 ![image](https://user-images.githubusercontent.com/80228983/146874997-8f397560-05ff-4d01-9ed6-27e23983cc77.png)
 
 ###### <div id='3-2-4-5-1-2'/> 3.2.4.5.1.2. Search Environment Information List
-Can search through three types: 'Application name', 'profile name', and 'Key search' in the environmental information management dashboard.
+Can be searched through three types: 'Application name', 'profile name', and 'Key search' in the environmental information management dashboard.
 1. Expand the application filter to select the desired application.
 ![image](https://user-images.githubusercontent.com/80228983/146875629-2c192489-d556-40ec-8769-53bc31abbf1f.png)
 2. The selected application is filtered and retrieved.

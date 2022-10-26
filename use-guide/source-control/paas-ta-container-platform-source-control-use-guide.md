@@ -111,7 +111,7 @@ This chapter describes the three menus of the container platform source control.
 <br>
 
 ### <div id='3.2.1'/> 3.2.1. Manage My Account
-Describes the information retrieving and managing of a specific user using the container platform source control service.
+This menu describes the information retrieving and managing of a specific user using the container platform source control service.
 
 <br>
 
@@ -146,7 +146,7 @@ The User Management Menu is only visible to the operator(administrators). This c
 
 <br>
 
-2. All the user ID, name, created date, and modification dates based on the operator on top in the proceeded screen's list. In addition, it is possible to check whether administrators and users are using it on the right side of the list.
+2. All the user ID, name, created date, and modification dates based on the operator on top of the proceeded screen's list. In addition, it is possible to check whether administrators and users are using it on the right side of the list.
 ![image](https://user-images.githubusercontent.com/67407365/147021423-54819e22-10d6-405d-abfd-386227331333.png)
 
 <br>

@@ -85,7 +85,7 @@ For {K8S_MASTER_NODE_IP} value, enter **Kubernetes Master Node Public IP** value
 
 #### User Sign in    
 - Access to http://{K8S_MASTER_NODE_IP}:32702.
-- Clicj 'Register' button below.
+- Click 'Register' button below.
 
 ![IMG_001]
 
@@ -162,7 +162,7 @@ This chapter describes the menu of the container platform user portal.
 
 - The Namespace detail page consists of the Details, Events tab.
 
-1. click Namespace Name to go to the Namespace detail page from the Overview tab of the Intro.
+1. Click Namespace Name to go to the Namespace detail page from the Overview tab of the Intro.
 
 #### Overview Tab of Intro
 ![IMG_007]
@@ -214,7 +214,7 @@ This chapter describes the menu of the container platform user portal.
 #### User Role Setting Page
 ![IMG_019]
 
--  Change the Role of the corresponding Namespace user or select the check box to the left of the corresponding Namespace non-user User ID (assign access) and click the Save button.
+-  Change the Role of the corresponding Namespace user or select the checkbox to the left of the corresponding Namespace non-user User ID (assign access) and click the Save button.
 
 ![IMG_020]
 ![IMG_021]
@@ -396,7 +396,7 @@ This chapter describes the menu of the container platform user portal.
 ![IMG_072]
 
 ##### <div id='3-2-6-3-5'/> 3.2.6.3.5. Delete Replica Set
-1. click the Delete button in Replica Set Details, then the Delete Replica Set pop-up window appears.
+1. Click the Delete button in Replica Set Details, then the Delete Replica Set pop-up window appears.
 
 #### Replica Set Details Page
 ![IMG_073]
@@ -450,7 +450,7 @@ This chapter describes the menu of the container platform user portal.
 ![IMG_088]
 
 ##### <div id='3-2-7-5'/> 3.2.7.5. Delete Service
-1. Click the Delete button in Service Details, then a pop-up window for Delete Service appears.
+1. Click the Delete button in Service Details, then a pop-up window to Delete Service appears.
 
 #### Service Details Page
 ![IMG_089]
