@@ -64,7 +64,7 @@ Refer to the guide below for NFS Storage Server installation.
     
 ### <div id='2.2'>2.2. Container Platform Portal Installation
 Installation of the certificate server **KeyCloak Server**, database **Maria DB**, and repository server **Harbor** must be performed in advance as the infrastructure to be used by the container platform source control.
-When deploying the pasta container platform portal, all of the infrastructures will be installed.
+When deploying the pasta container platform portal, all the infrastructures will be installed.
 For installation of Container Platform Infrastructure, refer to the guide below.
 > [{PaaS-TA Container Platform Portal Deployment](../container-platform-portal/paas-ta-container-platform-portal-deployment-standalone-guide-v1.2.md)     
 
