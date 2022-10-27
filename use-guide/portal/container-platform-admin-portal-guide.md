@@ -18,7 +18,7 @@
     * [3.2.2. Clusters Menu](#3-2-2)
     * [3.2.2.1. Namespaces](#3-2-2-1)
     * [3.2.2.1.1. Namespace List Check](#3-2-2-1-1)
-    * [3.2.2.1.2. Namespace Details Check](#3-2-2-1-2)
+    * [3.2.2.1.2. Check Namespace Details](#3-2-2-1-2)
     * [3.2.2.1.3. Create Namespace](#3-2-2-1-3)
     * [3.2.2.1.4. Modify Namespace](#3-2-2-1-4)
     * [3.2.2.1.5. Delete Namespace](#3-2-2-1-5)
@@ -176,16 +176,16 @@ This chapter describes the menu of the container platform operator portal.
 
 ![IMG_009]
 
-##### <div id='3-2-2-1-2'/> 3.2.2.1.2. Namespace Details Check
+##### <div id='3-2-2-1-2'/> 3.2.2.1.2. Check Namespace Details 
 1. Click the Namespace name in the Namespace list to go to the Namespace detail page.
 
 #### Namespace Details Page
 ![IMG_010]
 
 ##### <div id='3-2-2-1-3'/> 3.2.2.1.3. Create Namespace 
-- Can specify the appropriate **Operator od Namespace**, **Resource Quotas**, **Limit Ranges** on the Create Namespace page.
+- Can specify the appropriate **Operator of Namespace**, **Resource Quotas**, **Limit Ranges** on the Create Namespace page.
 
-1. click the Create button in the Namespace list to go to the Namespace creation page.
+1. Click the Create button in the Namespace list to go to the Namespace creation page.
 
 #### Namespace List Page
 ![IMG_011]
@@ -322,7 +322,7 @@ This chapter describes the menu of the container platform operator portal.
 ![IMG_041]
 
 ##### <div id='3-2-3-3-2'/> 3.2.3.3.2. Replica Set Details Check
-1. click the Replica Set name to go to the Replica Set details page from the Replica Set List.
+1. Click the Replica Set name to go to the Replica Set details page from the Replica Set List.
 
 #### Replica Set Details Page
 ![IMG_042]

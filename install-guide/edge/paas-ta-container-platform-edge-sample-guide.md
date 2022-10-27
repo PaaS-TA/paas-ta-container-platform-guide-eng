@@ -29,9 +29,9 @@ The installation range was prepared based on the Kube Edge Sample deployment gui
 <br>
 
 ### <div id='1.3'> 1.3. System Configuration Diagram
-he system configuration consists of a Kubernetes Cluster Kubernetes Cluster(Master, Worker)와 Raspberry Pi(Edge), DHT11 Sensor(Device) environment.
+The system configuration consists of a Kubernetes Cluster Kubernetes Cluster(Master, Worker)와 Raspberry Pi(Edge), DHT11 Sensor(Device) environment.
 Install the Kubernetes Cluster (Master, Worker) through Kubespray and install KubeEdge in the Kubernetes environment.
-Total VM environments require **Master VM: 1 or more, Worker VM: 1 or more, Raspberry Pi: 1 or more**.
+For the total required VM environment,  **1 or more Master VM, 1 or more Worker VM, 1 or more Raspberry Pi** are required.
 This document is about the configuration and verification of the Edge environment for configuring the actual Edge environment.
 
 ![image 001]

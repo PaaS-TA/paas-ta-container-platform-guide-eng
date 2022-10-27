@@ -43,7 +43,7 @@ The installation range was prepared based on Kubernetes' stand-alone deployment.
 ### <div id='1.3'>1.3. System Configuration Diagram
 The system configuration consists of Kubernetes Cluster (Master, Worker) and Cluster Internal (DBMS, HAProxy, Private Repository, Keycloak) environments. <br>
 Kubernetes Cluster is installed through Kubespray and middleware environments such as Database and Private Repository are provided as container platform portals to deploy container platform portal environments to Kubernetes Cluster with Docker Image. <br>
-The total required VM environment is **Master Node VM**: 1 and Worker Node VM: 1 or more, and this document is about deploying container platform source controls in a Kubernetes cluster.
+For the total required VM environment,  **1 Master VM and 1 or more Worker VMs** are required. This document is about deploying container platform source controls in a Kubernetes cluster.
 
 ![image](https://user-images.githubusercontent.com/80228983/146350860-3722c081-7338-438d-b7ec-1fdac09160c4.png)
 

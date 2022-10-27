@@ -48,7 +48,7 @@ The installation range was prepared based on the basic installation to verify Ku
 ### <div id='1.3'> 1.3. System Configuration Diagram
 The system configuration consists of a Kubernetes Cluster (Master, Worker, Edge) environment. <br>
 Install the Kubernetes Cluster (Master, Worker) through Kubespray and KubeEdge in the Kubernetes Cluster and Edge environment. The pod provides middleware environments such as Database and Private registry to deploy to Container Platform portal environments to Kubernetes clusters with Container Image. <br>
-The total required VM environment is **Master VM: 1, Worker VM: 1 or more, Edge VM: 1 or more**and this document contains the installation of Master VM, Worker VM, and Edge VM to configure the Kubernetes Cluster environment.
+For the total required VM environment,  **1 Master VM, 1 or more Worker VM, 1 or more Edge VM** are required. This document contains the installation of Master VM, Worker VM, and Edge VM to configure the Kubernetes Cluster environment.
 
 ![image 001]
 
